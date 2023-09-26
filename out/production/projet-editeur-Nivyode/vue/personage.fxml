@@ -63,17 +63,17 @@
                                     <Image url="@images/cheveux/icone.png" />
                                  </image>
                               </ImageView>
-                              <Button layoutY="-4.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
+                              <Button id="bouton-selection-cheveux" layoutY="-4.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
                            </children>
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="9.0" layoutY="6.0">
                                  <image>
-                                    <Image url="@images/t-shirt/icone.png" />
+                                    <Image url="@images/tshirt/icone.png" />
                                  </image>
                               </ImageView>
-                              <Button layoutY="-5.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
+                              <Button id="bouton-selection-tshirt" layoutY="-5.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
                            </children>
                         </Pane>
                         <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
@@ -83,7 +83,7 @@
                                     <Image url="@images/pantalons/icone.png" />
                                  </image>
                               </ImageView>
-                              <Button layoutY="-4.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
+                              <Button id="bouton-selection-pantalon" layoutY="-4.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
                            </children>
                         </Pane>
                         <Pane layoutX="10.0" layoutY="185.0" prefHeight="200.0" prefWidth="200.0">
@@ -93,7 +93,7 @@
                                     <Image url="@images/soulier/icone.png" />
                                  </image>
                               </ImageView>
-                              <Button layoutY="-4.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
+                              <Button id="bouton-selection-chaussure" layoutY="-4.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
                            </children>
                         </Pane>
                         <Pane layoutX="10.0" layoutY="244.0" prefHeight="200.0" prefWidth="200.0">
@@ -103,7 +103,7 @@
                                     <Image url="@images/animaux/icone.png" />
                                  </image>
                               </ImageView>
-                              <Button layoutY="-4.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
+                              <Button id="bouton-selection-animal" layoutY="-4.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
                            </children>
                         </Pane>
                         <Pane layoutX="10.0" layoutY="272.0" prefHeight="200.0" prefWidth="200.0">
@@ -113,14 +113,14 @@
                                     <Image url="@images/arriere-plan/icone.png" />
                                  </image>
                               </ImageView>
-                              <Button layoutY="-5.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
+                              <Button id="bouton-selection-background" layoutY="-5.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
                            </children>
                         </Pane>
                      </children>
                   </VBox>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="382.0" prefWidth="128.0" />
+          <AnchorPane id="anchor-personage-pane" />
         </items>
       </SplitPane>
       <AnchorPane layoutX="312.0" layoutY="88.0" prefHeight="312.0" prefWidth="306.0" style="-fx-background-color: #20dad8;" />
@@ -135,12 +135,12 @@
                <children>
                   <Pane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="64.0" text="Contour" />
+                        <Button id="bouton-texte-contour" mnemonicParsing="false" prefHeight="32.0" prefWidth="64.0" text="Contour" />
                      </children>
                   </Pane>
                   <Pane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="64.0" text="Lettre" />
+                        <Button id="bouton-texte-lettre" mnemonicParsing="false" prefHeight="32.0" prefWidth="64.0" text="Lettre" />
                      </children>
                   </Pane>
                </children>

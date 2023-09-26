@@ -70,7 +70,7 @@
                            <children>
                               <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="9.0" layoutY="6.0">
                                  <image>
-                                    <Image url="@images/t-shirt/icone.png" />
+                                    <Image url="@images/tshirt/icone.png" />
                                  </image>
                               </ImageView>
                               <Button id="bouton-selection-tshirt" layoutY="-5.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
@@ -80,7 +80,7 @@
                            <children>
                               <ImageView fitHeight="50.0" fitWidth="56.0" layoutX="6.0" layoutY="6.0">
                                  <image>
-                                    <Image url="@images/pantalons/icone.png" />
+                                    <Image url="@images/pantalon/icone.png" />
                                  </image>
                               </ImageView>
                               <Button id="bouton-selection-pantalon" layoutY="-4.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
@@ -120,10 +120,7 @@
                   </VBox>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="382.0" prefWidth="128.0">
-               <children>
-                  <VBox prefHeight="386.0" prefWidth="128.0" />
-               </children></AnchorPane>
+          <AnchorPane id="anchor-personage-pane" />
         </items>
       </SplitPane>
       <AnchorPane layoutX="312.0" layoutY="88.0" prefHeight="312.0" prefWidth="306.0" style="-fx-background-color: #20dad8;" />
