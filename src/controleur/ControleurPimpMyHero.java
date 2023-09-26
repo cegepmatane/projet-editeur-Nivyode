@@ -11,4 +11,7 @@ public class ControleurPimpMyHero extends Controleur {
 
     public void initialiser() {
     }
+
+    public void notifierSelectionCheveux() {
+    }
 }
