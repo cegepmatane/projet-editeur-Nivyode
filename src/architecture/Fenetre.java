@@ -11,6 +11,8 @@ public class Fenetre extends Navigateur {
 
         Platform.runLater(() -> {
             Controleur.selectionnerVuePrincipale().getControleur().initialiser();
+            Controleur.selectionnerVuePrincipale().activerControles();
         });
+        
     }
 }

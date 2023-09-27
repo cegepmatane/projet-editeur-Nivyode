@@ -12,7 +12,7 @@ public abstract class Navigateur extends Application {
     protected Navigateur() {
         instance = this;
         Logger.setLevel(2);
-        Controleur.selectionnerVuePrincipale().activerControles();
+       
     }
 
     public static Navigateur getInstance() {
@@ -22,7 +22,7 @@ public abstract class Navigateur extends Application {
     public void afficherVue(Vue vue) {
         this.stade.setScene(vue);
         this.stade.show();
-        vue.activerControles();
+        vue.activerControles();;
     }
 }
 

@@ -83,7 +83,7 @@
                                     <Image url="@images/pantalon/icone.png" />
                                  </image>
                               </ImageView>
-                              <Button id="bouton-selection-pantalon" layoutY="-4.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
+                              <Button id="bouton-selection-pantalon" layoutY="6.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
                            </children>
                         </Pane>
                         <Pane layoutX="10.0" layoutY="185.0" prefHeight="200.0" prefWidth="200.0">
