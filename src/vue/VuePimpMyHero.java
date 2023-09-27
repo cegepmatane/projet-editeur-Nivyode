@@ -20,7 +20,7 @@ public class VuePimpMyHero extends Vue {
     protected ControleurPimpMyHero controleur;
 
     protected static VuePimpMyHero instance = null;
-    private List<String> boutons;
+    List<String> boutons;
 
     public static VuePimpMyHero getInstance() {
         if(null==instance)instance = new VuePimpMyHero();
@@ -46,6 +46,9 @@ public class VuePimpMyHero extends Vue {
         boutons.add("#bouton-refaire");
         boutons.add("#bouton-annuler");
     }
+	public List<String> getBoutons() {
+		return boutons;
+	}  
 
     public void activerControles() {
         super.activerControles();
@@ -140,9 +143,11 @@ public class VuePimpMyHero extends Vue {
     			@Override
     			public void handle(ActionEvent e) {
     				System.out.println("Clic sur " + boutons.get(idBouton));	
-    				controleur.notifierBouton(idBouton);
+    				controleur.notifierSelectionBouton(idBouton);
     		}});
         }
+
+      
         
 }
 
