@@ -17,6 +17,8 @@ public class ControleurPimpMyHero extends Controleur {
         //VuePimpMyHero.getInstance().supprimerAsset(Assets.ASSETS.TSHIRT);
     }
 
-    public void notifierSelectionCheveux() {
+    public void notifierBouton(int idBouton) {
+    	Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.notifierBouton()");
+    	
     }
 }

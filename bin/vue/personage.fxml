@@ -27,6 +27,7 @@
                      </image>
                   </ImageView>
                   <Line endX="53.20000457763672" endY="15.799972534179688" layoutX="14.0" layoutY="121.0" startX="-14.000012397766113" startY="15.799972534179688" style="-fx-opacity: 25%;" />
+                  <Button id="bouton-telechargement" mnemonicParsing="false" prefHeight="131.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0">
@@ -36,6 +37,7 @@
                         <Image url="@images/icones/re-faire.png" />
                      </image>
                   </ImageView>
+                  <Button id="bouton-refaire" layoutX="-6.0" layoutY="-8.0" mnemonicParsing="false" prefHeight="141.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
                </children>
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0">
@@ -46,6 +48,7 @@
                      </image>
                   </ImageView>
                   <Line endX="67.19999694824219" endY="-8.799975395202637" startX="7.62939453125E-6" startY="-8.799975395202637" style="-fx-opacity: 25%;" />
+                  <Button id="bouton-annuler" layoutX="-1.0" mnemonicParsing="false" prefHeight="141.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
                </children>
             </Pane>
          </children>

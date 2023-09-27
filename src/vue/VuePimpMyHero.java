@@ -1,6 +1,10 @@
 package vue;
 
 import architecture.Vue;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import com.sun.media.jfxmedia.logging.Logger;
 import controleur.ControleurPimpMyHero;
 import javafx.event.ActionEvent;
@@ -16,6 +20,7 @@ public class VuePimpMyHero extends Vue {
     protected ControleurPimpMyHero controleur;
 
     protected static VuePimpMyHero instance = null;
+    private List<String> boutons;
 
     public static VuePimpMyHero getInstance() {
         if(null==instance)instance = new VuePimpMyHero();
@@ -27,12 +32,27 @@ public class VuePimpMyHero extends Vue {
         super("personage.fxml", VuePimpMyHero.class, 1294,743);
         super.controleur = this.controleur = new ControleurPimpMyHero();
         Logger.logMsg(Logger.INFO, "new VuePimpMyHero()");
+        
+        boutons = new ArrayList<String>();
+        boutons.add("#bouton-selection-cheveux");
+        boutons.add("#bouton-selection-tshirt");
+        boutons.add("#bouton-selection-pantalon");
+        boutons.add("#bouton-selection-chaussure");
+        boutons.add("#bouton-selection-animal");
+        boutons.add("#bouton-selection-background");
+        boutons.add("#bouton-texte-contour");
+        boutons.add("#bouton-texte-lettre");
+        boutons.add("#bouton-telechargement");
+        boutons.add("#bouton-refaire");
+        boutons.add("#bouton-annuler");
     }
 
     public void activerControles() {
         super.activerControles();
-
-        activerBouton("#bouton-selection-cheveux");
+        
+        for(String i : boutons) {
+        	activerBouton(boutons.indexOf(i));
+        	}
 
 		/*
 		
@@ -114,14 +134,14 @@ public class VuePimpMyHero extends Vue {
         };
     }
         
-        private void activerBouton(String idBouton) {
-    		Button bouton = (Button)lookup(idBouton);
+        private void activerBouton(int idBouton) {
+    		Button bouton = (Button)lookup(boutons.get(idBouton));
     		bouton.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>(){
-    			
     			@Override
     			public void handle(ActionEvent e) {
-    				System.out.println("Clic sur " + idBouton);				
-    			}});
+    				System.out.println("Clic sur " + boutons.get(idBouton));	
+    				controleur.notifierBouton(idBouton);
+    		}});
         }
         
 }
