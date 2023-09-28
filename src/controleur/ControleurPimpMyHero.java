@@ -68,16 +68,13 @@ public class ControleurPimpMyHero extends Controleur {
     		break;
     	}	
     }
-
-<<<<<<< Updated upstream
 	private void gerrerAffichageCasque() {
 		Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.gerrerAffichageCasque()");
+    }
 		
 		// TODO Auto-generated method stub
-=======
 	public void notifierSelectionColorPicker(ColorPicker cp) {
 		// TODO Auto-generated method stub
 		Logger.logMsg(Logger.INFO, "notifierSelectionColorPicker");
->>>>>>> Stashed changes
 	}
 }

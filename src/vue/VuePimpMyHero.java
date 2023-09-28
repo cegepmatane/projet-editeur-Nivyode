@@ -157,18 +157,6 @@ public class VuePimpMyHero extends Vue {
                 System.out.println("Clic sur " + boutons.get(idBouton));
                 controleur.notifierSelectionBouton(idBouton);}});
     }
-<<<<<<< Updated upstream
-=======
-        
-        private void activerBouton(int idBouton) {
-    		Button bouton = (Button)lookup(boutons.get(idBouton));
-    		bouton.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>(){
-    			@Override
-    			public void handle(ActionEvent e) {
-    				System.out.println("Clic sur " + boutons.get(idBouton));	
-    				controleur.notifierSelectionBouton(idBouton);
-    		}});
-        }
         
         private void activerCP(ColorPicker cp) {
         	cp.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
@@ -176,12 +164,9 @@ public class VuePimpMyHero extends Vue {
         		public void handle(ActionEvent e) {
         			System.out.println("Clic sur " + cp.getId());
         			controleur.notifierSelectionColorPicker(cp);
+        			System.out.println("La couleur c'est" + cp.getValue());
         		}
         	});
         }
-
-      
-        
->>>>>>> Stashed changes
 }
 
