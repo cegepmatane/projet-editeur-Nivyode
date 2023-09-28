@@ -1,6 +1,7 @@
 package controleur;
 
 import architecture.Controleur;
+import javafx.scene.control.ColorPicker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,19 +55,13 @@ public class ControleurPimpMyHero extends Controleur {
     	case 5:
     		//#bouton-selection-background
     		break;
-    	case 6:
-    		//#bouton-texte-contour
-    		break;
-    	case 7 :
-    		//#bouton-texte-lettre
-    		break;
-    	case 8 :
+    	case 6 :
     		//#bouton-telechargement
     		break;
-    	case 9 :
+    	case 7 :
     		//#bouton-refaire
     		break;
-    	case 10 :
+    	case 8 :
     		//#bouton-annuler
     		break;
     	default:
@@ -74,9 +69,15 @@ public class ControleurPimpMyHero extends Controleur {
     	}	
     }
 
+<<<<<<< Updated upstream
 	private void gerrerAffichageCasque() {
 		Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.gerrerAffichageCasque()");
 		
 		// TODO Auto-generated method stub
+=======
+	public void notifierSelectionColorPicker(ColorPicker cp) {
+		// TODO Auto-generated method stub
+		Logger.logMsg(Logger.INFO, "notifierSelectionColorPicker");
+>>>>>>> Stashed changes
 	}
 }

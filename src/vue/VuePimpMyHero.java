@@ -10,6 +10,7 @@ import controleur.ControleurPimpMyHero;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -21,6 +22,7 @@ public class VuePimpMyHero extends Vue {
 
     protected static VuePimpMyHero instance = null;
     List<String> boutons;
+    ColorPicker cp;
 
     public static VuePimpMyHero getInstance() {
         if(null==instance)instance = new VuePimpMyHero();
@@ -40,11 +42,11 @@ public class VuePimpMyHero extends Vue {
         boutons.add("#bouton-selection-botte");
         boutons.add("#bouton-selection-animal");
         boutons.add("#bouton-selection-background");
-        boutons.add("#bouton-texte-contour");
-        boutons.add("#bouton-texte-lettre");
         boutons.add("#bouton-telechargement");
         boutons.add("#bouton-refaire");
         boutons.add("#bouton-annuler");
+        cp = (ColorPicker)lookup("#colorpicker");
+        
     }
 	public List<String> getBoutons() {
 		return boutons;
@@ -56,6 +58,8 @@ public class VuePimpMyHero extends Vue {
         for(String i : boutons) {
         	activerBouton(boutons.indexOf(i));
         }
+        activerCP(cp);
+        
 
 		/*
 		
@@ -153,5 +157,31 @@ public class VuePimpMyHero extends Vue {
                 System.out.println("Clic sur " + boutons.get(idBouton));
                 controleur.notifierSelectionBouton(idBouton);}});
     }
+<<<<<<< Updated upstream
+=======
+        
+        private void activerBouton(int idBouton) {
+    		Button bouton = (Button)lookup(boutons.get(idBouton));
+    		bouton.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>(){
+    			@Override
+    			public void handle(ActionEvent e) {
+    				System.out.println("Clic sur " + boutons.get(idBouton));	
+    				controleur.notifierSelectionBouton(idBouton);
+    		}});
+        }
+        
+        private void activerCP(ColorPicker cp) {
+        	cp.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
+        		@Override
+        		public void handle(ActionEvent e) {
+        			System.out.println("Clic sur " + cp.getId());
+        			controleur.notifierSelectionColorPicker(cp);
+        		}
+        	});
+        }
+
+      
+        
+>>>>>>> Stashed changes
 }
 
