@@ -61,62 +61,42 @@
                      <children>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <ImageView fitHeight="58.0" fitWidth="56.0" layoutX="6.0" layoutY="2.0">
-                                 <image>
-                                    <Image url="@images/cheveux/icone.png" />
-                                 </image>
-                              </ImageView>
-                              <Button id="bouton-selection-casque" layoutY="-4.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
                               <ImageView fitHeight="50.0" fitWidth="56.0" layoutX="6.0" layoutY="6.0">
                                  <image>
                                     <Image url="@images/casque/casque1.png" />
                                  </image>
                               </ImageView>
+                              <Button id="bouton-selection-casque" layoutY="-4.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
                            </children>
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="9.0" layoutY="6.0">
                                  <image>
-                                    <Image url="@images/tshirt/icone.png" />
-                                 </image>
-                              </ImageView>
-                              <Button id="bouton-selection-armure" layoutY="-5.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
-                              <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="9.0" layoutY="6.0">
-                                 <image>
                                     <Image url="@images/armure/armure2.png" />
                                  </image>
                               </ImageView>
+                              <Button id="bouton-selection-armure" layoutY="-5.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
                            </children>
                         </Pane>
                         <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <ImageView fitHeight="50.0" fitWidth="56.0" layoutX="6.0" layoutY="6.0">
-                                 <image>
-                                    <Image url="@images/pantalon/icone.png" />
-                                 </image>
-                              </ImageView>
-                              <Button id="bouton-selection-cape" layoutY="15.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
                               <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="9.0" layoutY="6.0">
                                  <image>
                                     <Image url="@images/cape/cape2.png" />
                                  </image>
                               </ImageView>
+                              <Button id="bouton-selection-cape" layoutY="15.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
                            </children>
                         </Pane>
                         <Pane layoutX="10.0" layoutY="185.0" prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="9.0" layoutY="14.0">
-                                 <image>
-                                    <Image url="@images/soulier/icone.png" />
-                                 </image>
-                              </ImageView>
-                              <Button id="bouton-selection-botte" layoutY="-4.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
                               <ImageView fitHeight="43.0" fitWidth="51.0" layoutX="8.0" layoutY="11.0">
                                  <image>
                                     <Image url="@images/bottes/bottes2.png" />
                                  </image>
                               </ImageView>
+                              <Button id="bouton-selection-botte" layoutY="-4.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
                            </children>
                         </Pane>
                         <Pane layoutX="10.0" layoutY="244.0" prefHeight="200.0" prefWidth="200.0">
@@ -143,7 +123,43 @@
                   </VBox>
                </children>
             </AnchorPane>
-          <AnchorPane />
+          <AnchorPane>
+               <children>
+                  <VBox prefHeight="387.0" prefWidth="136.0">
+                     <children>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ImageView id="image-choix-un" fitHeight="77.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button id="bouton-choix-un" mnemonicParsing="false" prefHeight="78.0" prefWidth="136.0" style="-fx-opacity: 0%;" text="Button" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ImageView id="image-choix-deux" fitHeight="77.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button id="bouton-choix-deux" mnemonicParsing="false" prefHeight="78.0" prefWidth="136.0" style="-fx-opacity: 0%;" text="Button" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ImageView id="image-choix-trois" fitHeight="77.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button id="bouton-choix-trois" mnemonicParsing="false" prefHeight="78.0" prefWidth="136.0" style="-fx-opacity: 0%;" text="Button" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ImageView id="image-choix-quatre" fitHeight="77.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button id="bouton-choix-quatre" mnemonicParsing="false" prefHeight="78.0" prefWidth="136.0" style="-fx-opacity: 0%;" text="Button" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ImageView id="image-choix-cinq" fitHeight="77.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button id="bouton-choix-cinq" mnemonicParsing="false" prefHeight="77.0" prefWidth="136.0" style="-fx-opacity: 0%;" text="Button" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </VBox>
+               </children></AnchorPane>
         </items>
       </SplitPane>
       <AnchorPane id="anchor-personage-pane" layoutX="312.0" layoutY="88.0" prefHeight="312.0" prefWidth="306.0" style="-fx-background-color: #20dad8;" />
