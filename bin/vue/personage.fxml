@@ -149,7 +149,11 @@
             </AnchorPane>
           <AnchorPane prefHeight="389.0" prefWidth="77.0" style="-fx-background-color: white;">
                <children>
+<<<<<<< Updated upstream
                   <VBox layoutY="1.0" prefHeight="387.0" prefWidth="150.0">
+=======
+                  <VBox layoutX="14.0" layoutY="1.0" prefHeight="387.0" prefWidth="136.0">
+>>>>>>> Stashed changes
                      <children>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
