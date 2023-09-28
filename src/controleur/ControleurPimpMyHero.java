@@ -3,6 +3,7 @@ package controleur;
 import architecture.Controleur;
 import javafx.scene.control.ColorPicker;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.sun.media.jfxmedia.logging.Logger;
