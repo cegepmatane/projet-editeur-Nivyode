@@ -92,25 +92,28 @@ public class VuePimpMyHero extends Vue {
         String assetString = asset.toString().toLowerCase();
 
         //Création de l'image
-        ImageView tShirt = new ImageView();
-        tShirt.setImage(new Image("vue/images/" + assetString + "/" + assetString + elementId + ".png"));
+        ImageView assetImage = new ImageView();
+        assetImage.setImage(new Image("vue/images/" + assetString + "/" + assetString + elementId + ".png"));
 
         //Récupérer le conteneur
         AnchorPane conteneur = (AnchorPane) lookup("#anchor-personage-pane");
 
         //Changer la taille de l'image
-        tShirt.preserveRatioProperty().set(true);
-        tShirt.setFitWidth(100);
+        assetImage.preserveRatioProperty().set(true);
+        assetImage.setFitWidth(controleur.getAssetSize(asset));
 
         //Déplacer l'image
-        tShirt.xProperty().bind(conteneur.widthProperty().subtract(tShirt.fitWidthProperty()).divide(2));
-        tShirt.setY(getAssetY(asset));
+        if (controleur.getAssetPosition(asset).getX() <= 0)
+            assetImage.xProperty().bind(conteneur.widthProperty().subtract(assetImage.fitWidthProperty()).divide(2));
+        else
+            assetImage.setX(controleur.getAssetPosition(asset).getX());
+        assetImage.setY(controleur.getAssetPosition(asset).getY());
 
         //Assigner une id
-        tShirt.setId(assetString);
+        assetImage.setId(assetString);
 
         //Ajouter l'image au conteneur
-        conteneur.getChildren().add(tShirt);
+        conteneur.getChildren().add(assetImage);
     }
 
     public void redimensionnerAsset(Assets.ASSETS asset, double width) {
@@ -141,28 +144,14 @@ public class VuePimpMyHero extends Vue {
             Logger.logMsg(Logger.INFO, "L'asset n'a pas pu être supprimé");
         }
     }
-
-    public int getAssetY(Assets.ASSETS asset) {
-        return switch (asset) {
-            case CASQUE -> 75;
-            case ARMURE -> 100;
-            case CAPE -> 150;
-            case BOTTES -> 200;
-            default -> 0;
-        };
+        
+    private void activerBouton(int idBouton) {
+        Button bouton = (Button)lookup(boutons.get(idBouton));
+        bouton.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent e) {
+                System.out.println("Clic sur " + boutons.get(idBouton));
+                controleur.notifierSelectionBouton(idBouton);}});
     }
-        
-        private void activerBouton(int idBouton) {
-    		Button bouton = (Button)lookup(boutons.get(idBouton));
-    		bouton.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>(){
-    			@Override
-    			public void handle(ActionEvent e) {
-    				System.out.println("Clic sur " + boutons.get(idBouton));	
-    				controleur.notifierSelectionBouton(idBouton);
-    		}});
-        }
-
-      
-        
 }
 

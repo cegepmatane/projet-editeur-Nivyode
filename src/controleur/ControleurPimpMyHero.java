@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sun.media.jfxmedia.logging.Logger;
+import javafx.geometry.Point2D;
 import modele.Assets;
 import vue.VuePimpMyHero;
 
@@ -18,11 +19,18 @@ public class ControleurPimpMyHero extends Controleur {
     public void initialiser() {
         Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.initialiser()");
         VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.CASQUE, "1");
-		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.ARMURE, "1");
 		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.CAPE, "1");
+		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.ARMURE, "1");
 		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.BOTTES, "1");
-        //VuePimpMyHero.getInstance().supprimerAsset(Assets.ASSETS.TSHIRT);
     }
+
+	public Point2D getAssetPosition(Assets.ASSETS asset) {
+		return Assets.getAssetPosition(asset);
+	}
+
+	public double getAssetSize(Assets.ASSETS asset) {
+		return Assets.getAssetSize(asset);
+	}
 
     public void notifierSelectionBouton(int idBouton) {
     	List<String> boutons = VuePimpMyHero.getInstance().getBoutons();
