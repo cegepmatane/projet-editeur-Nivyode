@@ -55,7 +55,7 @@ public class VuePimpMyHero extends Vue {
         
         for(String i : boutons) {
         	activerBouton(boutons.indexOf(i));
-        	}
+        }
 
 		/*
 		
@@ -76,7 +76,7 @@ public class VuePimpMyHero extends Vue {
         Logger.logMsg(Logger.INFO, "Changer " + asset.toString().toLowerCase() + ": " + elementId);
         String assetString = asset.toString().toLowerCase();
 
-        //Récupérer l'asset si il existe
+        //Récupérer l'asset s'il existe
         try {
             ImageView assetImage = (ImageView) lookup("#" + assetString);
             assetImage.setImage(new Image("vue/images/" + assetString + "/" + assetString + "(" + elementId + ").png"));
@@ -117,7 +117,7 @@ public class VuePimpMyHero extends Vue {
         Logger.logMsg(Logger.INFO, "Supprimer " + asset.toString().toLowerCase());
         String assetString = asset.toString().toLowerCase();
 
-        //Récupérer l'asset si il existe
+        //Récupérer l'asset s'il existe
         try {
             AnchorPane conteneur = (AnchorPane) lookup("#anchor-personage-pane");
             conteneur.getChildren().remove(lookup("#" + assetString));
@@ -129,10 +129,10 @@ public class VuePimpMyHero extends Vue {
 
     public int getAssetY(Assets.ASSETS asset) {
         return switch (asset) {
-            case CHEVEUX -> 100;
-            case TSHIRT -> 150;
-            case PANTALON -> 200;
-            case SOULIER -> 250;
+            case CHEVEUX -> 75;
+            case TSHIRT -> 100;
+            case PANTALON -> 150;
+            case SOULIER -> 200;
             default -> 0;
         };
     }
