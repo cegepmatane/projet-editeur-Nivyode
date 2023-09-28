@@ -20,12 +20,10 @@ public class ControleurPimpMyHero extends Controleur {
 
     public void initialiser() {
         Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.initialiser()");
-		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.BACKGROUND, "2");
         VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.CASQUE, "1");
 		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.CAPE, "1");
 		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.ARMURE, "1");
 		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.BOTTES, "1");
-		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.ANIMAL, "1");
     }
 
 	public Point2D getAssetPosition(Assets.ASSETS asset) {

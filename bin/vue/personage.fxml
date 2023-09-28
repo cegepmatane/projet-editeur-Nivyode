@@ -123,7 +123,7 @@
                            <children>
                               <ImageView fitHeight="43.0" fitWidth="40.0" layoutX="14.0" layoutY="11.0">
                                  <image>
-                                    <Image url="@images/animal/animal1.png" />
+                                    <Image url="@images/animal/loup.png" />
                                  </image>
                               </ImageView>
                               <Button id="bouton-selection-animal" layoutY="-4.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
@@ -133,7 +133,7 @@
                            <children>
                               <ImageView fitHeight="32.0" fitWidth="56.0" layoutX="6.0" layoutY="15.0">
                                  <image>
-                                    <Image url="@images/background/backgroundIcone.png" />
+                                    <Image url="@images/arriereplan/backgroundIcone.png" />
                                  </image>
                               </ImageView>
                               <Button id="bouton-selection-background" layoutY="-5.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />

@@ -14,7 +14,6 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
 import modele.Assets;
 
 public class VuePimpMyHero extends Vue {
@@ -24,10 +23,6 @@ public class VuePimpMyHero extends Vue {
     protected static VuePimpMyHero instance = null;
     List<String> boutons;
     ColorPicker cp;
-
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_RESET = "\u001B[0m";
 
     public static VuePimpMyHero getInstance() {
         if(null==instance)instance = new VuePimpMyHero();
@@ -64,21 +59,26 @@ public class VuePimpMyHero extends Vue {
         	activerBouton(boutons.indexOf(i));
         }
         activerCP(cp);
+        
+
+		/*
+		
+        Button selectionnerCheveux = (Button) lookup("#selectionner-cheveux");
+        selectionnerCheveux.setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent actionEvent)
+            {
+                Logger.logMsg(Logger.INFO, "Bouton Choisir Cheveux activé");
+                controleur.notifierSelectionCheveux();
+            }
+        });
+        */
     }
 
-    /**
-     * Changer ou ajouter un asset
-     * @param asset
-     * @param elementId
-     */
     public void changerAsset(Assets.ASSETS asset, String elementId) {
         Logger.logMsg(Logger.INFO, "Changer " + asset.toString().toLowerCase() + ": " + elementId);
         String assetString = asset.toString().toLowerCase();
-
-        if (asset.equals(Assets.ASSETS.TEXT)) {
-            Logger.logMsg(Logger.INFO, ANSI_RED + "L'asset n'est pas une image" + ANSI_RESET);
-        	return;
-        }
 
         //Récupérer l'asset s'il existe
         try {
@@ -91,33 +91,7 @@ public class VuePimpMyHero extends Vue {
         }
     }
 
-    /**
-     * Changer ou ajouter un asset text
-     * @param asset
-     * @param elementId
-     * @param text
-     */
-    public void changerAssetText(Assets.ASSETS asset, String elementId, String text) {
-        Logger.logMsg(Logger.INFO, "Changer " + asset.toString().toLowerCase() + ": " + elementId);
-        String assetString = asset.toString().toLowerCase();
-
-        if (!asset.equals(Assets.ASSETS.TEXT)) {
-            Logger.logMsg(Logger.INFO,  ANSI_RED + "L'asset n'est pas un text" + ANSI_RESET);
-            return;
-        }
-
-        //Récupérer l'asset s'il existe
-        try {
-            Text assetText = (Text) lookup("#" + assetString);
-            assetText.setText(text);
-            Logger.logMsg(Logger.INFO, "L'asset a été changé");
-        } catch (NullPointerException e) {
-            Logger.logMsg(Logger.INFO, "L'asset n'existe pas");
-            ajouterAssetText(asset, elementId, text);
-        }
-    }
-
-    private void ajouterAsset(Assets.ASSETS asset, String elementId) {
+    public void ajouterAsset(Assets.ASSETS asset, String elementId) {
         Logger.logMsg(Logger.INFO, "Ajouter " + asset.toString().toLowerCase() + ": " + elementId);
         String assetString = asset.toString().toLowerCase();
 
@@ -144,31 +118,6 @@ public class VuePimpMyHero extends Vue {
 
         //Ajouter l'image au conteneur
         conteneur.getChildren().add(assetImage);
-    }
-
-    private void ajouterAssetText(Assets.ASSETS asset, String elementId, String text) {
-        Logger.logMsg(Logger.INFO, "Ajouter " + asset.toString().toLowerCase() + ": " + elementId);
-        String assetString = asset.toString().toLowerCase();
-
-        //Création du text
-        Text assetText = new Text();
-        assetText.setText(text);
-
-        //Récupérer le conteneur
-        AnchorPane conteneur = (AnchorPane) lookup("#anchor-personage-pane");
-
-        //Déplacer l'image
-        if (controleur.getAssetPosition(asset).getX() <= 0)
-            assetText.xProperty().bind(conteneur.widthProperty().subtract(assetText.wrappingWidthProperty()).divide(2));
-        else
-            assetText.setX(controleur.getAssetPosition(asset).getX());
-        assetText.setY(controleur.getAssetPosition(asset).getY());
-
-        //Assigner une id
-        assetText.setId(assetString);
-
-        //Ajouter l'image au conteneur
-        conteneur.getChildren().add(assetText);
     }
 
     public void redimensionnerAsset(Assets.ASSETS asset, double width) {
