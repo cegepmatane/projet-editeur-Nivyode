@@ -168,5 +168,23 @@ public class VuePimpMyHero extends Vue {
         		}
         	});
         }
+
+		public void AfficherListe(String assetString , List<String> items) {
+			Logger.logMsg(Logger.INFO, "VuePimpMyHero.AfficherListe()");
+			
+			for(String i:items) {
+				int numeroItem = items.indexOf(i);
+		        try {
+		            ImageView assetImage = (ImageView) lookup("#image-choix-" + (numeroItem +1) );
+		            assetImage.setImage(new Image("vue/images/" + assetString + "/" + items.get(numeroItem)));
+		            Logger.logMsg(Logger.INFO, "L'asset a été changé");
+		        } catch (NullPointerException e) {
+		            Logger.logMsg(Logger.INFO, "L'asset n'existe pas");
+		        }
+				
+			}
+			// TODO Auto-generated method stub
+			
+		}
 }
 
