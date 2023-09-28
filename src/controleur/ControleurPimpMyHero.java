@@ -44,6 +44,7 @@ public class ControleurPimpMyHero extends Controleur {
     		break;
     	case 1:
     		//#bouton-selection-armure
+    		gerrerAffichageArmure();
     		break;
     	case 2:
     		//#bouton-selection-cape
@@ -75,10 +76,18 @@ public class ControleurPimpMyHero extends Controleur {
 		casques.add("casque1.png");
 		casques.add("casque2.png");
 		casques.add("casque3.png");
-		vue.VuePimpMyHero.getInstance().AfficherListe("casque", casques);
-		
-		
+		vue.VuePimpMyHero.getInstance().AfficherListe("casque", casques);	
     }
+	
+	private void gerrerAffichageArmure() {
+		Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.gerrerAffichageCasque()");
+		List<String> armures = new ArrayList<String>();
+		armures.add("armure1.png");
+		armures.add("armure2.png");
+		armures.add("armure3.png");
+		vue.VuePimpMyHero.getInstance().AfficherListe("armure", armures);	
+    }
+	
 		
 		// TODO Auto-generated method stub
 	public void notifierSelectionColorPicker(ColorPicker cp) {
