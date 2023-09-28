@@ -11,6 +11,7 @@ import modele.Assets;
 import vue.VuePimpMyHero;
 
 public class ControleurPimpMyHero extends Controleur {
+	
 
     public ControleurPimpMyHero() {
         Logger.logMsg(Logger.INFO, "new ControleurPimpMyHero()");
@@ -71,6 +72,13 @@ public class ControleurPimpMyHero extends Controleur {
     }
 	private void gerrerAffichageCasque() {
 		Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.gerrerAffichageCasque()");
+		List<String> casques = new ArrayList<String>();
+		casques.add("casque1.png");
+		casques.add("casque2.png");
+		casques.add("casque3.png");
+		vue.VuePimpMyHero.getInstance().AfficherListe("casque", casques);
+		
+		
     }
 		
 		// TODO Auto-generated method stub
