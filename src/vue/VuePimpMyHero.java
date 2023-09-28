@@ -113,6 +113,21 @@ public class VuePimpMyHero extends Vue {
         conteneur.getChildren().add(tShirt);
     }
 
+    public void redimensionnerAsset(Assets.ASSETS asset, double width) {
+    	Logger.logMsg(Logger.INFO, "Resize " + asset.toString().toLowerCase() + ": " + width);
+        String assetString = asset.toString().toLowerCase();
+
+        //Récupérer l'asset s'il existe
+        try {
+            ImageView assetImage = (ImageView) lookup("#" + assetString);
+            assetImage.preserveRatioProperty().set(true);
+            assetImage.setFitWidth(width);
+            Logger.logMsg(Logger.INFO, "L'asset a été redimensionné");
+        } catch (NullPointerException e) {
+            Logger.logMsg(Logger.INFO, "L'asset n'existe pas");
+        }
+    }
+
     public void supprimerAsset(Assets.ASSETS asset) {
         Logger.logMsg(Logger.INFO, "Supprimer " + asset.toString().toLowerCase());
         String assetString = asset.toString().toLowerCase();
