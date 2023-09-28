@@ -30,6 +30,7 @@ public class ControleurPimpMyHero extends Controleur {
     	switch(idBouton) {
     	case 0:
     		//#bouton-selection-casque
+    		gerrerAffichageCasque();
     		break;
     	case 1:
     		//#bouton-selection-armure
@@ -64,4 +65,10 @@ public class ControleurPimpMyHero extends Controleur {
     		break;
     	}	
     }
+
+	private void gerrerAffichageCasque() {
+		Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.gerrerAffichageCasque()");
+		
+		// TODO Auto-generated method stub
+	}
 }
