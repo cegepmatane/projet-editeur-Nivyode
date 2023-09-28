@@ -34,10 +34,10 @@ public class VuePimpMyHero extends Vue {
         Logger.logMsg(Logger.INFO, "new VuePimpMyHero()");
         
         boutons = new ArrayList<String>();
-        boutons.add("#bouton-selection-cheveux");
-        boutons.add("#bouton-selection-tshirt");
-        boutons.add("#bouton-selection-pantalon");
-        boutons.add("#bouton-selection-chaussure");
+        boutons.add("#bouton-selection-casque");
+        boutons.add("#bouton-selection-armure");
+        boutons.add("#bouton-selection-cape");
+        boutons.add("#bouton-selection-botte");
         boutons.add("#bouton-selection-animal");
         boutons.add("#bouton-selection-background");
         boutons.add("#bouton-texte-contour");

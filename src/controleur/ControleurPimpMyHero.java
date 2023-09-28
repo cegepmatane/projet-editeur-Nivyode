@@ -26,16 +26,16 @@ public class ControleurPimpMyHero extends Controleur {
     	Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.notifierBouton()");
     	switch(idBouton) {
     	case 0:
-    		//#bouton-selection-cheveux
+    		//#bouton-selection-casque
     		break;
     	case 1:
-    		//#bouton-selection-tshirt
+    		//#bouton-selection-armure
     		break;
     	case 2:
-    		//#bouton-selection-pantalon
+    		//#bouton-selection-cape
     		break;
     	case 3:
-    		//#bouton-selection-chaussure
+    		//#bouton-selection-botte
     	case 4:
     		//#bouton-selection-animal
     		break;
