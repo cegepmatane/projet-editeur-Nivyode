@@ -67,6 +67,11 @@
                                  </image>
                               </ImageView>
                               <Button id="bouton-selection-casque" layoutY="-4.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
+                              <ImageView fitHeight="50.0" fitWidth="56.0" layoutX="6.0" layoutY="6.0">
+                                 <image>
+                                    <Image url="@images/casque/casque1.png" />
+                                 </image>
+                              </ImageView>
                            </children>
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0">
@@ -77,6 +82,11 @@
                                  </image>
                               </ImageView>
                               <Button id="bouton-selection-armure" layoutY="-5.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
+                              <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="9.0" layoutY="6.0">
+                                 <image>
+                                    <Image url="@images/armure/armure2.png" />
+                                 </image>
+                              </ImageView>
                            </children>
                         </Pane>
                         <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
@@ -87,6 +97,11 @@
                                  </image>
                               </ImageView>
                               <Button id="bouton-selection-cape" layoutY="15.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
+                              <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="9.0" layoutY="6.0">
+                                 <image>
+                                    <Image url="@images/cape/cape2.png" />
+                                 </image>
+                              </ImageView>
                            </children>
                         </Pane>
                         <Pane layoutX="10.0" layoutY="185.0" prefHeight="200.0" prefWidth="200.0">
@@ -97,13 +112,18 @@
                                  </image>
                               </ImageView>
                               <Button id="bouton-selection-botte" layoutY="-4.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
+                              <ImageView fitHeight="43.0" fitWidth="51.0" layoutX="8.0" layoutY="11.0">
+                                 <image>
+                                    <Image url="@images/bottes/bottes2.png" />
+                                 </image>
+                              </ImageView>
                            </children>
                         </Pane>
                         <Pane layoutX="10.0" layoutY="244.0" prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <ImageView fitHeight="50.0" fitWidth="56.0" layoutX="6.0" layoutY="6.0">
+                              <ImageView fitHeight="43.0" fitWidth="40.0" layoutX="14.0" layoutY="11.0">
                                  <image>
-                                    <Image url="@images/animaux/icone.png" />
+                                    <Image url="@images/animal/loup.png" />
                                  </image>
                               </ImageView>
                               <Button id="bouton-selection-animal" layoutY="-4.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
