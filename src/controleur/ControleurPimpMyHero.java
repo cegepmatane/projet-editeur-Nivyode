@@ -48,27 +48,27 @@ public class ControleurPimpMyHero extends Controleur {
     	switch(idBouton) {
     	case 0:
     		//#bouton-selection-casque
-    		gerrerAffichageCasque();
+    		gererAffichageCasque();
     		break;
     	case 1:
     		//#bouton-selection-armure
-    		gerrerAffichageArmure();
+    		gererAffichageArmure();
     		break;
     	case 2:
     		//#bouton-selection-cape
-    		gerrerAffichageCape();
+    		gererAffichageCape();
     		break;
     	case 3:
     		//#bouton-selection-bottes
-    		gerrerAffichageBottes();
+    		gererAffichageBottes();
     		break;
     	case 4:
     		//#bouton-selection-animal
-    		gerrerAffichageAnimal();
+    		gererAffichageAnimal();
     		break;
     	case 5:
     		//#bouton-selection-background
-    		gerrerAffichageBackground();
+    		gererAffichageBackground();
     		break;
     	case 6 :
     		//#bouton-telechargement
@@ -83,7 +83,7 @@ public class ControleurPimpMyHero extends Controleur {
     		break;
     	}	
     }
-	private void gerrerAffichageCasque() {
+	private void gererAffichageCasque() {
 		Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.gerrerAffichageCasque()");
 		List<String> casques = new ArrayList<String>();
 		for (int i = 1; i <= NOMBRE_CASQUE;i++){
@@ -93,7 +93,7 @@ public class ControleurPimpMyHero extends Controleur {
 		vue.VuePimpMyHero.getInstance().AfficherListe("casque", casques);	
     }
 	
-	private void gerrerAffichageArmure() {
+	private void gererAffichageArmure() {
 		Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.gerrerAffichageArmure()");
 		List<String> armures = new ArrayList<String>();
 		for (int i = 1; i <= NOMBRE_ARMURE;i++){
@@ -102,7 +102,7 @@ public class ControleurPimpMyHero extends Controleur {
 		vue.VuePimpMyHero.getInstance().AfficherListe("armure", armures);	
     }
 	
-	private void gerrerAffichageCape() {
+	private void gererAffichageCape() {
 		Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.gerrerAffichageCape()");
 		List<String> capes = new ArrayList<String>();
 		for (int i = 1; i <= NOMBRE_CAPE;i++){
@@ -111,7 +111,7 @@ public class ControleurPimpMyHero extends Controleur {
 		vue.VuePimpMyHero.getInstance().AfficherListe("cape", capes);	
     }
 	
-	private void gerrerAffichageBottes() {
+	private void gererAffichageBottes() {
 		Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.gerrerAffichageBottes()");
 		List<String> bottes = new ArrayList<String>();
 		for (int i = 1; i <= NOMBRE_BOTTES;i++){
@@ -120,7 +120,7 @@ public class ControleurPimpMyHero extends Controleur {
 		vue.VuePimpMyHero.getInstance().AfficherListe("bottes", bottes);	
     }
 	
-	private void gerrerAffichageAnimal() {
+	private void gererAffichageAnimal() {
 		Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.gerrerAffichageAnimal()");
 		List<String> animaux = new ArrayList<String>();
 		for (int i = 1; i <= NOMBRE_ANIMAL;i++){
@@ -129,7 +129,7 @@ public class ControleurPimpMyHero extends Controleur {
 		vue.VuePimpMyHero.getInstance().AfficherListe("animal", animaux);	
     }
 	
-	private void gerrerAffichageBackground() {
+	private void gererAffichageBackground() {
 		Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.gerrerAffichageBackground()");
 		List<String> backgrounds = new ArrayList<String>();
 		for (int i = 1; i <= NOMBRE_BACKGROUND;i++){
