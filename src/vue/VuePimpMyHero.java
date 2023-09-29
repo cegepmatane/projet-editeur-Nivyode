@@ -31,10 +31,9 @@ public class VuePimpMyHero extends Vue {
 
     private VuePimpMyHero()
     {
-        super("personage.fxml", VuePimpMyHero.class, 1294,743);
+        super("personnage.fxml", VuePimpMyHero.class, 1294,743);
         super.controleur = this.controleur = new ControleurPimpMyHero();
         Logger.logMsg(Logger.INFO, "new VuePimpMyHero()");
-        
         boutons = new ArrayList<String>();
         boutons.add("#bouton-selection-casque");
         boutons.add("#bouton-selection-armure");
@@ -177,9 +176,9 @@ public class VuePimpMyHero extends Vue {
 		        try {
 		            ImageView assetImage = (ImageView) lookup("#image-choix-" + (numeroItem +1) );
 		            assetImage.setImage(new Image("vue/images/" + assetString + "/" + items.get(numeroItem)));
-		            Logger.logMsg(Logger.INFO, "L'asset a été changé");
+		            Logger.logMsg(Logger.INFO, "Image affiché");
 		        } catch (NullPointerException e) {
-		            Logger.logMsg(Logger.INFO, "L'asset n'existe pas");
+		            Logger.logMsg(Logger.INFO, "Image introuvable");
 		        }
 				
 			}
