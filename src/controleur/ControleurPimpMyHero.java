@@ -12,6 +12,13 @@ import modele.Assets;
 import vue.VuePimpMyHero;
 
 public class ControleurPimpMyHero extends Controleur {
+	int NOMBRE_CASQUE = 3;
+	int NOMBRE_ARMURE = 3;
+	int NOMBRE_CAPE = 3;
+	int NOMBRE_BOTTES = 3;
+	int NOMBRE_ANIMAL = 5;
+	int NOMBRE_BACKGROUND = 5;
+		
 	
 
     public ControleurPimpMyHero() {
@@ -35,8 +42,9 @@ public class ControleurPimpMyHero extends Controleur {
 	}
 
     public void notifierSelectionBouton(int idBouton) {
-    	List<String> boutons = VuePimpMyHero.getInstance().getBoutons();
-    	Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.notifierBouton()");
+    	//List<String> boutons = VuePimpMyHero.getInstance().getBoutons();
+    	Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.notifierBouton() - " + idBouton);
+    	
     	switch(idBouton) {
     	case 0:
     		//#bouton-selection-casque
@@ -48,14 +56,19 @@ public class ControleurPimpMyHero extends Controleur {
     		break;
     	case 2:
     		//#bouton-selection-cape
+    		gerrerAffichageCape();
     		break;
     	case 3:
-    		//#bouton-selection-botte
+    		//#bouton-selection-bottes
+    		gerrerAffichageBottes();
+    		break;
     	case 4:
     		//#bouton-selection-animal
+    		gerrerAffichageAnimal();
     		break;
     	case 5:
     		//#bouton-selection-background
+    		gerrerAffichageBackground();
     		break;
     	case 6 :
     		//#bouton-telechargement
@@ -73,25 +86,60 @@ public class ControleurPimpMyHero extends Controleur {
 	private void gerrerAffichageCasque() {
 		Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.gerrerAffichageCasque()");
 		List<String> casques = new ArrayList<String>();
-		casques.add("casque1.png");
-		casques.add("casque2.png");
-		casques.add("casque3.png");
+		for (int i = 1; i <= NOMBRE_CASQUE;i++){
+			casques.add("casque"+ i +".png");
+			System.out.println("casque.png");
+		}
 		vue.VuePimpMyHero.getInstance().AfficherListe("casque", casques);	
     }
 	
 	private void gerrerAffichageArmure() {
-		Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.gerrerAffichageCasque()");
+		Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.gerrerAffichageArmure()");
 		List<String> armures = new ArrayList<String>();
-		armures.add("armure1.png");
-		armures.add("armure2.png");
-		armures.add("armure3.png");
+		for (int i = 1; i <= NOMBRE_ARMURE;i++){
+			armures.add("armure"+ i +".png");
+		}
 		vue.VuePimpMyHero.getInstance().AfficherListe("armure", armures);	
     }
 	
-		
-		// TODO Auto-generated method stub
+	private void gerrerAffichageCape() {
+		Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.gerrerAffichageCape()");
+		List<String> capes = new ArrayList<String>();
+		for (int i = 1; i <= NOMBRE_CAPE;i++){
+			capes.add("cape"+ i +".png");
+		}
+		vue.VuePimpMyHero.getInstance().AfficherListe("cape", capes);	
+    }
+	
+	private void gerrerAffichageBottes() {
+		Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.gerrerAffichageBottes()");
+		List<String> bottes = new ArrayList<String>();
+		for (int i = 1; i <= NOMBRE_BOTTES;i++){
+			bottes.add("bottes"+ i +".png");
+		}
+		vue.VuePimpMyHero.getInstance().AfficherListe("bottes", bottes);	
+    }
+	
+	private void gerrerAffichageAnimal() {
+		Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.gerrerAffichageAnimal()");
+		List<String> animaux = new ArrayList<String>();
+		for (int i = 1; i <= NOMBRE_ANIMAL;i++){
+			animaux.add("animal"+ i +".png");
+		}
+		vue.VuePimpMyHero.getInstance().AfficherListe("animal", animaux);	
+    }
+	
+	private void gerrerAffichageBackground() {
+		Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.gerrerAffichageBackground()");
+		List<String> backgrounds = new ArrayList<String>();
+		for (int i = 1; i <= NOMBRE_BACKGROUND;i++){
+			backgrounds.add("background"+ i +".png");
+		}
+		vue.VuePimpMyHero.getInstance().AfficherListe("background", backgrounds);	
+    }
+	
+	
 	public void notifierSelectionColorPicker(ColorPicker cp) {
-		// TODO Auto-generated method stub
 		Logger.logMsg(Logger.INFO, "notifierSelectionColorPicker");
 	}
 }

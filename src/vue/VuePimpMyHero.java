@@ -39,7 +39,7 @@ public class VuePimpMyHero extends Vue {
         boutons.add("#bouton-selection-casque");
         boutons.add("#bouton-selection-armure");
         boutons.add("#bouton-selection-cape");
-        boutons.add("#bouton-selection-botte");
+        boutons.add("#bouton-selection-bottes");
         boutons.add("#bouton-selection-animal");
         boutons.add("#bouton-selection-background");
         boutons.add("#bouton-telechargement");

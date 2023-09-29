@@ -116,24 +116,24 @@
                                     <Image url="@images/bottes/bottes2.png" />
                                  </image>
                               </ImageView>
-                              <Button id="bouton-selection-botte" layoutY="-4.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
+                              <Button id="bouton-selection-bottes" layoutY="2.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="69.0" style="-fx-opacity: 0%;" text="Button" />
                            </children>
                         </Pane>
                         <Pane layoutX="10.0" layoutY="244.0" prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <ImageView fitHeight="43.0" fitWidth="40.0" layoutX="14.0" layoutY="11.0">
+                              <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="14.0" layoutY="7.0">
                                  <image>
-                                    <Image url="@images/animal/loup.png" />
+                                    <Image url="@images/animal/animal1.png" />
                                  </image>
                               </ImageView>
-                              <Button id="bouton-selection-animal" layoutY="-4.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
+                              <Button id="bouton-selection-animal" layoutY="1.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="69.0" style="-fx-opacity: 0%;" text="Button" />
                            </children>
                         </Pane>
                         <Pane layoutX="10.0" layoutY="272.0" prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <ImageView fitHeight="32.0" fitWidth="56.0" layoutX="6.0" layoutY="15.0">
+                              <ImageView fitHeight="43.0" fitWidth="64.0" layoutX="2.0" layoutY="11.0">
                                  <image>
-                                    <Image url="@images/arriereplan/backgroundIcone.png" />
+                                    <Image url="@images/background/backgroundIcone.png" />
                                  </image>
                               </ImageView>
                               <Button id="bouton-selection-background" layoutY="-5.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
