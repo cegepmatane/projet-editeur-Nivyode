@@ -12,7 +12,7 @@ import modele.Assets;
 import vue.VuePimpMyHero;
 
 public class ControleurPimpMyHero extends Controleur {
-	int NOMBRE_CHOIX = 5;
+	final int NOMBRE_CHOIX = 5;
 
 	private String itemChoisi ;
 		
