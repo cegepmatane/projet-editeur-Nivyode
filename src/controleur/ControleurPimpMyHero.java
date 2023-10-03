@@ -16,7 +16,6 @@ public class ControleurPimpMyHero extends Controleur {
 
 	private String itemChoisi ;
 		
-	
 
     public ControleurPimpMyHero() {
         Logger.logMsg(Logger.INFO, "new ControleurPimpMyHero()");
@@ -25,8 +24,8 @@ public class ControleurPimpMyHero extends Controleur {
     public void initialiser() {
         Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.initialiser()");
         VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.CASQUE, "1");
-		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.CAPE, "1");
 		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.ARMURE, "1");
+		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.CAPE, "1");
 		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.BOTTES, "1");
     }
 

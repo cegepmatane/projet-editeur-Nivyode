@@ -85,7 +85,7 @@ public class VuePimpMyHero extends Vue {
             assetImage.setImage(new Image("vue/images/" + assetString + "/" + assetString + elementId + ".png"));
             Logger.logMsg(Logger.INFO, "L'asset a été changé");
         } catch (NullPointerException e) {
-            Logger.logMsg(Logger.INFO, "L'asset n'existe pas");
+            Logger.logMsg(Logger.INFO, "L'asset n'existe pas : ajout");
             ajouterAsset(asset, elementId);
         }
     }
@@ -117,6 +117,21 @@ public class VuePimpMyHero extends Vue {
 
         //Ajouter l'image au conteneur
         conteneur.getChildren().add(assetImage);
+        reorganiserLayers();
+    }
+
+    public void reorganiserLayers() {
+        for (Assets.ASSETS asset : Assets.ASSETS.values()) {
+            String assetString = asset.toString().toLowerCase();
+
+            //Récupérer l'asset s'il existe
+            try {
+                ImageView assetImage = (ImageView) lookup("#" + assetString);
+                assetImage.toFront();
+            } catch (NullPointerException e) {
+                //Logger.logMsg(Logger.INFO, "L'asset n'existe pas");
+            }
+        }
     }
 
     public void redimensionnerAsset(Assets.ASSETS asset, double width) {

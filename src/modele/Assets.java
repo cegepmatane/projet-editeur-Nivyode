@@ -3,7 +3,7 @@ package modele;
 import javafx.geometry.Point2D;
 
 public class Assets {
-    public enum ASSETS {ANIMAL, ARMURE, BOTTES, CAPE, CASQUE}
+    public enum ASSETS {BACKGROUND, CAPE, ARMURE, BOTTES, CASQUE, ANIMAL} // L'ordre determine le layer
 
     public static Point2D getAssetPosition(ASSETS asset) {
         return switch (asset) {
