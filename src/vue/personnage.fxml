@@ -64,7 +64,7 @@
             </ImageView>
             <Label layoutX="321.0" layoutY="14.0" prefHeight="131.0" prefWidth="202.0" text="Label">
                <font>
-                  <Font size="73.0" />
+                  <Font name="Microsoft YaHei Bold" size="73.0" />
                </font>
             </Label>
          </children></AnchorPane>
@@ -100,7 +100,7 @@
                                     <Image url="@images/armure/armure2.png" />
                                  </image>
                               </ImageView>
-                              <Button id="bouton-selection-armure" layoutX="-7.0" mnemonicParsing="false" prefHeight="112.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
+                              <Button id="bouton-selection-armure" layoutX="-7.0" mnemonicParsing="false" prefHeight="112.0" prefWidth="150.0" style="-fx-opacity: 0%;" text="Button" />
                            </children>
                         </Pane>
                         <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
