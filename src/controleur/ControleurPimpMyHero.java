@@ -5,6 +5,7 @@ import javafx.scene.control.ColorPicker;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
 
 import com.sun.media.jfxmedia.logging.Logger;
 import javafx.geometry.Point2D;
@@ -28,8 +29,23 @@ public class ControleurPimpMyHero extends Controleur {
 		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.CAPE, "1");
 		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.BOTTES, "1");
 		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.ANIMAL, "1");
-		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.BACKGROUND, "5");
+		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.BACKGROUND, "2");
+		changerBackgroundAleatoire();
     }
+
+	public void changerBackgroundAleatoire() {
+		Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.changerBackgroundAleatoire()");
+		int random = (int)(Math.random() * 5 + 1);
+		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.BACKGROUND, ""+random);
+		// Schedule the task to run in 3 seconds
+		Timer timer = new Timer();
+		timer.schedule(new java.util.TimerTask() {
+			@Override
+			public void run() {
+				changerBackgroundAleatoire();
+			}
+		}, 3000);
+	}
 
 	public Point2D getAssetPosition(Assets.ASSETS asset) {
 		return Assets.getAssetPosition(asset);
