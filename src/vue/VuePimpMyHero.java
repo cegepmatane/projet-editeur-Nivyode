@@ -9,11 +9,13 @@ import com.sun.media.jfxmedia.logging.Logger;
 import controleur.ControleurPimpMyHero;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import modele.Assets;
 
 public class VuePimpMyHero extends Vue {
@@ -105,19 +107,50 @@ public class VuePimpMyHero extends Vue {
         assetImage.preserveRatioProperty().set(true);
         assetImage.setFitWidth(controleur.getAssetSize(asset));
 
+        //Taille max disponible en X et Y
+        double maxX = conteneur.getWidth() - assetImage.getFitWidth(); // Bon ici je ne peux pas encore récupérer la largeur de l'image parce que je sais pas
+        double maxY = conteneur.getHeight() - assetImage.getFitHeight();
+        System.out.println("maxX: " + maxX + " maxY: " + maxY);
+
+        double assetPosX = controleur.getAssetPosition(asset).getX();
+        double assetPosY = controleur.getAssetPosition(asset).getY();
+
+        if (assetPosX > maxX) assetPosX = maxX;
+        if (assetPosY > maxY) assetPosY = maxY;
+
         //Déplacer l'image
-        if (controleur.getAssetPosition(asset).getX() <= 0)
+
+        if (assetPosX < 0) // Valeur négative = centré
             assetImage.xProperty().bind(conteneur.widthProperty().subtract(assetImage.fitWidthProperty()).divide(2));
         else
-            assetImage.setX(controleur.getAssetPosition(asset).getX());
-        assetImage.setY(controleur.getAssetPosition(asset).getY());
+            assetImage.setX(assetPosX);
+
+        if (assetPosY < 0)
+            assetImage.yProperty().bind(conteneur.heightProperty().subtract(assetImage.fitHeightProperty()).divide(2));
+        else
+            assetImage.setY(assetPosY);
 
         //Assigner une id
         assetImage.setId(assetString);
 
         //Ajouter l'image au conteneur
         conteneur.getChildren().add(assetImage);
+
+        if (assetString.equals("background")) {
+            recouperBackground();
+        }
+
         reorganiserLayers();
+    }
+
+    public void recouperBackground() {
+    	ImageView imageView = (ImageView) lookup("#background");
+        Pane imagePane = (Pane) lookup("#anchor-personage-pane");
+
+        // Calculer la position horizontale pour centrer le viewport
+        double viewportX = (imageView.getImage().getWidth() - imagePane.getWidth()) / 2;
+
+        imageView.viewportProperty().setValue(new Rectangle2D(viewportX, 0, imagePane.getWidth(), imagePane.getHeight()));
     }
 
     public void reorganiserLayers() {
