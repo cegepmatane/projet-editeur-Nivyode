@@ -15,7 +15,7 @@ import vue.VuePimpMyHero;
 public class ControleurPimpMyHero extends Controleur {
 	final int NOMBRE_CHOIX = 5;
 
-	private String itemChoisi ;
+	private Assets.ASSETS typeChoisi ;
 		
 
     public ControleurPimpMyHero() {
@@ -30,7 +30,7 @@ public class ControleurPimpMyHero extends Controleur {
 		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.BOTTES, 1);
 		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.ANIMAL, 1);
 		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.BACKGROUND, 2);
-		changerBackgroundAleatoire();
+		//changerBackgroundAleatoire();
     }
 
 	public void changerBackgroundAleatoire() {
@@ -62,27 +62,27 @@ public class ControleurPimpMyHero extends Controleur {
     	switch(idBouton) {
     	case 0:
     		//#bouton-selection-casque
-    		gererAffichageItem("casque");
+    		gererAffichageItem(Assets.ASSETS.CASQUE);
     		break;
     	case 1:
     		//#bouton-selection-armure
-    		gererAffichageItem("armure");
+    		gererAffichageItem(Assets.ASSETS.ARMURE);
     		break;
     	case 2:
     		//#bouton-selection-cape
-    		gererAffichageItem("cape");
+    		gererAffichageItem(Assets.ASSETS.CAPE);
     		break;
     	case 3:
     		//#bouton-selection-bottes
-    		gererAffichageItem("bottes");
+    		gererAffichageItem(Assets.ASSETS.BOTTES);
     		break;
     	case 4:
     		//#bouton-selection-animal
-    		gererAffichageItem("animal");
+    		gererAffichageItem(Assets.ASSETS.ANIMAL);
     		break;
     	case 5:
     		//#bouton-selection-background
-    		gererAffichageItem("background");
+    		gererAffichageItem(Assets.ASSETS.BACKGROUND);
     		break;
     	case 6 :
     		//#bouton-telechargement
@@ -95,32 +95,33 @@ public class ControleurPimpMyHero extends Controleur {
     		break;
     	case 9 :
     		//#bouton-choix-1
-    		changerItemChoisi(1);
+    		changerItemChoisi(typeChoisi,1);
     		break;
     	case 10:
     		//#bouton-choix-2
-    		changerItemChoisi(2);
+    		changerItemChoisi(typeChoisi,2);
     		break;
     	case 11:
     		//bouton-choix-3
-    		changerItemChoisi(3);
+    		changerItemChoisi(typeChoisi,3);
     		break;
     	case 12:
     		//bouton-choix-4
-    		changerItemChoisi(4);
+    		changerItemChoisi(typeChoisi,4);
     		break;
     	case 13:
     		//bouton-choix-5
-    		changerItemChoisi(5);
+    		changerItemChoisi(typeChoisi,5);
     		break;
     	default:
     		break;
     	}	
     }
  
-    private void gererAffichageItem(String typeItem) {
+    private void gererAffichageItem(Assets.ASSETS typeItem) {
 		Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.gererAffichageItem()");
-    	itemChoisi = typeItem;
+		typeChoisi = typeItem;
+    	String itemChoisi = typeItem.toString().toLowerCase();
     	List<String> items = new ArrayList<String>();
     	
     	for (int i = 1; i <= NOMBRE_CHOIX;i++){
@@ -128,9 +129,9 @@ public class ControleurPimpMyHero extends Controleur {
 		}
     	vue.VuePimpMyHero.getInstance().AfficherListe(itemChoisi, items);
     }
-    private void changerItemChoisi(int id) {
+    private void changerItemChoisi(Assets.ASSETS itemChoisi, int id) {
     	Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.changerItemChoisi()");
-    	vue.VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.CASQUE, id);
+    	vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
     	
     }
 
