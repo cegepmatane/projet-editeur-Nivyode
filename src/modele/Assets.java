@@ -3,7 +3,7 @@ package modele;
 import javafx.geometry.Point2D;
 
 public class Assets {
-    public enum ASSETS {BACKGROUND, CAPE, ARMURE, BOTTES, CASQUE, ANIMAL} // L'ordre determine le layer
+    public enum ASSETS {BACKGROUND, CAPE, ARMURE, BOTTES, CASQUE, ANIMAL, LABEL} // L'ordre determine le layer
 
     public static Point2D getAssetPosition(ASSETS asset) {
         return switch (asset) {
@@ -13,6 +13,7 @@ public class Assets {
             case BOTTES -> new Point2D(-1, 500);
             case ANIMAL -> new Point2D(325, 500);
             case BACKGROUND -> new Point2D(0, 0);
+            case LABEL -> new Point2D(-1, 100);
             default -> new Point2D(0, 0);
         };
     }
@@ -24,7 +25,7 @@ public class Assets {
             case CAPE -> 100;
             case BOTTES -> 70;
             case ANIMAL -> 50;
-            default -> 0;
+            default -> 100;
         };
     }
 

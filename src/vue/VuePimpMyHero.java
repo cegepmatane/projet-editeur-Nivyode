@@ -12,10 +12,14 @@ import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import modele.Assets;
 
 public class VuePimpMyHero extends Vue {
@@ -63,21 +67,15 @@ public class VuePimpMyHero extends Vue {
         	activerBouton(boutons.indexOf(i));
         }
         activerCP(cp);
-        
 
-		/*
-		
-        Button selectionnerCheveux = (Button) lookup("#selectionner-cheveux");
-        selectionnerCheveux.setOnAction(new EventHandler<ActionEvent>()
-        {
+        TextField titre = (TextField)lookup("#titre");
+        titre.setOnKeyReleased((EventHandler< KeyEvent>) new EventHandler<KeyEvent>(){
             @Override
-            public void handle(ActionEvent actionEvent)
-            {
-                Logger.logMsg(Logger.INFO, "Bouton Choisir Cheveux activé");
-                controleur.notifierSelectionCheveux();
+            public void handle(KeyEvent e) {
+                System.out.println("MAJ titre");
+                controleur.notifierChangementTitre(titre.getText());
             }
         });
-        */
     }
 
     public void changerAsset(Assets.ASSETS asset, int elementId) {
@@ -162,9 +160,15 @@ public class VuePimpMyHero extends Vue {
 
             //Récupérer l'asset s'il existe
             try {
-                ImageView assetImage = (ImageView) lookup("#" + assetString);
-                assetImage.toFront();
-            } catch (NullPointerException e) {
+                if (assetString.equals("label")) {
+                    Label label = (Label) lookup("#" + assetString);
+                    label.toFront();
+                }
+                else {
+                    ImageView assetImage = (ImageView) lookup("#" + assetString);
+                    assetImage.toFront();
+                }
+            } catch (NullPointerException | ClassCastException e) {
                 //Logger.logMsg(Logger.INFO, "L'asset n'existe pas");
             }
         }
@@ -236,5 +240,15 @@ public class VuePimpMyHero extends Vue {
 			// TODO Auto-generated method stub
 			
 		}
+
+    public void changerTitre(String text) {
+        Label label = (Label)lookup("#label");
+        label.setText(text);
+    }
+
+    public void changerCouleurLabel(Color value) {
+        Label label = (Label)lookup("#label");
+        label.setTextFill(value);
+    }
 }
 

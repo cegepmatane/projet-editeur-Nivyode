@@ -139,5 +139,11 @@ public class ControleurPimpMyHero extends Controleur {
     
 	public void notifierSelectionColorPicker(ColorPicker cp) {
 		Logger.logMsg(Logger.INFO, "notifierSelectionColorPicker");
+		VuePimpMyHero.getInstance().changerCouleurLabel(cp.getValue());
+	}
+
+	public void notifierChangementTitre(String text) {
+		Logger.logMsg(Logger.INFO, "notifierChangementTitre");
+		VuePimpMyHero.getInstance().changerTitre(text);
 	}
 }

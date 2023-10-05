@@ -16,7 +16,6 @@ public class Controleur {
             return (Vue) fonction.invoke(null, (Object[]) null);
         } catch (Exception e) {
             e.printStackTrace();
-
             return null;
         }
     }
