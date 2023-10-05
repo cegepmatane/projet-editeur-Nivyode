@@ -46,6 +46,9 @@ public class VuePimpMyHero extends Vue {
         boutons.add("#bouton-telechargement");
         boutons.add("#bouton-refaire");
         boutons.add("#bouton-annuler");
+        for(int boutonChoix = 1; boutonChoix < 6; boutonChoix++) {
+        	boutons.add("#bouton-choix-" + boutonChoix);
+        }
         cp = (ColorPicker)lookup("#colorpicker");
         
     }
@@ -232,6 +235,9 @@ public class VuePimpMyHero extends Vue {
 			}
 			// TODO Auto-generated method stub
 			
+		}
+		private void ActiverBoutonChoix() {
+			Logger.logMsg(Logger.INFO, "VuePimpHero.ActiverBoutonChoix");
 		}
 }
 

@@ -154,31 +154,31 @@
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <ImageView id="image-choix-1" fitHeight="77.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-                              <Button id="bouton-choix-1" fx:id="BoutonChoix1" mnemonicParsing="false" prefHeight="78.0" prefWidth="150.0" style="-fx-opacity: 0%;" text="Button" />
+                              <Button id="bouton-choix-1" fx:id="BoutonChoix1" mnemonicParsing="false" prefHeight="134.0" prefWidth="150.0" style="-fx-opacity: 0%;" text="Button" />
                            </children>
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <ImageView id="image-choix-2" fitHeight="77.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-                              <Button id="bouton-choix-2" fx:id="BoutonChoix2" mnemonicParsing="false" prefHeight="78.0" prefWidth="150.0" style="-fx-opacity: 0%;" text="Button" />
+                              <Button id="bouton-choix-2" fx:id="BoutonChoix2" mnemonicParsing="false" prefHeight="131.0" prefWidth="150.0" style="-fx-opacity: 0%;" text="Button" />
                            </children>
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <ImageView id="image-choix-3" fitHeight="77.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-                              <Button id="bouton-choix-3" fx:id="BoutonChoix3" mnemonicParsing="false" prefHeight="78.0" prefWidth="150.0" style="-fx-opacity: 0%;" text="Button" />
+                              <Button id="bouton-choix-3" fx:id="BoutonChoix3" mnemonicParsing="false" prefHeight="131.0" prefWidth="150.0" style="-fx-opacity: 0%;" text="Button" />
                            </children>
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <ImageView id="image-choix-4" fitHeight="77.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-                              <Button id="bouton-choix-4" fx:id="BoutonChoix4" mnemonicParsing="false" prefHeight="78.0" prefWidth="150.0" style="-fx-opacity: 0%;" text="Button" />
+                              <Button id="bouton-choix-4" fx:id="BoutonChoix4" mnemonicParsing="false" prefHeight="131.0" prefWidth="150.0" style="-fx-opacity: 0%;" text="Button" />
                            </children>
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <ImageView id="image-choix-5" fitHeight="77.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-                              <Button id="bouton-choix-5" fx:id="BoutonChoix5" layoutY="1.0" mnemonicParsing="false" prefHeight="77.0" prefWidth="150.0" style="-fx-opacity: 0%;" text="Button" />
+                              <Button id="bouton-choix-5" fx:id="BoutonChoix5" layoutY="1.0" mnemonicParsing="false" prefHeight="131.0" prefWidth="150.0" style="-fx-opacity: 0%;" text="Button" />
                            </children>
                         </Pane>
                      </children>
