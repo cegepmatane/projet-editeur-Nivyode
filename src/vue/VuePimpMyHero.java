@@ -80,7 +80,7 @@ public class VuePimpMyHero extends Vue {
         */
     }
 
-    public void changerAsset(Assets.ASSETS asset, String elementId) {
+    public void changerAsset(Assets.ASSETS asset, int elementId) {
         Logger.logMsg(Logger.INFO, "Changer " + asset.toString().toLowerCase() + ": " + elementId);
         String assetString = asset.toString().toLowerCase();
 
@@ -95,7 +95,7 @@ public class VuePimpMyHero extends Vue {
         }
     }
 
-    public void ajouterAsset(Assets.ASSETS asset, String elementId) {
+    public void ajouterAsset(Assets.ASSETS asset, int elementId) {
         Logger.logMsg(Logger.INFO, "Ajouter " + asset.toString().toLowerCase() + ": " + elementId);
         String assetString = asset.toString().toLowerCase();
 
@@ -235,9 +235,6 @@ public class VuePimpMyHero extends Vue {
 			}
 			// TODO Auto-generated method stub
 			
-		}
-		private void ActiverBoutonChoix() {
-			Logger.logMsg(Logger.INFO, "VuePimpHero.ActiverBoutonChoix");
 		}
 }
 

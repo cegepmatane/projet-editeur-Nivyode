@@ -24,19 +24,19 @@ public class ControleurPimpMyHero extends Controleur {
 
     public void initialiser() {
         Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.initialiser()");
-        VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.CASQUE, "1");
-		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.ARMURE, "1");
-		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.CAPE, "1");
-		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.BOTTES, "1");
-		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.ANIMAL, "1");
-		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.BACKGROUND, "2");
+        VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.CASQUE, 1);
+		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.ARMURE, 1);
+		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.CAPE, 1);
+		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.BOTTES, 1);
+		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.ANIMAL, 1);
+		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.BACKGROUND, 2);
 		changerBackgroundAleatoire();
     }
 
 	public void changerBackgroundAleatoire() {
 		Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.changerBackgroundAleatoire()");
 		int random = (int)(Math.random() * 5 + 1);
-		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.BACKGROUND, ""+random);
+		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.BACKGROUND,random);
 		// Schedule the task to run in 3 seconds
 		Timer timer = new Timer();
 		timer.schedule(new java.util.TimerTask() {
@@ -93,6 +93,26 @@ public class ControleurPimpMyHero extends Controleur {
     	case 8 :
     		//#bouton-annuler
     		break;
+    	case 9 :
+    		//#bouton-choix-1
+    		changerItemChoisi(1);
+    		break;
+    	case 10:
+    		//#bouton-choix-2
+    		changerItemChoisi(2);
+    		break;
+    	case 11:
+    		//bouton-choix-3
+    		changerItemChoisi(3);
+    		break;
+    	case 12:
+    		//bouton-choix-4
+    		changerItemChoisi(4);
+    		break;
+    	case 13:
+    		//bouton-choix-5
+    		changerItemChoisi(5);
+    		break;
     	default:
     		break;
     	}	
@@ -107,6 +127,11 @@ public class ControleurPimpMyHero extends Controleur {
     		items.add(itemChoisi + i +".png");
 		}
     	vue.VuePimpMyHero.getInstance().AfficherListe(itemChoisi, items);
+    }
+    private void changerItemChoisi(int id) {
+    	Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.changerItemChoisi()");
+    	vue.VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.CASQUE, id);
+    	
     }
 
     
