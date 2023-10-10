@@ -9,6 +9,7 @@ import java.util.Timer;
 
 import com.sun.media.jfxmedia.logging.Logger;
 import javafx.geometry.Point2D;
+import modele.Animal;
 import modele.Assets;
 import vue.VuePimpMyHero;
 
@@ -16,6 +17,7 @@ public class ControleurPimpMyHero extends Controleur {
 	final int NOMBRE_CHOIX = 5;
 
 	private Assets.ASSETS typeChoisi ;
+	private Animal.ANIMAL animalChoisi;
 		
 
     public ControleurPimpMyHero() {
@@ -131,7 +133,30 @@ public class ControleurPimpMyHero extends Controleur {
     }
     private void changerItemChoisi(Assets.ASSETS itemChoisi, int id) {
     	Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.changerItemChoisi()");
-    	vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
+    	
+    	if (itemChoisi != Assets.ASSETS.ANIMAL) {
+    		vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
+    		animalChoisi = null;
+    	} else {
+    		switch(id) {
+    		case 1:
+    			animalChoisi = Animal.ANIMAL.animal1;
+    			break;
+    		case 2:
+    			animalChoisi = Animal.ANIMAL.animal2;
+    			break;
+    		case 3:
+    			animalChoisi = Animal.ANIMAL.animal3;
+    			break;
+    		case 4:
+    			animalChoisi = Animal.ANIMAL.animal4;
+    			break;
+    		case 5:
+    			animalChoisi = Animal.ANIMAL.animal5;
+    			break;	
+    		}
+    		System.out.println(animalChoisi.toString());	
+    	}
     	
     }
 
