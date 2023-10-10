@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="695.0" prefWidth="1244.0" style="-fx-background-color: #acedeb;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="680.0" prefWidth="82.0" style="-fx-background-color: #0d5f6f;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="8.0" layoutY="42.0">
+                     <image>
+                        <Image url="@images/icones/telecharger.png" />
+                     </image>
+                  </ImageView>
+                  <Line endX="53.20000457763672" endY="15.799972534179688" layoutX="14.0" layoutY="121.0" startX="-14.000012397766113" startY="15.799972534179688" style="-fx-opacity: 25%;" />
+                  <Button id="bouton-telechargement" mnemonicParsing="false" prefHeight="131.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="8.0" layoutY="42.0">
+                     <image>
+                        <Image url="@images/icones/re-faire.png" />
+                     </image>
+                  </ImageView>
+                  <Button id="bouton-refaire" layoutX="-6.0" layoutY="-8.0" mnemonicParsing="false" prefHeight="141.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="5.0" layoutY="42.0">
+                     <image>
+                        <Image url="@images/icones/annuler.png" />
+                     </image>
+                  </ImageView>
+                  <Line endX="67.19999694824219" endY="-8.799975395202637" startX="7.62939453125E-6" startY="-8.799975395202637" style="-fx-opacity: 25%;" />
+                  <Button id="bouton-annuler" layoutX="-1.0" mnemonicParsing="false" prefHeight="141.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+      <AnchorPane id="anchor-personage-pane" layoutX="385.0" layoutY="83.0" prefHeight="533.0" prefWidth="732.0" style="-fx-background-color: #20dad8;">
+         <children>
+            <ImageView id="background" fitHeight="596.0" fitWidth="846.0" layoutX="-1.0" layoutY="-1.0">
+               <image>
+                  <Image url="@images/background/background1.png" />
+               </image>
+            </ImageView>
+            <Label id="label" alignment="CENTER" layoutX="-3.0" layoutY="14.0" prefHeight="131.0" prefWidth="848.0">
+               <font>
+                  <Font name="Microsoft YaHei Bold" size="73.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <Pane layoutX="312.0" layoutY="14.0" prefHeight="58.0" prefWidth="306.0">
+         <children>
+            <VBox layoutX="242.0" prefHeight="64.0" prefWidth="64.0">
+               <children>
+                  <Pane prefHeight="200.0" prefWidth="200.0" />
+               </children>
+            </VBox>
+            <TextField id="titre" layoutX="74.0" layoutY="-2.0" prefHeight="58.0" prefWidth="721.0" promptText="Titre !">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </TextField>
+         </children>
+      </Pane>
+      <HBox layoutX="84.0" layoutY="13.0" prefHeight="670.0" prefWidth="291.0">
+         <children>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="670.0" prefWidth="162.0">
+               <children>
+                  <VBox layoutY="1.0" prefHeight="668.0" prefWidth="141.0" style="-fx-background-color: #0a94a2;">
+                     <children>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="98.0" fitWidth="150.0" layoutX="22.0" layoutY="7.0" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/casque/casque1.png" />
+                                 </image>
+                              </ImageView>
+                              <Button id="bouton-selection-casque" layoutX="9.0" layoutY="-4.0" mnemonicParsing="false" prefHeight="112.0" prefWidth="132.0" style="-fx-opacity: 0%;" text="Button" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="104.0" fitWidth="98.0" layoutX="22.0" layoutY="4.0" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/armure/armure2.png" />
+                                 </image>
+                              </ImageView>
+                              <Button id="bouton-selection-armure" layoutX="-7.0" mnemonicParsing="false" prefHeight="112.0" prefWidth="150.0" style="-fx-opacity: 0%;" text="Button" />
+                           </children>
+                        </Pane>
+                        <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="104.0" fitWidth="150.0" layoutX="19.0" layoutY="4.0" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/cape/cape2.png" />
+                                 </image>
+                              </ImageView>
+                              <Button id="bouton-selection-cape" layoutX="15.0" layoutY="13.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="118.0" style="-fx-opacity: 0%;" text="Button" />
+                           </children>
+                        </Pane>
+                        <Pane layoutX="10.0" layoutY="185.0" prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="98.0" fitWidth="142.0" layoutX="22.0" layoutY="7.0" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/bottes/bottes2.png" />
+                                 </image>
+                              </ImageView>
+                              <Button id="bouton-selection-bottes" layoutX="-4.0" layoutY="4.0" mnemonicParsing="false" prefHeight="104.0" prefWidth="142.0" style="-fx-opacity: 0%;" text="Button" />
+                           </children>
+                        </Pane>
+                        <Pane layoutX="10.0" layoutY="244.0" prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="111.0" fitWidth="141.0" layoutX="26.0" layoutY="1.0" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/animal/animal1.png" />
+                                 </image>
+                              </ImageView>
+                              <Button id="bouton-selection-animal" layoutX="-1.0" mnemonicParsing="false" prefHeight="112.0" prefWidth="142.0" style="-fx-opacity: 0%;" text="Button" />
+                           </children>
+                        </Pane>
+                        <Pane layoutX="10.0" layoutY="272.0" prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="104.0" fitWidth="141.0" layoutY="4.0">
+                                 <image>
+                                    <Image url="@images/background/backgroundIcone.png" />
+                                 </image>
+                              </ImageView>
+                              <Button id="bouton-selection-background" layoutX="-4.0" mnemonicParsing="false" prefHeight="112.0" prefWidth="150.0" style="-fx-opacity: 0%;" text="Button" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+          <AnchorPane prefHeight="670.0" prefWidth="134.0" style="-fx-background-color: white;">
+               <children>
+                  <VBox layoutY="1.0" prefHeight="668.0" prefWidth="150.0">
+                     <children>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ImageView id="image-choix-1" fitHeight="77.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button id="bouton-choix-1" fx:id="BoutonChoix1" mnemonicParsing="false" prefHeight="134.0" prefWidth="150.0" style="-fx-opacity: 0%;" text="Button" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ImageView id="image-choix-2" fitHeight="77.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button id="bouton-choix-2" fx:id="BoutonChoix2" mnemonicParsing="false" prefHeight="131.0" prefWidth="150.0" style="-fx-opacity: 0%;" text="Button" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ImageView id="image-choix-3" fitHeight="77.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button id="bouton-choix-3" fx:id="BoutonChoix3" mnemonicParsing="false" prefHeight="131.0" prefWidth="150.0" style="-fx-opacity: 0%;" text="Button" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ImageView id="image-choix-4" fitHeight="77.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button id="bouton-choix-4" fx:id="BoutonChoix4" mnemonicParsing="false" prefHeight="131.0" prefWidth="150.0" style="-fx-opacity: 0%;" text="Button" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ImageView id="image-choix-5" fitHeight="77.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button id="bouton-choix-5" fx:id="BoutonChoix5" layoutY="1.0" mnemonicParsing="false" prefHeight="131.0" prefWidth="150.0" style="-fx-opacity: 0%;" text="Button" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </VBox>
+               </children></AnchorPane>
+         </children>
+      </HBox>
+      <ColorPicker id="colorpicker" layoutX="1115.0" layoutY="10.0" prefHeight="58.0" prefWidth="113.0" />
+   </children>
+</AnchorPane>
