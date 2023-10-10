@@ -145,5 +145,6 @@ public class ControleurPimpMyHero extends Controleur {
 	public void notifierChangementTitre(String text) {
 		Logger.logMsg(Logger.INFO, "notifierChangementTitre");
 		VuePimpMyHero.getInstance().changerTitre(text);
+		//test
 	}
 }
