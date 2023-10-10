@@ -57,16 +57,20 @@
       </VBox>
       <AnchorPane id="anchor-personage-pane" layoutX="385.0" layoutY="83.0" prefHeight="533.0" prefWidth="732.0" style="-fx-background-color: #20dad8;">
          <children>
-            <ImageView id="background" fitHeight="596.0" fitWidth="846.0" layoutX="-1.0" layoutY="-1.0">
-               <image>
-                  <Image url="@images/background/background1.png" />
-               </image>
-            </ImageView>
-            <Label id="label" alignment="CENTER" layoutX="-3.0" layoutY="14.0" prefHeight="131.0" prefWidth="848.0">
-               <font>
-                  <Font name="Microsoft YaHei Bold" size="73.0" />
-               </font>
-            </Label>
+            <AnchorPane id="terrain-de-creation" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView id="background" fitHeight="596.0" fitWidth="846.0" layoutX="14.0" layoutY="7.0">
+                     <image>
+                        <Image url="@images/background/background1.png" />
+                     </image>
+                  </ImageView>
+                  <Label id="label" alignment="CENTER" prefHeight="131.0" prefWidth="848.0">
+                     <font>
+                        <Font name="Microsoft YaHei Bold" size="73.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
          </children></AnchorPane>
       <Pane layoutX="312.0" layoutY="14.0" prefHeight="58.0" prefWidth="306.0">
          <children>
@@ -192,5 +196,6 @@
          </children>
       </HBox>
       <ColorPicker id="colorpicker" layoutX="1115.0" layoutY="10.0" prefHeight="58.0" prefWidth="113.0" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

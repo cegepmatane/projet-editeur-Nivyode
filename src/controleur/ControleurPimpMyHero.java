@@ -140,25 +140,30 @@ public class ControleurPimpMyHero extends Controleur {
     	} else {
     		switch(id) {
     		case 1:
-    			animalChoisi = Animal.ANIMAL.animal1;
+    			animalChoisi = Animal.ANIMAL.ANIMAL1;
     			break;
     		case 2:
-    			animalChoisi = Animal.ANIMAL.animal2;
+    			animalChoisi = Animal.ANIMAL.ANIMAL2;
     			break;
     		case 3:
-    			animalChoisi = Animal.ANIMAL.animal3;
+    			animalChoisi = Animal.ANIMAL.ANIMAL3;
     			break;
     		case 4:
-    			animalChoisi = Animal.ANIMAL.animal4;
+    			animalChoisi = Animal.ANIMAL.ANIMAL4;
     			break;
     		case 5:
-    			animalChoisi = Animal.ANIMAL.animal5;
+    			animalChoisi = Animal.ANIMAL.ANIMAL5;
     			break;	
     		}
     		System.out.println(animalChoisi.toString());	
     	}
     	
     }
+    
+	public void notifierAjoutAnimal(double x, double y) {
+		if (animalChoisi != null)
+			VuePimpMyHero.getInstance().ajouterAnimal(x,y, animalChoisi);
+	}
 
     
     

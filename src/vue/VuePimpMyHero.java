@@ -17,9 +17,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import modele.Animal.ANIMAL;
 import modele.Assets;
 
 public class VuePimpMyHero extends Vue {
@@ -76,6 +78,19 @@ public class VuePimpMyHero extends Vue {
                 controleur.notifierChangementTitre(titre.getText());
             }
         });
+        
+        
+        
+		ImageView jardin = (ImageView)lookup("#background");
+		jardin.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent clic) {
+				double x = clic.getX();
+				double y = clic.getY();
+				System.out.println("Clic pour ajouter un animal effectue aux coordonnée : (" + x + " , " + y + ")");
+				controleur.notifierAjoutAnimal(x, y);
+			}});
     }
 
     public void changerAsset(Assets.ASSETS asset, int elementId) {
@@ -250,5 +265,40 @@ public class VuePimpMyHero extends Vue {
         Label label = (Label)lookup("#label");
         label.setTextFill(value);
     }
+
+	public void ajouterAnimal(double x, double y, ANIMAL animalChoisi) {
+		
+		ImageView animalAjoute = new ImageView();
+		
+		switch (animalChoisi) {
+			case ANIMAL1:
+				animalAjoute.setImage(new Image("vue/images/animal/animal1.png"));
+				break;
+			case ANIMAL2:
+				animalAjoute.setImage(new Image("vue/images/animal/animal2.png"));
+				break;
+			case ANIMAL3:
+				animalAjoute.setImage(new Image("vue/images/animal/animal3.png"));
+				break;
+			case ANIMAL4:
+				animalAjoute.setImage(new Image("vue/images/animal/animal4.png"));
+				break;	
+			case ANIMAL5:
+				animalAjoute.setImage(new Image("vue/images/animal/animal5.png"));
+				break;	
+		}
+
+		animalAjoute.setPreserveRatio(true);
+		animalAjoute.setFitHeight(100);
+		animalAjoute.setX(x - 15);
+		animalAjoute.setY(y - 50);
+		
+		
+		AnchorPane terrain = (AnchorPane)lookup("#terrain-de-creation");
+		terrain.getChildren().add(animalAjoute);
+			
+			
+	}
 }
+
 

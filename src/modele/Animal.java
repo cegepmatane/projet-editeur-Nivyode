@@ -3,7 +3,7 @@ package modele;
 
 
 public class Animal {
-	public enum ANIMAL{animal1, animal2, animal3, animal4, animal5}
+	public enum ANIMAL{ANIMAL1, ANIMAL2, ANIMAL3, ANIMAL4, ANIMAL5}
 	protected ANIMAL animal;
 	
 	public Animal(){
