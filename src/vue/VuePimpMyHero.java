@@ -240,8 +240,8 @@ public class VuePimpMyHero extends Vue {
         	});
         }
 
-		public void AfficherListe(String assetString , List<String> items) {
-			Logger.logMsg(Logger.INFO, "VuePimpMyHero.AfficherListe()");
+		public void afficherListe(String assetString , List<String> items) {
+			Logger.logMsg(Logger.INFO, "VuePimpMyHero.afficherListe()");
 			
 			for(String i:items) {
 				int numeroItem = items.indexOf(i);
@@ -303,7 +303,6 @@ public class VuePimpMyHero extends Vue {
 
         Button bouton = (Button)lookup(id);
         Pane parent = (Pane) bouton.getParent();
-
         List<Node> children = parent.getChildren();
         for (Node child : children) {
             if (child instanceof ImageView imageView) {
