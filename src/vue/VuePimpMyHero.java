@@ -306,8 +306,7 @@ public class VuePimpMyHero extends Vue {
 
         List<Node> children = parent.getChildren();
         for (Node child : children) {
-            if (child instanceof ImageView) {
-                ImageView imageView = (ImageView) child;
+            if (child instanceof ImageView imageView) {
                 imageView.setOpacity(0.5);
                 pushedBouton = imageView;
             }
