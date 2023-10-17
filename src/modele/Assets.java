@@ -12,7 +12,6 @@ public class Assets {
             case ARMURE -> new Point2D(-1, 350);
             case CAPE -> new Point2D(380, 350);
             case BOTTES -> new Point2D(-1, 500);
-            case ANIMAL -> new Point2D(325, 500);
             case BACKGROUND -> new Point2D(0, 0);
             case LABEL -> new Point2D(-1, 100);
             default -> new Point2D(0, 0);

@@ -10,6 +10,7 @@ import controleur.ControleurPimpMyHero;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
@@ -223,7 +224,7 @@ public class VuePimpMyHero extends Vue {
         bouton.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent e) {
-                System.out.println("Clic sur " + boutons.get(idBouton));
+                System.out.println("activerBouton : Clic sur " + boutons.get(idBouton));
                 controleur.notifierSelectionBouton(idBouton);}});
     }
         
@@ -294,9 +295,14 @@ public class VuePimpMyHero extends Vue {
 		
 		AnchorPane terrain = (AnchorPane)lookup("#terrain-de-creation");
 		terrain.getChildren().add(animalAjoute);
-			
-			
 	}
+
+    public void ajouterEffetPush(String id) {
+        Button bouton = (Button)lookup(id);
+        // get the ImageView sibling
+        AnchorPane parent = (AnchorPane) bouton.getParent();
+
+    }
 }
 
 

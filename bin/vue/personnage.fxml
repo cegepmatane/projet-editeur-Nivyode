@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="695.0" prefWidth="1244.0" style="-fx-background-color: #acedeb;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="695.0" prefWidth="1263.0" style="-fx-background-color: #acedeb;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox prefHeight="680.0" prefWidth="82.0" style="-fx-background-color: #0d5f6f;">
          <opaqueInsets>
@@ -55,16 +55,16 @@
             </Pane>
          </children>
       </VBox>
-      <AnchorPane id="anchor-personage-pane" layoutX="385.0" layoutY="83.0" prefHeight="533.0" prefWidth="732.0" style="-fx-background-color: #20dad8;">
+      <AnchorPane id="anchor-personage-pane" layoutX="385.0" layoutY="74.0" prefHeight="612.0" prefWidth="871.0" style="-fx-background-color: #20dad8;">
          <children>
-            <AnchorPane id="terrain-de-creation" prefHeight="200.0" prefWidth="200.0">
+            <AnchorPane id="terrain-de-creation" prefHeight="200.0" prefWidth="862.0">
                <children>
                   <ImageView id="background" fitHeight="596.0" fitWidth="846.0" layoutX="14.0" layoutY="7.0">
                      <image>
                         <Image url="@images/background/background1.png" />
                      </image>
                   </ImageView>
-                  <Label id="label" alignment="CENTER" prefHeight="131.0" prefWidth="848.0">
+                  <Label id="label" alignment="CENTER" layoutY="-6.0" prefHeight="131.0" prefWidth="848.0">
                      <font>
                         <Font name="Microsoft YaHei Bold" size="73.0" />
                      </font>
@@ -196,6 +196,5 @@
          </children>
       </HBox>
       <ColorPicker id="colorpicker" layoutX="1115.0" layoutY="10.0" prefHeight="58.0" prefWidth="113.0" />
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

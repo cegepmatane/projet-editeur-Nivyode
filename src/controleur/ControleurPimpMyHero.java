@@ -59,7 +59,9 @@ public class ControleurPimpMyHero extends Controleur {
     public void notifierSelectionBouton(int idBouton) {
     	//List<String> boutons = VuePimpMyHero.getInstance().getBoutons();
     	Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.notifierBouton() - " + idBouton);
-    	
+		String identifiantBouton = VuePimpMyHero.getInstance().getBoutons().get(idBouton);
+    	VuePimpMyHero.getInstance().ajouterEffetPush(identifiantBouton);
+
     	switch(idBouton) {
     	case 0:
     		//#bouton-selection-casque
