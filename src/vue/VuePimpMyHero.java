@@ -137,7 +137,6 @@ public class VuePimpMyHero extends Vue {
         if (assetPosY > maxY) assetPosY = maxY;
 
         //Déplacer l'image
-
         if (assetPosX < 0) // Valeur négative = centré
             assetImage.xProperty().bind(conteneur.widthProperty().subtract(assetImage.fitWidthProperty()).divide(2));
         else
@@ -148,15 +147,10 @@ public class VuePimpMyHero extends Vue {
         else
             assetImage.setY(assetPosY);
 
-        //Assigner une id
         assetImage.setId(assetString);
-
-        //Ajouter l'image au conteneur
         conteneur.getChildren().add(assetImage);
 
-        if (assetString.equals("background")) {
-            recouperBackground();
-        }
+        if (assetString.equals("background")) recouperBackground();
 
         reorganiserLayers();
     }
@@ -167,7 +161,6 @@ public class VuePimpMyHero extends Vue {
 
         // Calculer la position horizontale pour centrer le viewport
         double viewportX = (imageView.getImage().getWidth() - imagePane.getWidth()) / 2;
-
         imageView.viewportProperty().setValue(new Rectangle2D(viewportX, 0, imagePane.getWidth(), imagePane.getHeight()));
     }
 
