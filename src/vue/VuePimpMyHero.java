@@ -252,8 +252,6 @@ public class VuePimpMyHero extends Vue {
 		        }
 				
 			}
-			// TODO Auto-generated method stub
-			
 		}
 
     public void changerTitre(String text) {
