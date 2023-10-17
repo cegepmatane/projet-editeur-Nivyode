@@ -32,6 +32,7 @@ public class VuePimpMyHero extends Vue {
     protected static VuePimpMyHero instance = null;
     List<String> boutons;
     ColorPicker cp;
+    ImageView pushedBouton;
 
     public static VuePimpMyHero getInstance() {
         if(null==instance)instance = new VuePimpMyHero();
@@ -298,10 +299,19 @@ public class VuePimpMyHero extends Vue {
 	}
 
     public void ajouterEffetPush(String id) {
-        Button bouton = (Button)lookup(id);
-        // get the ImageView sibling
-        AnchorPane parent = (AnchorPane) bouton.getParent();
+        if (pushedBouton != null) pushedBouton.setOpacity(1);
 
+        Button bouton = (Button)lookup(id);
+        Pane parent = (Pane) bouton.getParent();
+
+        List<Node> children = parent.getChildren();
+        for (Node child : children) {
+            if (child instanceof ImageView) {
+                ImageView imageView = (ImageView) child;
+                imageView.setOpacity(0.5);
+                pushedBouton = imageView;
+            }
+        }
     }
 }
 
