@@ -119,7 +119,7 @@
                                     <Image url="@images/cape/cape2.png" />
                                  </image>
                               </ImageView>
-                              <Button id="bouton-selection-cape" layoutX="15.0" layoutY="13.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="118.0" style="-fx-opacity: 0%;" text="Button" />
+                              <Button id="bouton-selection-cape" layoutY="-1.0" mnemonicParsing="false" prefHeight="116.0" prefWidth="142.0" style="-fx-opacity: 0%;" text="Button" />
                            </children>
                         </Pane>
                         <Pane layoutX="10.0" layoutY="185.0" prefHeight="200.0" prefWidth="200.0">
@@ -149,7 +149,7 @@
                                     <Image url="@images/background/backgroundIcone.png" />
                                  </image>
                               </ImageView>
-                              <Button id="bouton-selection-background" layoutX="-4.0" mnemonicParsing="false" prefHeight="112.0" prefWidth="150.0" style="-fx-opacity: 0%;" text="Button" />
+                              <Button id="bouton-selection-background" layoutX="-4.0" mnemonicParsing="false" prefHeight="115.0" prefWidth="150.0" style="-fx-opacity: 0%;" text="Button" />
                            </children>
                         </Pane>
                      </children>
@@ -195,6 +195,6 @@
                </children></AnchorPane>
          </children>
       </HBox>
-      <ColorPicker id="colorpicker" layoutX="1115.0" layoutY="10.0" prefHeight="58.0" prefWidth="113.0" />
+      <ColorPicker id="colorpicker" layoutX="1115.0" layoutY="10.0" prefHeight="58.0" prefWidth="142.0" />
    </children>
 </AnchorPane>

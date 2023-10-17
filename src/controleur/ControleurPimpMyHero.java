@@ -11,13 +11,26 @@ import com.sun.media.jfxmedia.logging.Logger;
 import javafx.geometry.Point2D;
 import modele.Animal;
 import modele.Assets;
+import modele.Assets.ASSETS;
+import modele.PersonalisationHero;
+import modele.PersonalisationHero.ARMURE;
+import modele.PersonalisationHero.BACKGROUND;
+import modele.PersonalisationHero.BOTTES;
+import modele.PersonalisationHero.CAPE;
+import modele.PersonalisationHero.CASQUE;
 import vue.VuePimpMyHero;
 
 public class ControleurPimpMyHero extends Controleur {
 	final int NOMBRE_CHOIX = 5;
-
 	private Assets.ASSETS typeChoisi ;
 	private Animal.ANIMAL animalChoisi;
+	private PersonalisationHero.CASQUE casqueActuel;
+	private PersonalisationHero.ARMURE armureActuel;
+	private PersonalisationHero.CAPE capeActuel;
+	private PersonalisationHero.BOTTES bottesActuel;
+	private PersonalisationHero.BACKGROUND backgroundActuel;
+	//private ARMURE armureActuel;
+	
 		
 
     public ControleurPimpMyHero() {
@@ -135,32 +148,62 @@ public class ControleurPimpMyHero extends Controleur {
     private void changerItemChoisi(Assets.ASSETS itemChoisi, int id) {
     	Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.changerItemChoisi()");
     	
-    	if (itemChoisi != Assets.ASSETS.ANIMAL) {
+    	switch(itemChoisi) {
+    	case CASQUE:
+    		casqueActuel = CASQUE.valueOf("CASQUE" + id) ;
     		vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
-    		animalChoisi = null;
-    	} else {
+    		System.out.println(casqueActuel.toString());
+    		break;
+    		
+    	case ARMURE:
+    		armureActuel = ARMURE.valueOf("ARMURE" + id);
+    		vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
+    		System.out.println(armureActuel.toString());
+    		break;
+    		
+    	case CAPE:
+    		capeActuel = CAPE.valueOf("CAPE" + id);
+    		vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
+    		System.out.println(armureActuel.toString());
+    		break;
+    		
+    	case BOTTES:
+    		bottesActuel = BOTTES.valueOf("BOTTES" + id);
+    		vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
+    		System.out.println(armureActuel.toString());
+    		break;
+    		
+    	case BACKGROUND:
+    		backgroundActuel = BACKGROUND.valueOf("BACKGROUND" + id);
+    		vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
+    		System.out.println(armureActuel.toString());
+    		break;
+    		
+    	case ANIMAL:
     		switch(id) {
-    		case 1:
-    			animalChoisi = Animal.ANIMAL.ANIMAL1;
-    			break;
-    		case 2:
-    			animalChoisi = Animal.ANIMAL.ANIMAL2;
-    			break;
-    		case 3:
-    			animalChoisi = Animal.ANIMAL.ANIMAL3;
-    			break;
-    		case 4:
-    			animalChoisi = Animal.ANIMAL.ANIMAL4;
-    			break;
-    		case 5:
-    			animalChoisi = Animal.ANIMAL.ANIMAL5;
-    			break;	
-    		}
-    		System.out.println(animalChoisi.toString());	
+	    		case 1:
+	    			animalChoisi = Animal.ANIMAL.ANIMAL1;
+	    			break;
+	    		case 2:
+	    			animalChoisi = Animal.ANIMAL.ANIMAL2;
+	    			break;
+	    		case 3:
+	    			animalChoisi = Animal.ANIMAL.ANIMAL3;
+	    			break;
+	    		case 4:
+	    			animalChoisi = Animal.ANIMAL.ANIMAL4;
+	    			break;
+	    		case 5:
+	    			animalChoisi = Animal.ANIMAL.ANIMAL5;
+	    			break;	
+	    	}
+    		System.out.println(animalChoisi.toString());
+    		break;
     	}
-    	
     }
-    
+    		
+
+
 	public void notifierAjoutAnimal(double x, double y) {
 		if (animalChoisi != null)
 			VuePimpMyHero.getInstance().ajouterAnimal(x,y, animalChoisi);
