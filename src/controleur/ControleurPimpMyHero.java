@@ -30,7 +30,6 @@ public class ControleurPimpMyHero extends Controleur {
 		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.ARMURE, 1);
 		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.CAPE, 1);
 		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.BOTTES, 1);
-		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.ANIMAL, 1);
 		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.BACKGROUND, 2);
 		//changerBackgroundAleatoire();
     }
