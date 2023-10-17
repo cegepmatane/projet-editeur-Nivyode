@@ -143,7 +143,7 @@ public class ControleurPimpMyHero extends Controleur {
     	for (int i = 1; i <= NOMBRE_CHOIX;i++){
     		items.add(itemChoisi + i +".png");
 		}
-    	vue.VuePimpMyHero.getInstance().AfficherListe(itemChoisi, items);
+    	vue.VuePimpMyHero.getInstance().afficherListe(itemChoisi, items);
     }
     private void changerItemChoisi(Assets.ASSETS itemChoisi, int id) {
     	Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.changerItemChoisi()");
