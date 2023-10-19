@@ -10,14 +10,14 @@ public class App {
         System.out.println("Hello Editeur!");
         Controleur.choisirVuePrincipale(VuePimpMyHero.class);
         Fenetre.launch(Fenetre.class, parametres);
-        Hero hero = new Hero();
-        hero.setCasqueActuel(CASQUE.valueOf("CASQUE1"));
-        hero.setArmureActuelle(ARMURE.valueOf("ARMURE1"));
-        hero.setCapeActuelle(CAPE.valueOf("CAPE1"));
-        hero.setBackgroundActuel(BACKGROUND.valueOf("BACKGROUND1"));
-        hero.setBottesActuelles(BOTTES.valueOf("BOTTES1"));
-        Exporteur exporteur = new Exporteur();
-        exporteur.sauvegarder(hero);
+        //Exportable hero = new Hero();
+        //((Hero) hero).setCasqueActuel(CASQUE.valueOf("CASQUE1"));
+        //((Hero) hero).setArmureActuelle(ARMURE.valueOf("ARMURE1"));
+        //((Hero) hero).setCapeActuelle(CAPE.valueOf("CAPE1"));
+        //((Hero) hero).setBackgroundActuel(BACKGROUND.valueOf("BACKGROUND1"));
+        //((Hero) hero).setBottesActuelles(BOTTES.valueOf("BOTTES1"));
+        //Exporteur exporteur = new Exporteur();
+        //exporteur.sauvegarder(hero);
         
         
     }

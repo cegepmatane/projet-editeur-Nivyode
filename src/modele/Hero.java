@@ -86,6 +86,8 @@ public class Hero implements Exportable{
 	public String exporterXML() {
 		// TODO Auto-generated method stub
 		String xml = "";
+		xml+="<nom><titre>"+nom+"</titre>";
+		xml+="<couleurNom>"+couleurNom.toString()+"</couleurNom></nom>";
 		xml+= "<casque>"+casqueActuel.toString()+"</casque>";
 		xml+="<armure>"+armureActuelle.toString()+"</armure>";
 		xml+="<cape>"+capeActuelle.toString()+"</cape>";
