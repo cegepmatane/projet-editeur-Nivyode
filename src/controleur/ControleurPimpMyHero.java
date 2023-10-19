@@ -231,6 +231,7 @@ public class ControleurPimpMyHero extends Controleur {
 		Logger.logMsg(Logger.INFO, "sauvegarderHero()" );
 		Exporteur exporter =  new Exporteur();
 		exporter.sauvegarder(Hero.getInstance());
+	}
 
 	public void notifierSuppressionAsset(String idButton){
 		Logger.logMsg(Logger.INFO, "notifierSuppressionAsset");
