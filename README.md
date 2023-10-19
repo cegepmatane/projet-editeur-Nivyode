@@ -1,11 +1,13 @@
 # projet-editeur
 
+## But
+L'editeur permet de créer des personnages
+
 ## Equipe
 
 - Audrey Boucher
 - Hugo Calvet
-- Noah Nicolas  
-  l'editeur permet de créer des personnages
+- Noah Nicolas
 
 ## Composant du projet
 
