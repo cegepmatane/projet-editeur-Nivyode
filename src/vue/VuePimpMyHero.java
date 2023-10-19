@@ -200,7 +200,24 @@ public class VuePimpMyHero extends Vue {
                 if (assetString.equals("label")) {
                     Label label = (Label) lookup("#" + assetString);
                     label.toFront();
-                } else {
+                }
+                else if (assetString.equals("animal")) {
+                    // Récupérer tous les élements aillant pour id "animal-"
+                    AnchorPane conteneur = (AnchorPane) lookup("#terrain-de-creation");
+                    List<Node> animaux = new ArrayList<Node>();
+                    for (Node child : conteneur.getChildren()) {
+                        if (child.getId().startsWith("animal-")) {
+                            System.out.println("reorganiserLayers/animal : " + child.getId());
+                            animaux.add(child);
+                        }
+                    }
+                    for (Node animal : animaux) {
+                        animal.toFront();
+                        Button bouton = (Button) lookup("#bouton-suppression-" + animal.getId());
+                        bouton.toFront();
+                    }
+                }
+                else {
                     ImageView assetImage = (ImageView) lookup("#" + assetString);
                     assetImage.toFront();
                 }
@@ -228,6 +245,7 @@ public class VuePimpMyHero extends Vue {
     }
 
     public void supprimerAsset(String id) {
+        System.out.println("supprimerAsset : " + id);
         //Récupérer l'asset s'il existe
         try {
             AnchorPane conteneur = (AnchorPane) lookup("#anchor-personage-pane");
@@ -336,6 +354,8 @@ public class VuePimpMyHero extends Vue {
         terrain.getChildren().add(boutonSuppression);
         System.out.println("boutonSuppression.getId() : " + boutonSuppression.getId());
         activerBoutonSuppression(boutonSuppression.getId());
+
+        reorganiserLayers();
 	}
 
     public void ajouterEffetPush(String id) {
