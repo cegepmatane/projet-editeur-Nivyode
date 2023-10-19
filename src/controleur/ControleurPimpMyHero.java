@@ -18,6 +18,8 @@ import modele.Hero.BACKGROUND;
 import modele.Hero.BOTTES;
 import modele.Hero.CAPE;
 import modele.Hero.CASQUE;
+import utilitaire.Exportable;
+import utilitaire.Exporteur;
 import vue.VuePimpMyHero;
 
 public class ControleurPimpMyHero extends Controleur {
@@ -102,6 +104,7 @@ public class ControleurPimpMyHero extends Controleur {
     		break;
     	case 6 :
     		//#bouton-telechargement
+    		sauvegarderHero();
     		break;
     	case 7 :
     		//#bouton-refaire
@@ -214,11 +217,19 @@ public class ControleurPimpMyHero extends Controleur {
 	public void notifierSelectionColorPicker(ColorPicker cp) {
 		Logger.logMsg(Logger.INFO, "notifierSelectionColorPicker");
 		VuePimpMyHero.getInstance().changerCouleurLabel(cp.getValue());
+		Hero.getInstance().setCouleurNom(cp.getValue());
 	}
 
 	public void notifierChangementTitre(String text) {
 		Logger.logMsg(Logger.INFO, "notifierChangementTitre");
 		VuePimpMyHero.getInstance().changerTitre(text);
+		Hero.getInstance().setNom(text);
 		//test
+	}
+	
+	public void sauvegarderHero() {
+		Logger.logMsg(Logger.INFO, "sauvegarderHero()" );
+		Exporteur exporter =  new Exporteur();
+		exporter.sauvegarder(Hero.getInstance());
 	}
 }
