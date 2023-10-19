@@ -150,9 +150,9 @@ public class ControleurPimpMyHero extends Controleur {
     	
     	switch(itemChoisi) {
     	case CASQUE:
-    		casqueActuel = CASQUE.valueOf("CASQUE" + id) ;
+    		Hero.getInstance().setCasqueActuel(CASQUE.valueOf("CASQUE" + id));
     		vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
-    		System.out.println(casqueActuel.toString());
+    		System.out.println(Hero.getInstance().getCasqueActuel().toString());
     		break;
     		
     	case ARMURE:
