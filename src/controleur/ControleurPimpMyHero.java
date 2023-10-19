@@ -150,7 +150,7 @@ public class ControleurPimpMyHero extends Controleur {
     }
     private void changerItemChoisi(Assets.ASSETS itemChoisi, int id) {
     	Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.changerItemChoisi()");
-    	
+
     	switch(itemChoisi) {
     	case CASQUE:
     		Hero.getInstance().setCasqueActuel(CASQUE.valueOf("CASQUE" + id));
@@ -231,5 +231,13 @@ public class ControleurPimpMyHero extends Controleur {
 		Logger.logMsg(Logger.INFO, "sauvegarderHero()" );
 		Exporteur exporter =  new Exporteur();
 		exporter.sauvegarder(Hero.getInstance());
+
+	public void notifierSuppressionAsset(String idButton){
+		Logger.logMsg(Logger.INFO, "notifierSuppressionAsset");
+		// Enlever le "bouton-suppression" du idButton
+		String idAsset = idButton.substring(19);
+		System.out.println("idAsset : " + idAsset);
+		VuePimpMyHero.getInstance().supprimerAsset(idButton);
+		VuePimpMyHero.getInstance().supprimerAsset(idAsset);
 	}
 }

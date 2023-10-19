@@ -95,9 +95,4 @@ public class Hero implements Exportable{
 		xml+="<background>"+backgroundActuel.toString()+"</background>";
 		return xml;
 	}
-	
-	
-	
-	
-
 }
