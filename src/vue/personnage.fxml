@@ -14,48 +14,40 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="695.0" prefWidth="1263.0" style="-fx-background-color: #acedeb;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="695.0" prefWidth="1263.0" style="-fx-background-color: #929292;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox prefHeight="680.0" prefWidth="82.0" style="-fx-background-color: #0d5f6f;">
+      <VBox prefHeight="680.0" prefWidth="82.0" style="-fx-background-color: #282828;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <Pane prefHeight="200.0" prefWidth="200.0">
+            <Pane prefHeight="219.0" prefWidth="82.0">
                <children>
-                  <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="8.0" layoutY="42.0">
+                  <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="16.0" layoutY="84.0">
                      <image>
                         <Image url="@images/icones/telecharger.png" />
                      </image>
                   </ImageView>
-                  <Line endX="53.20000457763672" endY="15.799972534179688" layoutX="14.0" layoutY="121.0" startX="-14.000012397766113" startY="15.799972534179688" style="-fx-opacity: 25%;" />
-                  <Button id="bouton-telechargement" mnemonicParsing="false" prefHeight="131.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
+                  <Line endX="84.40000915527344" endY="219.19998168945312" startX="-1.220703143189894E-5" startY="219.19998168945312" stroke="#b4b4b4" style="-fx-opacity: 25%;" />
+                  <Button id="bouton-telechargement" layoutX="-3.0" layoutY="9.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="89.0" style="-fx-opacity: 0%;" text="Button" />
                </children>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0">
+            <Pane prefHeight="230.0" prefWidth="82.0">
                <children>
-                  <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="8.0" layoutY="42.0">
-                     <image>
-                        <Image url="@images/icones/re-faire.png" />
-                     </image>
-                  </ImageView>
-                  <Button id="bouton-refaire" layoutX="-6.0" layoutY="-8.0" mnemonicParsing="false" prefHeight="141.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
+                  <Line endX="79.99998474121094" endY="228.79998779296875" startX="-1.220703143189894E-5" startY="228.79998779296875" stroke="#b4b4b4" style="-fx-opacity: 25%;" />
+                  <Button id="bouton-refaire" layoutX="-4.0" mnemonicParsing="false" prefHeight="229.0" prefWidth="89.0" style="-fx-opacity: 0%;" text="Button" />
+                  <Label layoutX="20.0" layoutY="85.0" prefHeight="38.0" prefWidth="39.0" text="A Venir" textFill="RED" />
                </children>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0">
+            <Pane prefHeight="236.0" prefWidth="82.0">
                <children>
-                  <ImageView fitHeight="50.0" fitWidth="51.0" layoutX="5.0" layoutY="42.0">
-                     <image>
-                        <Image url="@images/icones/annuler.png" />
-                     </image>
-                  </ImageView>
-                  <Line endX="67.19999694824219" endY="-8.799975395202637" startX="7.62939453125E-6" startY="-8.799975395202637" style="-fx-opacity: 25%;" />
-                  <Button id="bouton-annuler" layoutX="-1.0" mnemonicParsing="false" prefHeight="141.0" prefWidth="68.0" style="-fx-opacity: 0%;" text="Button" />
+                  <Label layoutX="22.0" layoutY="98.0" prefHeight="38.0" prefWidth="39.0" text="A Venir" textFill="RED" />
+                  <Button id="bouton-annuler" layoutY="17.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="89.0" style="-fx-opacity: 0%;" text="Button" />
                </children>
             </Pane>
          </children>
       </VBox>
-      <AnchorPane id="anchor-personage-pane" layoutX="385.0" layoutY="74.0" prefHeight="612.0" prefWidth="871.0" style="-fx-background-color: #20dad8;">
+      <AnchorPane id="anchor-personage-pane" layoutX="385.0" layoutY="74.0" prefHeight="612.0" prefWidth="871.0" style="-fx-background-color: #5C5C5C;">
          <children>
             <AnchorPane id="terrain-de-creation" prefHeight="200.0" prefWidth="862.0">
                <children>
@@ -90,7 +82,7 @@
          <children>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="670.0" prefWidth="162.0">
                <children>
-                  <VBox layoutY="1.0" prefHeight="668.0" prefWidth="141.0" style="-fx-background-color: #0a94a2;">
+                  <VBox layoutY="1.0" prefHeight="668.0" prefWidth="141.0" style="-fx-background-color: #5E5E5E;">
                      <children>
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
@@ -169,7 +161,7 @@
                         <Pane prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <ImageView id="image-choix-2" fitHeight="77.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-                              <Button id="bouton-choix-2" fx:id="BoutonChoix2" mnemonicParsing="false" prefHeight="131.0" prefWidth="150.0" style="-fx-opacity: 0%;" text="Button" />
+                              <Button id="bouton-choix-2" fx:id="BoutonChoix2" layoutX="7.0" layoutY="1.0" mnemonicParsing="false" prefHeight="131.0" prefWidth="150.0" style="-fx-opacity: 0%;" text="Button" />
                            </children>
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0">
