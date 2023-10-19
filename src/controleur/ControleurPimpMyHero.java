@@ -12,23 +12,23 @@ import javafx.geometry.Point2D;
 import modele.Animal;
 import modele.Assets;
 import modele.Assets.ASSETS;
-import modele.PersonalisationHero;
-import modele.PersonalisationHero.ARMURE;
-import modele.PersonalisationHero.BACKGROUND;
-import modele.PersonalisationHero.BOTTES;
-import modele.PersonalisationHero.CAPE;
-import modele.PersonalisationHero.CASQUE;
+import modele.Hero;
+import modele.Hero.ARMURE;
+import modele.Hero.BACKGROUND;
+import modele.Hero.BOTTES;
+import modele.Hero.CAPE;
+import modele.Hero.CASQUE;
 import vue.VuePimpMyHero;
 
 public class ControleurPimpMyHero extends Controleur {
 	final int NOMBRE_CHOIX = 5;
 	private Assets.ASSETS typeChoisi ;
 	private Animal.ANIMAL animalChoisi;
-	private PersonalisationHero.CASQUE casqueActuel;
-	private PersonalisationHero.ARMURE armureActuel;
-	private PersonalisationHero.CAPE capeActuel;
-	private PersonalisationHero.BOTTES bottesActuel;
-	private PersonalisationHero.BACKGROUND backgroundActuel;
+	private Hero.CASQUE casqueActuel;
+	private Hero.ARMURE armureActuel;
+	private Hero.CAPE capeActuel;
+	private Hero.BOTTES bottesActuel;
+	private Hero.BACKGROUND backgroundActuel;
 	//private ARMURE armureActuel;
 	
 		

@@ -1,6 +1,6 @@
 package modele;
 
-public class PersonalisationHero {
+public class Hero {
 	public enum CASQUE {CASQUE1, CASQUE2, CASQUE3, CASQUE4, CASQUE5, }
 	public enum ARMURE {ARMURE1, ARMURE2, ARMURE3, ARMURE4, ARMURE5, }
 	public enum CAPE {CAPE1, CAPE2, CAPE3, CAPE4, CAPE5, }
