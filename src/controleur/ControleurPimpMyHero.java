@@ -156,27 +156,27 @@ public class ControleurPimpMyHero extends Controleur {
     		break;
     		
     	case ARMURE:
-    		armureActuel = ARMURE.valueOf("ARMURE" + id);
+    		Hero.getInstance().setArmureActuelle(ARMURE.valueOf("ARMURE" + id));
     		vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
-    		System.out.println(armureActuel.toString());
+    		System.out.println(Hero.getInstance().getArmureActuelle().toString());
     		break;
     		
     	case CAPE:
-    		capeActuel = CAPE.valueOf("CAPE" + id);
+    		Hero.getInstance().setCapeActuelle(CAPE.valueOf("CAPE" + id));
     		vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
-    		System.out.println(armureActuel.toString());
+    		System.out.println(Hero.getInstance().getCapeActuelle().toString());
     		break;
     		
     	case BOTTES:
-    		bottesActuel = BOTTES.valueOf("BOTTES" + id);
+    		Hero.getInstance().setBottesActuelles(BOTTES.valueOf("BOTTES" + id));
     		vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
-    		System.out.println(armureActuel.toString());
+    		System.out.println(Hero.getInstance().getBottesActuelles().toString());
     		break;
     		
     	case BACKGROUND:
-    		backgroundActuel = BACKGROUND.valueOf("BACKGROUND" + id);
+    		Hero.getInstance().setBackgroundActuel(BACKGROUND.valueOf("BACKGROUND" + id));
     		vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
-    		System.out.println(armureActuel.toString());
+    		System.out.println(Hero.getInstance().getBackgroundActuel().toString());
     		break;
     		
     	case ANIMAL:

@@ -3,6 +3,7 @@ package modele;
 import java.util.List;
 
 import javafx.scene.paint.Color;
+import utilitaire.Exportable;
 
 public class Hero implements Exportable{
 	public enum CASQUE {CASQUE1, CASQUE2, CASQUE3, CASQUE4, CASQUE5, }
