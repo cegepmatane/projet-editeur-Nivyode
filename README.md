@@ -4,7 +4,7 @@
 
 - Audrey Boucher
 - Hugo Calvet
-- Noah Nicolas
+- Noah Nicolas  
   l'editeur permet de créer des personnages
 
 ## Composant du projet
