@@ -28,20 +28,21 @@ import modele.Assets;
 public class VuePimpMyHero extends Vue {
 
     protected ControleurPimpMyHero controleur;
-
     protected static VuePimpMyHero instance = null;
-    List<String> boutons;
-    ColorPicker cp;
-    ImageView pushedBouton;
+    protected List<String> boutons;
+    protected ColorPicker cp;
+    protected ImageView pushedBouton;
+    protected int compteurAnimaux = 0;
 
     public static VuePimpMyHero getInstance() {
-        if(null==instance)instance = new VuePimpMyHero();
+        if (null == instance) instance = new VuePimpMyHero();
         return VuePimpMyHero.instance;
-    };
+    }
 
-    private VuePimpMyHero()
-    {
-        super("personnage.fxml", VuePimpMyHero.class, 1294,743);
+    ;
+
+    private VuePimpMyHero() {
+        super("personnage.fxml", VuePimpMyHero.class, 1294, 743);
         super.controleur = this.controleur = new ControleurPimpMyHero();
         Logger.logMsg(Logger.INFO, "new VuePimpMyHero()");
         boutons = new ArrayList<String>();
@@ -54,45 +55,46 @@ public class VuePimpMyHero extends Vue {
         boutons.add("#bouton-telechargement");
         boutons.add("#bouton-refaire");
         boutons.add("#bouton-annuler");
-        for(int boutonChoix = 1; boutonChoix < 6; boutonChoix++) {
-        	boutons.add("#bouton-choix-" + boutonChoix);
+        for (int boutonChoix = 1; boutonChoix < 6; boutonChoix++) {
+            boutons.add("#bouton-choix-" + boutonChoix);
         }
-        cp = (ColorPicker)lookup("#colorpicker");
-        
+        cp = (ColorPicker) lookup("#colorpicker");
+
     }
-	public List<String> getBoutons() {
-		return boutons;
-	}  
+
+    public List<String> getBoutons() {
+        return boutons;
+    }
 
     public void activerControles() {
         super.activerControles();
-        
-        for(String i : boutons) {
-        	activerBouton(boutons.indexOf(i));
+
+        for (String i : boutons) {
+            activerBouton(boutons.indexOf(i));
         }
         activerCP(cp);
 
-        TextField titre = (TextField)lookup("#titre");
-        titre.setOnKeyReleased((EventHandler< KeyEvent>) new EventHandler<KeyEvent>(){
+        TextField titre = (TextField) lookup("#titre");
+        titre.setOnKeyReleased((EventHandler<KeyEvent>) new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent e) {
                 System.out.println("MAJ titre");
                 controleur.notifierChangementTitre(titre.getText());
             }
         });
-        
-        
-        
-		ImageView jardin = (ImageView)lookup("#background");
-		jardin.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
-			@Override
-			public void handle(MouseEvent clic) {
-				double x = clic.getX();
-				double y = clic.getY();
-				System.out.println("Clic pour ajouter un animal effectue aux coordonnée : (" + x + " , " + y + ")");
-				controleur.notifierAjoutAnimal(x, y);
-			}});
+
+        ImageView jardin = (ImageView) lookup("#background");
+        jardin.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent clic) {
+                double x = clic.getX();
+                double y = clic.getY();
+                System.out.println("Clic pour ajouter un animal effectue aux coordonnée : (" + x + " , " + y + ")");
+                controleur.notifierAjoutAnimal(x, y);
+            }
+        });
     }
 
     public void changerAsset(Assets.ASSETS asset, int elementId) {
@@ -152,11 +154,36 @@ public class VuePimpMyHero extends Vue {
 
         if (assetString.equals("background")) recouperBackground();
 
+        // Créer un bouton de la taille de l'image
+        Button boutonSuppression = creerBoutonSuppression(asset, assetImage.getX(), assetImage.getY());
+        conteneur.getChildren().add(boutonSuppression);
+        activerBoutonSuppression(boutonSuppression.getId());
+
         reorganiserLayers();
     }
 
+    public Button creerBoutonSuppression(Assets.ASSETS asset, double posX, double posY) {
+        System.out.println("creerBoutonSuppression : " + asset);
+        String idAsset = asset.toString().toLowerCase();
+        return creerBoutonSuppression(idAsset, posX, posY);
+    }
+
+    public Button creerBoutonSuppression(String idAsset, double posX, double posY) {
+        // On prend tout ce qui est avant le premier tiret
+        String nomAsset = idAsset.split("-")[0];
+        Assets.ASSETS asset = Assets.ASSETS.valueOf(nomAsset.toUpperCase());
+
+        Button boutonSuppression = new Button();
+        boutonSuppression.setPrefSize(controleur.getAssetSize(asset), controleur.getAssetSize(asset));
+        boutonSuppression.setLayoutX(posX);
+        boutonSuppression.setLayoutY(posY);
+        boutonSuppression.setId("bouton-suppression-" + idAsset);
+        boutonSuppression.setStyle("-fx-background-color: transparent;");
+        return boutonSuppression;
+    }
+
     public void recouperBackground() {
-    	ImageView imageView = (ImageView) lookup("#background");
+        ImageView imageView = (ImageView) lookup("#background");
         Pane imagePane = (Pane) lookup("#anchor-personage-pane");
 
         // Calculer la position horizontale pour centrer le viewport
@@ -174,10 +201,28 @@ public class VuePimpMyHero extends Vue {
                     Label label = (Label) lookup("#" + assetString);
                     label.toFront();
                 }
+                else if (assetString.equals("animal")) {
+                    // Récupérer tous les élements aillant pour id "animal-"
+                    AnchorPane conteneur = (AnchorPane) lookup("#terrain-de-creation");
+                    List<Node> animaux = new ArrayList<Node>();
+                    for (Node child : conteneur.getChildren()) {
+                        if (child.getId().startsWith("animal-")) {
+                            System.out.println("reorganiserLayers/animal : " + child.getId());
+                            animaux.add(child);
+                        }
+                    }
+                    for (Node animal : animaux) {
+                        animal.toFront();
+                        Button bouton = (Button) lookup("#bouton-suppression-" + animal.getId());
+                        bouton.toFront();
+                    }
+                }
                 else {
                     ImageView assetImage = (ImageView) lookup("#" + assetString);
                     assetImage.toFront();
                 }
+                Button bouton = (Button) lookup("#bouton-suppression-" + assetString);
+                bouton.toFront();
             } catch (NullPointerException | ClassCastException e) {
                 //Logger.logMsg(Logger.INFO, "L'asset n'existe pas");
             }
@@ -185,7 +230,7 @@ public class VuePimpMyHero extends Vue {
     }
 
     public void redimensionnerAsset(Assets.ASSETS asset, double width) {
-    	Logger.logMsg(Logger.INFO, "Resize " + asset.toString().toLowerCase() + ": " + width);
+        Logger.logMsg(Logger.INFO, "Resize " + asset.toString().toLowerCase() + ": " + width);
         String assetString = asset.toString().toLowerCase();
 
         //Récupérer l'asset s'il existe
@@ -199,55 +244,69 @@ public class VuePimpMyHero extends Vue {
         }
     }
 
-    public void supprimerAsset(Assets.ASSETS asset) {
-        Logger.logMsg(Logger.INFO, "Supprimer " + asset.toString().toLowerCase());
-        String assetString = asset.toString().toLowerCase();
-
+    public void supprimerAsset(String id) {
+        System.out.println("supprimerAsset : " + id);
         //Récupérer l'asset s'il existe
         try {
             AnchorPane conteneur = (AnchorPane) lookup("#anchor-personage-pane");
-            conteneur.getChildren().remove(lookup("#" + assetString));
-            Logger.logMsg(Logger.INFO, "L'asset a été supprimé");
+            conteneur.getChildren().remove(lookup("#" + id));
+            Logger.logMsg(Logger.INFO, "L'asset " + id + " a été supprimé");
         } catch (NullPointerException e) {
-            Logger.logMsg(Logger.INFO, "L'asset n'a pas pu être supprimé");
+            Logger.logMsg(Logger.INFO, "L'asset " + id + " n'existe pas");
         }
     }
-        
+
     private void activerBouton(int idBouton) {
-        Button bouton = (Button)lookup(boutons.get(idBouton));
-        bouton.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>(){
+        Button bouton = (Button) lookup(boutons.get(idBouton));
+        bouton.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
                 System.out.println("activerBouton : Clic sur " + boutons.get(idBouton));
-                controleur.notifierSelectionBouton(idBouton);}});
+                controleur.notifierSelectionBouton(idBouton);
+            }
+        });
     }
-        
-        private void activerCP(ColorPicker cp) {
-        	cp.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
-        		@Override
-        		public void handle(ActionEvent e) {
-        			System.out.println("Clic sur " + cp.getId());
-        			controleur.notifierSelectionColorPicker(cp);
-        			System.out.println("La couleur c'est" + cp.getValue());
-        		}
-        	});
-        }
 
-		public void afficherListe(String assetString , List<String> items) {
-			Logger.logMsg(Logger.INFO, "VuePimpMyHero.afficherListe()");
-			
-			for(String i:items) {
-				int numeroItem = items.indexOf(i);
-		        try {
-		            ImageView assetImage = (ImageView) lookup("#image-choix-" + (numeroItem +1) );
-		            assetImage.setImage(new Image("vue/images/" + assetString + "/" + items.get(numeroItem)));
-		            Logger.logMsg(Logger.INFO, "Image affiché");
-		        } catch (NullPointerException e) {
-		            Logger.logMsg(Logger.INFO, "Image introuvable");
-		        }
-				
-			}
-		}
+    private void activerCP(ColorPicker cp) {
+        cp.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                System.out.println("Clic sur " + cp.getId());
+                controleur.notifierSelectionColorPicker(cp);
+                System.out.println("La couleur c'est" + cp.getValue());
+            }
+        });
+    }
+
+    private void activerBoutonSuppression(String idBouton) {
+        System.out.println("activerBoutonSuppression : " + idBouton);
+        Button bouton = (Button) lookup("#" + idBouton);
+        bouton.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                System.out.println("activerBoutonSuppression : Clic sur " + bouton.getId());
+                controleur.notifierSuppressionAsset(idBouton);
+            }
+        });
+    }
+
+    public void afficherListe(String assetString, List<String> items) {
+        Logger.logMsg(Logger.INFO, "VuePimpMyHero.afficherListe()");
+
+        for (String i : items) {
+            int numeroItem = items.indexOf(i);
+            try {
+                ImageView assetImage = (ImageView) lookup("#image-choix-" + (numeroItem + 1));
+                assetImage.setImage(new Image("vue/images/" + assetString + "/" + items.get(numeroItem)));
+                Logger.logMsg(Logger.INFO, "Image affiché");
+            } catch (NullPointerException e) {
+                Logger.logMsg(Logger.INFO, "Image introuvable");
+            }
+
+        }
+    }
+
+
 
     public void changerTitre(String text) {
         Label label = (Label)lookup("#label");
@@ -282,13 +341,21 @@ public class VuePimpMyHero extends Vue {
 		}
 
 		animalAjoute.setPreserveRatio(true);
-		animalAjoute.setFitHeight(100);
+		animalAjoute.setFitHeight(Assets.getAssetSize(Assets.ASSETS.ANIMAL));
 		animalAjoute.setX(x - 15);
 		animalAjoute.setY(y - 50);
-		
-		
+        animalAjoute.setId("animal-" + compteurAnimaux++);
+        System.out.println("animalAjoute.getId() : " + animalAjoute.getId());
+
 		AnchorPane terrain = (AnchorPane)lookup("#terrain-de-creation");
 		terrain.getChildren().add(animalAjoute);
+
+        Button boutonSuppression = creerBoutonSuppression(animalAjoute.getId(), animalAjoute.getX(), animalAjoute.getY());
+        terrain.getChildren().add(boutonSuppression);
+        System.out.println("boutonSuppression.getId() : " + boutonSuppression.getId());
+        activerBoutonSuppression(boutonSuppression.getId());
+
+        reorganiserLayers();
 	}
 
     public void ajouterEffetPush(String id) {

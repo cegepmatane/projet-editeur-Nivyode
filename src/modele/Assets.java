@@ -28,9 +28,4 @@ public class Assets {
             default -> 100;
         };
     }
-
-	public static ASSETS convertToString(ASSETS typeItem) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

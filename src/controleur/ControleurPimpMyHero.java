@@ -18,6 +18,8 @@ import modele.Hero.BACKGROUND;
 import modele.Hero.BOTTES;
 import modele.Hero.CAPE;
 import modele.Hero.CASQUE;
+import utilitaire.Exportable;
+import utilitaire.Exporteur;
 import vue.VuePimpMyHero;
 
 public class ControleurPimpMyHero extends Controleur {
@@ -102,6 +104,7 @@ public class ControleurPimpMyHero extends Controleur {
     		break;
     	case 6 :
     		//#bouton-telechargement
+    		sauvegarderHero();
     		break;
     	case 7 :
     		//#bouton-refaire
@@ -147,36 +150,36 @@ public class ControleurPimpMyHero extends Controleur {
     }
     private void changerItemChoisi(Assets.ASSETS itemChoisi, int id) {
     	Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.changerItemChoisi()");
-    	
+
     	switch(itemChoisi) {
     	case CASQUE:
-    		casqueActuel = CASQUE.valueOf("CASQUE" + id) ;
+    		Hero.getInstance().setCasqueActuel(CASQUE.valueOf("CASQUE" + id));
     		vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
-    		System.out.println(casqueActuel.toString());
+    		System.out.println(Hero.getInstance().getCasqueActuel().toString());
     		break;
     		
     	case ARMURE:
-    		armureActuel = ARMURE.valueOf("ARMURE" + id);
+    		Hero.getInstance().setArmureActuelle(ARMURE.valueOf("ARMURE" + id));
     		vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
-    		System.out.println(armureActuel.toString());
+    		System.out.println(Hero.getInstance().getArmureActuelle().toString());
     		break;
     		
     	case CAPE:
-    		capeActuel = CAPE.valueOf("CAPE" + id);
+    		Hero.getInstance().setCapeActuelle(CAPE.valueOf("CAPE" + id));
     		vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
-    		System.out.println(armureActuel.toString());
+    		System.out.println(Hero.getInstance().getCapeActuelle().toString());
     		break;
     		
     	case BOTTES:
-    		bottesActuel = BOTTES.valueOf("BOTTES" + id);
+    		Hero.getInstance().setBottesActuelles(BOTTES.valueOf("BOTTES" + id));
     		vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
-    		System.out.println(armureActuel.toString());
+    		System.out.println(Hero.getInstance().getBottesActuelles().toString());
     		break;
     		
     	case BACKGROUND:
-    		backgroundActuel = BACKGROUND.valueOf("BACKGROUND" + id);
+    		Hero.getInstance().setBackgroundActuel(BACKGROUND.valueOf("BACKGROUND" + id));
     		vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
-    		System.out.println(armureActuel.toString());
+    		System.out.println(Hero.getInstance().getBackgroundActuel().toString());
     		break;
     		
     	case ANIMAL:
@@ -214,11 +217,28 @@ public class ControleurPimpMyHero extends Controleur {
 	public void notifierSelectionColorPicker(ColorPicker cp) {
 		Logger.logMsg(Logger.INFO, "notifierSelectionColorPicker");
 		VuePimpMyHero.getInstance().changerCouleurLabel(cp.getValue());
+		Hero.getInstance().setCouleurNom(cp.getValue());
 	}
 
 	public void notifierChangementTitre(String text) {
 		Logger.logMsg(Logger.INFO, "notifierChangementTitre");
 		VuePimpMyHero.getInstance().changerTitre(text);
+		Hero.getInstance().setNom(text);
 		//test
+	}
+	
+	public void sauvegarderHero() {
+		Logger.logMsg(Logger.INFO, "sauvegarderHero()" );
+		Exporteur exporter =  new Exporteur();
+		exporter.sauvegarder(Hero.getInstance());
+	}
+
+	public void notifierSuppressionAsset(String idButton){
+		Logger.logMsg(Logger.INFO, "notifierSuppressionAsset");
+		// Enlever le "bouton-suppression" du idButton
+		String idAsset = idButton.substring(19);
+		System.out.println("idAsset : " + idAsset);
+		VuePimpMyHero.getInstance().supprimerAsset(idButton);
+		VuePimpMyHero.getInstance().supprimerAsset(idAsset);
 	}
 }
