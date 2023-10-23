@@ -156,31 +156,31 @@ public class ControleurPimpMyHero extends Controleur {
     	case CASQUE:
     		Hero.getInstance().setCasqueActuel(CASQUE.valueOf("CASQUE" + id));
     		vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
-    		System.out.println(Hero.getInstance().getCasqueActuel().toString());
+    		System.out.println("Hero.getInstance().getCasqueActuel() : " + Hero.getInstance().getCasqueActuel().toString());
     		break;
     		
     	case ARMURE:
     		Hero.getInstance().setArmureActuelle(ARMURE.valueOf("ARMURE" + id));
     		vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
-    		System.out.println(Hero.getInstance().getArmureActuelle().toString());
+    		System.out.println("Hero.getInstance().getArmureActuelle() : " + Hero.getInstance().getArmureActuelle().toString());
     		break;
     		
     	case CAPE:
     		Hero.getInstance().setCapeActuelle(CAPE.valueOf("CAPE" + id));
     		vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
-    		System.out.println(Hero.getInstance().getCapeActuelle().toString());
+    		System.out.println("Hero.getInstance().getCapeActuelle() : " + Hero.getInstance().getCapeActuelle().toString());
     		break;
     		
     	case BOTTES:
     		Hero.getInstance().setBottesActuelles(BOTTES.valueOf("BOTTES" + id));
     		vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
-    		System.out.println(Hero.getInstance().getBottesActuelles().toString());
+    		System.out.println("Hero.getInstance().getBottesActuelles() : " + Hero.getInstance().getBottesActuelles().toString());
     		break;
     		
     	case BACKGROUND:
     		Hero.getInstance().setBackgroundActuel(BACKGROUND.valueOf("BACKGROUND" + id));
     		vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
-    		System.out.println(Hero.getInstance().getBackgroundActuel().toString());
+    		System.out.println("Hero.getInstance().getBackgroundActuel() : " + Hero.getInstance().getBackgroundActuel().toString());
     		break;
     		
     	case ANIMAL:
@@ -202,7 +202,7 @@ public class ControleurPimpMyHero extends Controleur {
 	    			animalChoisi = Animal.ANIMAL.ANIMAL5;
 	    			break;	
 	    	}
-    		System.out.println(animalChoisi.toString());
+    		System.out.println("animalChoisi : " + animalChoisi);
     		break;
     	}
     }
@@ -210,10 +210,12 @@ public class ControleurPimpMyHero extends Controleur {
 
 
 	public void notifierAjoutAnimal(double x, double y) {
-		if (animalChoisi != null)
-			VuePimpMyHero.getInstance().ajouterAnimal(x,y, animalChoisi);
-			listeAnimalActuel.add(new Animal(animalChoisi,x,y));
+		Logger.logMsg(Logger.INFO, "notifierAjoutAnimal");
+		if (animalChoisi != null) {
+			VuePimpMyHero.getInstance().ajouterAnimal(x, y, animalChoisi);
+			listeAnimalActuel.add(new Animal(animalChoisi, x, y));
 			Hero.getInstance().setAnimals(listeAnimalActuel);
+		}
 	}
 
     

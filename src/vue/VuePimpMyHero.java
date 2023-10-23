@@ -163,12 +163,13 @@ public class VuePimpMyHero extends Vue {
     }
 
     public Button creerBoutonSuppression(Assets.ASSETS asset, double posX, double posY) {
-        System.out.println("creerBoutonSuppression : " + asset);
+        System.out.println("creerBoutonSuppression1 : " + asset);
         String idAsset = asset.toString().toLowerCase();
         return creerBoutonSuppression(idAsset, posX, posY);
     }
 
     public Button creerBoutonSuppression(String idAsset, double posX, double posY) {
+        System.out.println("creerBoutonSuppression2 : " + idAsset);
         // On prend tout ce qui est avant le premier tiret
         String nomAsset = idAsset.split("-")[0];
         Assets.ASSETS asset = Assets.ASSETS.valueOf(nomAsset.toUpperCase());
@@ -192,6 +193,7 @@ public class VuePimpMyHero extends Vue {
     }
 
     public void reorganiserLayers() {
+        System.out.println("reorganiserLayers");
         for (Assets.ASSETS asset : Assets.ASSETS.values()) {
             String assetString = asset.toString().toLowerCase();
 
@@ -247,13 +249,23 @@ public class VuePimpMyHero extends Vue {
     public void supprimerAsset(String id) {
         System.out.println("supprimerAsset : " + id);
         //Récupérer l'asset s'il existe
-        try {
-            AnchorPane conteneur = (AnchorPane) lookup("#anchor-personage-pane");
-            conteneur.getChildren().remove(lookup("#" + id));
-            Logger.logMsg(Logger.INFO, "L'asset " + id + " a été supprimé");
-        } catch (NullPointerException e) {
-            Logger.logMsg(Logger.INFO, "L'asset " + id + " n'existe pas");
+
+        AnchorPane conteneur = (AnchorPane) lookup("#anchor-personage-pane");
+        Node aSupprimer = lookup("#" + id);
+
+        if (aSupprimer == null) {
+            System.err.println("supprimerAsset : " + id + " n'a pas été trouvé");
+            return;
         }
+        else {
+            System.out.println("supprimerAsset : " + id + " a été trouvé : " + aSupprimer);
+        }
+
+        conteneur.getChildren().remove(aSupprimer);
+
+        aSupprimer = lookup("#" + id);
+        if (aSupprimer != null) System.err.println("supprimerAsset : " + id + " n'a pas été supprimé");
+        else System.out.println("supprimerAsset : " + id + " a été supprimé");
     }
 
     private void activerBouton(int idBouton) {
@@ -281,14 +293,12 @@ public class VuePimpMyHero extends Vue {
     private void activerBoutonSuppression(String idBouton) {
         System.out.println("activerBoutonSuppression : " + idBouton);
         Button bouton = (Button) lookup("#" + idBouton);
-        bouton.setOnAction((EventHandler<ActionEvent>) new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                System.out.println("activerBoutonSuppression : Clic sur " + bouton.getId());
-                controleur.notifierSuppressionAsset(idBouton);
-            }
+        bouton.setOnAction(event -> {
+            System.out.println("activerBoutonSuppression : Clic sur " + bouton.getId());
+            controleur.notifierSuppressionAsset(idBouton);
         });
     }
+
 
     public void afficherListe(String assetString, List<String> items) {
         Logger.logMsg(Logger.INFO, "VuePimpMyHero.afficherListe()");
