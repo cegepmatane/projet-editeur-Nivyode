@@ -39,7 +39,6 @@ public class VuePimpMyHero extends Vue {
         return VuePimpMyHero.instance;
     }
 
-    ;
 
     private VuePimpMyHero() {
         super("personnage.fxml", VuePimpMyHero.class, 1294, 743);
@@ -60,6 +59,8 @@ public class VuePimpMyHero extends Vue {
         }
         cp = (ColorPicker) lookup("#colorpicker");
 
+        //Test
+        supprimerAsset("animal-0");
     }
 
     public List<String> getBoutons() {
@@ -121,7 +122,7 @@ public class VuePimpMyHero extends Vue {
         assetImage.setImage(new Image("vue/images/" + assetString + "/" + assetString + elementId + ".png"));
 
         //Récupérer le conteneur
-        AnchorPane conteneur = (AnchorPane) lookup("#anchor-personage-pane");
+        AnchorPane conteneur = (AnchorPane) lookup("#terrain-de-creation");
 
         //Changer la taille de l'image
         assetImage.preserveRatioProperty().set(true);
@@ -250,7 +251,7 @@ public class VuePimpMyHero extends Vue {
         System.out.println("supprimerAsset : " + id);
         //Récupérer l'asset s'il existe
 
-        AnchorPane conteneur = (AnchorPane) lookup("#anchor-personage-pane");
+        AnchorPane conteneur = (AnchorPane) lookup("#terrain-de-creation");
         Node aSupprimer = lookup("#" + id);
 
         if (aSupprimer == null) {
