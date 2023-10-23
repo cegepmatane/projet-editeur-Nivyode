@@ -237,6 +237,14 @@ public class ControleurPimpMyHero extends Controleur {
 		Logger.logMsg(Logger.INFO, "sauvegarderHero()" );
 		Exporteur exporter =  new Exporteur();
 		exporter.sauvegarder(Hero.getInstance());
+
+		Timer timer = new Timer();
+		timer.schedule(new java.util.TimerTask() {
+			@Override
+			public void run() {
+				VuePimpMyHero.getInstance().resetEffetPush();
+			}
+		}, 1000);
 	}
 
 	public void notifierSuppressionAsset(String idButton){

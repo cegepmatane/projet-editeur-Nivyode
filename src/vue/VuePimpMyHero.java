@@ -129,7 +129,7 @@ public class VuePimpMyHero extends Vue {
         assetImage.setFitWidth(controleur.getAssetSize(asset));
 
         //Taille max disponible en X et Y
-        double maxX = conteneur.getWidth() - assetImage.getFitWidth(); // Bon ici je ne peux pas encore récupérer la largeur de l'image parce que je sais pas
+        double maxX = conteneur.getWidth() - assetImage.getFitWidth();
         double maxY = conteneur.getHeight() - assetImage.getFitHeight();
         System.out.println("maxX: " + maxX + " maxY: " + maxY);
 
@@ -381,6 +381,10 @@ public class VuePimpMyHero extends Vue {
                 pushedBouton = imageView;
             }
         }
+    }
+
+    public void resetEffetPush() {
+        if (pushedBouton != null) pushedBouton.setOpacity(1);
     }
 }
 
