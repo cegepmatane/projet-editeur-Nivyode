@@ -19,7 +19,7 @@ public class Hero implements Exportable{
 	private BACKGROUND backgroundActuel;
 	private String nom;
 	private Color couleurNom;
-	private List<Animal.ANIMAL> animals;
+	private List<Animal> animals;
 	
 	private static Hero instance;
 	
@@ -72,9 +72,11 @@ public class Hero implements Exportable{
 	public void setBackgroundActuel(BACKGROUND backgroundActuel) {
 		this.backgroundActuel = backgroundActuel;
 	}
-	public void ajouterAnimal(Animal.ANIMAL animal) {
-		System.out.println("Animal ajouté " + animal.toString());
-		this.animals.add(animal);
+	public List<Animal> getAnimals() {
+		return animals;
+	}
+	public void setAnimals(List<Animal> animals) {
+		this.animals = animals;
 	}
 	@Override
 	public String exporterJSON() {
@@ -93,9 +95,10 @@ public class Hero implements Exportable{
 		xml+="<bottes>"+bottesActuelles.toString()+"</bottes>";
 		xml+="<background>"+backgroundActuel.toString()+"</background>";
 		xml+="<animals>";
-		for (Animal.ANIMAL animal : animals) {
+		for (Animal animal : animals) {
 			xml+="<animal>"+animal.toString()+"</animal>";
 		}
+		xml+="</animals>";
 		return xml;
 	}
 }

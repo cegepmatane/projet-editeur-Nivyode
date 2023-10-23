@@ -31,7 +31,7 @@ public class ControleurPimpMyHero extends Controleur {
 	private Hero.CAPE capeActuel;
 	private Hero.BOTTES bottesActuel;
 	private Hero.BACKGROUND backgroundActuel;
-	private List<Animal.ANIMAL> listeAnimalActuel;
+	private List<Animal> listeAnimalActuel;
 	
 		
 
@@ -41,7 +41,7 @@ public class ControleurPimpMyHero extends Controleur {
 
     public void initialiser() {
         Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.initialiser()");
-        listeAnimalActuel = new ArrayList<Animal.ANIMAL>();
+        listeAnimalActuel = new ArrayList<Animal>();
         VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.CASQUE, 1);
 		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.ARMURE, 1);
 		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.CAPE, 1);
@@ -187,23 +187,19 @@ public class ControleurPimpMyHero extends Controleur {
     		switch(id) {
 	    		case 1:
 	    			animalChoisi = Animal.ANIMAL.ANIMAL1;
-	    			listeAnimalActuel.add(animalChoisi);
 	    			break;
 	    		case 2:
 	    			animalChoisi = Animal.ANIMAL.ANIMAL2;
-	    			listeAnimalActuel.add(animalChoisi);
 	    			break;
 	    		case 3:
 	    			animalChoisi = Animal.ANIMAL.ANIMAL3;
-	    			listeAnimalActuel.add(animalChoisi);
+	    			
 	    			break;
 	    		case 4:
 	    			animalChoisi = Animal.ANIMAL.ANIMAL4;
-	    			listeAnimalActuel.add(animalChoisi);
 	    			break;
 	    		case 5:
 	    			animalChoisi = Animal.ANIMAL.ANIMAL5;
-	    			listeAnimalActuel.add(animalChoisi);
 	    			break;	
 	    	}
     		System.out.println(animalChoisi.toString());
@@ -216,6 +212,8 @@ public class ControleurPimpMyHero extends Controleur {
 	public void notifierAjoutAnimal(double x, double y) {
 		if (animalChoisi != null)
 			VuePimpMyHero.getInstance().ajouterAnimal(x,y, animalChoisi);
+			listeAnimalActuel.add(new Animal(animalChoisi,x,y));
+			Hero.getInstance().setAnimals(listeAnimalActuel);
 	}
 
     
