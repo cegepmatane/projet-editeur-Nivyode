@@ -72,6 +72,7 @@ public class Hero implements Exportable{
 	public void setBackgroundActuel(BACKGROUND backgroundActuel) {
 		this.backgroundActuel = backgroundActuel;
 	}
+
 	public List<Animal> getAnimals() {
 		return animals;
 	}
@@ -87,18 +88,20 @@ public class Hero implements Exportable{
 	public String exporterXML() {
 		// TODO Auto-generated method stub
 		String xml = "";
-		xml+="<nom><titre>"+nom+"</titre>";
-		xml+="<couleurNom>"+couleurNom.toString()+"</couleurNom></nom>";
-		xml+= "<casque>"+casqueActuel.toString()+"</casque>";
-		xml+="<armure>"+armureActuelle.toString()+"</armure>";
-		xml+="<cape>"+capeActuelle.toString()+"</cape>";
-		xml+="<bottes>"+bottesActuelles.toString()+"</bottes>";
-		xml+="<background>"+backgroundActuel.toString()+"</background>";
+		if(nom != null)xml+="<nom><titre>"+nom+"</titre>";
+		if(couleurNom != null)xml+="<couleurNom>"+couleurNom.toString()+"</couleurNom></nom>";
+		if(casqueActuel != null)xml+= "<casque>"+casqueActuel.toString()+"</casque>";
+		if(armureActuelle != null)xml+="<armure>"+armureActuelle.toString()+"</armure>";
+		if(capeActuelle != null)xml+="<cape>"+capeActuelle.toString()+"</cape>";
+		if(bottesActuelles != null)xml+="<bottes>"+bottesActuelles.toString()+"</bottes>";
+		if(backgroundActuel != null)xml+="<background>"+backgroundActuel.toString()+"</background>";
+		if(animals != null) {
 		xml+="<animals>";
 		for (Animal animal : animals) {
 			xml+="<animal>"+animal.toString()+"</animal>";
 		}
 		xml+="</animals>";
+		}
 		return xml;
 	}
 }
