@@ -3,6 +3,7 @@ package modele;
 import java.util.List;
 
 import javafx.scene.paint.Color;
+import modele.Animal.ANIMAL;
 import utilitaire.Exportable;
 
 public class Hero implements Exportable{
@@ -18,7 +19,7 @@ public class Hero implements Exportable{
 	private BACKGROUND backgroundActuel;
 	private String nom;
 	private Color couleurNom;
-	private List<Animal> animals;
+	private List<Animal.ANIMAL> animals;
 	
 	private static Hero instance;
 	
@@ -40,12 +41,6 @@ public class Hero implements Exportable{
 	}
 	public void setCouleurNom(Color couleurNom) {
 		this.couleurNom = couleurNom;
-	}
-	public List<Animal> getAnimals() {
-		return animals;
-	}
-	public void setAnimals(List<Animal> animals) {
-		this.animals = animals;
 	}
 	public CASQUE getCasqueActuel() {
 		return casqueActuel;
@@ -77,6 +72,10 @@ public class Hero implements Exportable{
 	public void setBackgroundActuel(BACKGROUND backgroundActuel) {
 		this.backgroundActuel = backgroundActuel;
 	}
+	public void ajouterAnimal(Animal.ANIMAL animal) {
+		System.out.println("Animal ajouté " + animal.toString());
+		this.animals.add(animal);
+	}
 	@Override
 	public String exporterJSON() {
 		// TODO Auto-generated method stub
@@ -93,6 +92,10 @@ public class Hero implements Exportable{
 		xml+="<cape>"+capeActuelle.toString()+"</cape>";
 		xml+="<bottes>"+bottesActuelles.toString()+"</bottes>";
 		xml+="<background>"+backgroundActuel.toString()+"</background>";
+		xml+="<animals>";
+		for (Animal.ANIMAL animal : animals) {
+			xml+="<animal>"+animal.toString()+"</animal>";
+		}
 		return xml;
 	}
 }
