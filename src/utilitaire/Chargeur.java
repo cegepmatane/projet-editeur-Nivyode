@@ -61,12 +61,24 @@ public class Chargeur {
             for (Assets.ASSETS asset : Assets.ASSETS.values()) {
                 Element assetElement = (Element) root.getElementsByTagName(asset.toString().toLowerCase()).item(0);
                 if (assetElement == null || asset == Assets.ASSETS.ANIMAL) continue;
-                // Récupérer le nom de l'asset
-                String assetName = assetElement.getTextContent();
-                System.out.println("Asset Name: " + assetName);
 
-                ElementChargable elementChargable = new ElementChargable(assetName);
-                objets.add(elementChargable);
+                if (asset != Assets.ASSETS.LABEL) {
+                    // Récupérer le nom de l'asset
+                    String assetName = assetElement.getTextContent();
+                    System.out.println("Asset Name: " + assetName);
+
+                    ElementChargable elementChargable = new ElementChargable(assetName);
+                    objets.add(elementChargable);
+                }
+                else {
+                    // <label><titre>LABEL</titre><couleurNom>0x666666ff</couleurNom></label>
+                    Element titreElement = (Element) assetElement.getElementsByTagName("titre").item(0);
+                    Element couleurNomElement = (Element) assetElement.getElementsByTagName("couleurNom").item(0);
+                    System.out.println("titreElement : " + titreElement.getTextContent() + " couleurNomElement : " + couleurNomElement.getTextContent());
+
+                    ElementChargable elementChargable = new ElementChargable(asset.toString().toLowerCase(), -1, -1, titreElement.getTextContent(), couleurNomElement.getTextContent());
+                    objets.add(elementChargable);
+                }
             }
 
             // Pour chaque animal, récupérer le nom et les coordonnées

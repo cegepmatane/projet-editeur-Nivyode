@@ -3,7 +3,6 @@ package modele;
 import java.util.List;
 
 import javafx.scene.paint.Color;
-import modele.Animal.ANIMAL;
 import utilitaire.Exportable;
 
 public class Hero implements Exportable{
@@ -18,7 +17,7 @@ public class Hero implements Exportable{
 	private CAPE capeActuelle;
 	private BOTTES bottesActuelles;
 	private BACKGROUND backgroundActuel;
-	private String nom;
+	private String label;
 	private Color couleurNom;
 	private List<Animal> animals;
 	
@@ -31,11 +30,11 @@ public class Hero implements Exportable{
 		}
 		return instance;
 	}
-	public String getNom() {
-		return nom;
+	public String getLabel() {
+		return label;
 	}
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setLabel(String label) {
+		this.label = label;
 	}
 	public Color getCouleurNom() {
 		return couleurNom;
@@ -100,6 +99,26 @@ public class Hero implements Exportable{
 			break;
 		}
 	}
+
+	public void enleverAssetActuel(Assets.ASSETS asset) {
+		switch(asset) {
+		case CASQUE:
+			setCasqueActuel(null);
+			break;
+		case ARMURE:
+			setArmureActuelle(null);
+			break;
+		case CAPE:
+			setCapeActuelle(null);
+			break;
+		case BOTTES:
+			setBottesActuelles(null);
+			break;
+		case BACKGROUND:
+			setBackgroundActuel(null);
+			break;
+		}
+	}
 	@Override
 	public String exporterJSON() {
 		return null;
@@ -107,8 +126,8 @@ public class Hero implements Exportable{
 	@Override
 	public String exporterXML() {
 		String xml = "";
-		if(nom != null)xml+="<nom><titre>"+nom+"</titre>";
-		if(couleurNom != null)xml+="<couleurNom>"+couleurNom.toString()+"</couleurNom></nom>";
+		if(label != null)xml+="<label><titre>"+ label +"</titre>";
+		if(couleurNom != null)xml+="<couleurNom>"+couleurNom.toString()+"</couleurNom></label>";
 		if(casqueActuel != null)xml+= "<casque>"+casqueActuel.toString()+"</casque>";
 		if(armureActuelle != null)xml+="<armure>"+armureActuelle.toString()+"</armure>";
 		if(capeActuelle != null)xml+="<cape>"+capeActuelle.toString()+"</cape>";

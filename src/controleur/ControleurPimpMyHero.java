@@ -1,10 +1,9 @@
 package controleur;
 
 import architecture.Controleur;
+import architecture.Vue;
 import javafx.scene.control.ColorPicker;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -22,10 +21,8 @@ import modele.Hero.BOTTES;
 import modele.Hero.CAPE;
 import modele.Hero.CASQUE;
 import utilitaire.Chargeur;
-import utilitaire.Exportable;
 import utilitaire.Exporteur;
 import vue.VuePimpMyHero;
-import java.io.FileWriter;
 
 
 public class ControleurPimpMyHero extends Controleur {
@@ -35,8 +32,6 @@ public class ControleurPimpMyHero extends Controleur {
 	private List<Animal> listeAnimalActuel;
 	private boolean isSuppressionActive = false;
 
-	
-		
 
     public ControleurPimpMyHero() {
         Logger.logMsg(Logger.INFO, "new ControleurPimpMyHero()");
@@ -60,25 +55,46 @@ public class ControleurPimpMyHero extends Controleur {
 		}
 
 		for (ElementChargable element : elements) {
-			System.out.println("element : " + element);
-			// Séparer le nom de l'id (l'id est un numéro à la fin)
-			String[] nomId = element.getType().split("(?<=\\D)(?=\\d)");
-			String nom = nomId[0];
-			int id = Integer.parseInt(nomId[1]);
-			System.out.println("nom : " + nom + " id : " + id);
-			Assets.ASSETS asset = Assets.ASSETS.valueOf(nom.toUpperCase());
-			if (asset != ASSETS.ANIMAL) {
-				VuePimpMyHero.getInstance().changerAsset(asset, id);
-				Hero.getInstance().setAssetActuel(asset, id);
-			} else {
-				Animal.ANIMAL animal = Animal.ANIMAL.valueOf(nom.toUpperCase() + id);
-				VuePimpMyHero.getInstance().ajouterAnimal(element.getX(), element.getY(), animal);
+            System.out.println("element : " + element);
 
-				// Je fais avec le code que j'ai ok c'est pas ma faute
-				animalChoisi = animal;
-				notifierAjoutAnimal(element.getX(), element.getY());
-			}
-		}
+            ASSETS asset;
+			int id = -1;
+			String nom = null;
+            if (!element.getType().equals("label")) {
+                // Séparer le nom de l'id (l'id est un numéro à la fin)
+                String[] nomId = element.getType().split("(?<=\\D)(?=\\d)");
+                nom = nomId[0];
+                id = Integer.parseInt(nomId[1]);
+                System.out.println("nom : " + nom + " id : " + id);
+                asset = ASSETS.valueOf(nom.toUpperCase());
+            } else {
+                // C'est un label
+                VuePimpMyHero.getInstance().changerTitre(element.getTexte());
+                VuePimpMyHero.getInstance().changerCouleurLabel(element.getCouleur());
+                Hero.getInstance().setLabel(element.getTexte());
+                Hero.getInstance().setCouleurNom(element.getCouleur());
+				asset = ASSETS.LABEL;
+            }
+
+            if (asset != ASSETS.ANIMAL && asset != ASSETS.LABEL) {
+                VuePimpMyHero.getInstance().changerAsset(asset, id);
+                Hero.getInstance().setAssetActuel(asset, id);
+            } else if (asset == ASSETS.ANIMAL) {
+                // Je fais avec le code que j'ai ok c'est pas ma faute
+                animalChoisi = Animal.ANIMAL.valueOf(nom.toUpperCase() + id);
+                notifierAjoutAnimal(element.getX(), element.getY());
+            } else {
+                // C'est un label
+				VuePimpMyHero.getInstance().changerTitre(element.getTexte());
+				VuePimpMyHero.getInstance().changerCouleurLabel(element.getCouleur());
+
+				VuePimpMyHero.getInstance().ecrireTitre(element.getTexte());
+				VuePimpMyHero.getInstance().setCouleurSelectionnee(element.getCouleur());
+
+				Hero.getInstance().setLabel(element.getTexte());
+				Hero.getInstance().setCouleurNom(element.getCouleur());
+            }
+        }
     }
 
 	public void changerBackgroundAleatoire() {
@@ -246,8 +262,8 @@ public class ControleurPimpMyHero extends Controleur {
 	public void notifierAjoutAnimal(double x, double y) {
 		Logger.logMsg(Logger.INFO, "notifierAjoutAnimal");
 		if (animalChoisi != null && !isSuppressionActive) {
-			VuePimpMyHero.getInstance().ajouterAnimal(x, y, animalChoisi);
-			listeAnimalActuel.add(new Animal(animalChoisi, x, y));
+			String id = VuePimpMyHero.getInstance().ajouterAnimal(x, y, animalChoisi);
+			listeAnimalActuel.add(new Animal(animalChoisi, x, y, id));
 			Hero.getInstance().setAnimals(listeAnimalActuel);
 		}
 	}
@@ -261,8 +277,7 @@ public class ControleurPimpMyHero extends Controleur {
 	public void notifierChangementTitre(String text) {
 		Logger.logMsg(Logger.INFO, "notifierChangementTitre");
 		VuePimpMyHero.getInstance().changerTitre(text);
-		Hero.getInstance().setNom(text);
-		//test
+		Hero.getInstance().setLabel(text);
 	}
 	
 	public void sauvegarderHero() {
@@ -288,5 +303,14 @@ public class ControleurPimpMyHero extends Controleur {
 		System.out.println("idAsset : " + idAsset);
 		VuePimpMyHero.getInstance().supprimerAsset(idButton);
 		VuePimpMyHero.getInstance().supprimerAsset(idAsset);
+
+		String nom = idAsset.split("-")[0];
+		if (nom.equals("animal")) {
+			listeAnimalActuel.removeIf(animal -> animal.getId().equals(idAsset));
+			Hero.getInstance().setAnimals(listeAnimalActuel);
+			return;
+		}
+
+		Hero.getInstance().enleverAssetActuel(Assets.ASSETS.valueOf(idAsset.toUpperCase()));
 	}
 }

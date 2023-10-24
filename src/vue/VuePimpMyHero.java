@@ -24,6 +24,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import modele.Animal.ANIMAL;
 import modele.Assets;
+import org.w3c.dom.Text;
 
 public class VuePimpMyHero extends Vue {
 
@@ -325,7 +326,7 @@ public class VuePimpMyHero extends Vue {
         label.setTextFill(value);
     }
 
-	public void ajouterAnimal(double x, double y, ANIMAL animalChoisi) {
+	public String ajouterAnimal(double x, double y, ANIMAL animalChoisi) {
 		
 		ImageView animalAjoute = new ImageView();
 		
@@ -363,6 +364,8 @@ public class VuePimpMyHero extends Vue {
         activerBoutonSuppression(boutonSuppression.getId());
 
         reorganiserLayers();
+
+        return animalAjoute.getId();
 	}
 
     public void ajouterEffetPush(String id) {
@@ -381,6 +384,16 @@ public class VuePimpMyHero extends Vue {
 
     public void resetEffetPush() {
         if (pushedBouton != null) pushedBouton.setOpacity(1);
+    }
+
+    public void ecrireTitre(String texte) {
+        TextField titre = (TextField) lookup("#titre");
+        titre.setText(texte);
+    }
+
+    public void setCouleurSelectionnee(Color couleur) {
+        ColorPicker cp = (ColorPicker) lookup("#colorpicker");
+        cp.setValue(couleur);
     }
 }
 
