@@ -26,12 +26,9 @@ public class ControleurPimpMyHero extends Controleur {
 	final int NOMBRE_CHOIX = 5;
 	private Assets.ASSETS typeChoisi ;
 	private Animal.ANIMAL animalChoisi;
-	private Hero.CASQUE casqueActuel;
-	private Hero.ARMURE armureActuel;
-	private Hero.CAPE capeActuel;
-	private Hero.BOTTES bottesActuel;
-	private Hero.BACKGROUND backgroundActuel;
 	private List<Animal> listeAnimalActuel;
+	private boolean isSuppressionActive = false;
+
 	
 		
 
@@ -78,6 +75,8 @@ public class ControleurPimpMyHero extends Controleur {
 		String identifiantBouton = VuePimpMyHero.getInstance().getBoutons().get(idBouton);
     	VuePimpMyHero.getInstance().ajouterEffetPush(identifiantBouton);
 
+		isSuppressionActive = false;
+
     	switch(idBouton) {
     	case 0:
     		//#bouton-selection-casque
@@ -108,7 +107,8 @@ public class ControleurPimpMyHero extends Controleur {
     		sauvegarderHero();
     		break;
     	case 7 :
-    		//#bouton-refaire
+    		//#bouton-supprimer
+			isSuppressionActive = true;
     		break;
     	case 8 :
     		//#bouton-annuler
@@ -137,8 +137,9 @@ public class ControleurPimpMyHero extends Controleur {
     		break;
     	}	
     }
- 
-    private void gererAffichageItem(Assets.ASSETS typeItem) {
+
+
+	private void gererAffichageItem(Assets.ASSETS typeItem) {
 		Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.gererAffichageItem()");
 		typeChoisi = typeItem;
     	String itemChoisi = typeItem.toString().toLowerCase();
@@ -206,19 +207,15 @@ public class ControleurPimpMyHero extends Controleur {
     		break;
     	}
     }
-    		
-
 
 	public void notifierAjoutAnimal(double x, double y) {
 		Logger.logMsg(Logger.INFO, "notifierAjoutAnimal");
-		if (animalChoisi != null) {
+		if (animalChoisi != null && !isSuppressionActive) {
 			VuePimpMyHero.getInstance().ajouterAnimal(x, y, animalChoisi);
 			listeAnimalActuel.add(new Animal(animalChoisi, x, y));
 			Hero.getInstance().setAnimals(listeAnimalActuel);
 		}
 	}
-
-    
     
 	public void notifierSelectionColorPicker(ColorPicker cp) {
 		Logger.logMsg(Logger.INFO, "notifierSelectionColorPicker");
@@ -244,11 +241,13 @@ public class ControleurPimpMyHero extends Controleur {
 			public void run() {
 				VuePimpMyHero.getInstance().resetEffetPush();
 			}
-		}, 1000);
+		}, 500);
 	}
 
 	public void notifierSuppressionAsset(String idButton){
 		Logger.logMsg(Logger.INFO, "notifierSuppressionAsset");
+		if (!isSuppressionActive) return;
+
 		// Enlever le "bouton-suppression" du idButton
 		String idAsset = idButton.substring(19);
 		System.out.println("idAsset : " + idAsset);

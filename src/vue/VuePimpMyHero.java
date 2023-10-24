@@ -52,15 +52,12 @@ public class VuePimpMyHero extends Vue {
         boutons.add("#bouton-selection-animal");
         boutons.add("#bouton-selection-background");
         boutons.add("#bouton-telechargement");
-        boutons.add("#bouton-refaire");
+        boutons.add("#bouton-supprimer");
         boutons.add("#bouton-annuler");
         for (int boutonChoix = 1; boutonChoix < 6; boutonChoix++) {
             boutons.add("#bouton-choix-" + boutonChoix);
         }
         cp = (ColorPicker) lookup("#colorpicker");
-
-        //Test
-        supprimerAsset("animal-0");
     }
 
     public List<String> getBoutons() {
@@ -186,7 +183,7 @@ public class VuePimpMyHero extends Vue {
 
     public void recouperBackground() {
         ImageView imageView = (ImageView) lookup("#background");
-        Pane imagePane = (Pane) lookup("#anchor-personage-pane");
+        Pane imagePane = (Pane) lookup("#terrain-de-creation");
 
         // Calculer la position horizontale pour centrer le viewport
         double viewportX = (imageView.getImage().getWidth() - imagePane.getWidth()) / 2;
@@ -353,8 +350,8 @@ public class VuePimpMyHero extends Vue {
 
 		animalAjoute.setPreserveRatio(true);
 		animalAjoute.setFitHeight(Assets.getAssetSize(Assets.ASSETS.ANIMAL));
-		animalAjoute.setX(x - 15);
-		animalAjoute.setY(y - 50);
+		animalAjoute.setX(x - 10);
+		animalAjoute.setY(y - 15);
         animalAjoute.setId("animal-" + compteurAnimaux++);
         System.out.println("animalAjoute.getId() : " + animalAjoute.getId());
 
