@@ -3,6 +3,8 @@ package controleur;
 import architecture.Controleur;
 import javafx.scene.control.ColorPicker;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -12,15 +14,19 @@ import javafx.geometry.Point2D;
 import modele.Animal;
 import modele.Assets;
 import modele.Assets.ASSETS;
+import modele.ElementChargable;
 import modele.Hero;
 import modele.Hero.ARMURE;
 import modele.Hero.BACKGROUND;
 import modele.Hero.BOTTES;
 import modele.Hero.CAPE;
 import modele.Hero.CASQUE;
+import utilitaire.Chargeur;
 import utilitaire.Exportable;
 import utilitaire.Exporteur;
 import vue.VuePimpMyHero;
+import java.io.FileWriter;
+
 
 public class ControleurPimpMyHero extends Controleur {
 	final int NOMBRE_CHOIX = 5;
@@ -39,12 +45,40 @@ public class ControleurPimpMyHero extends Controleur {
     public void initialiser() {
         Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.initialiser()");
         listeAnimalActuel = new ArrayList<Animal>();
-        VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.CASQUE, 1);
-		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.ARMURE, 1);
-		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.CAPE, 1);
-		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.BOTTES, 1);
-		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.BACKGROUND, 2);
-		//changerBackgroundAleatoire();
+
+		Chargeur chargeur = new Chargeur();
+		ArrayList<ElementChargable> elements = chargeur.chargerSauvegarde();
+
+		if (elements == null) {
+			VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.CASQUE, 1);
+			VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.ARMURE, 1);
+			VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.CAPE, 1);
+			VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.BOTTES, 1);
+			VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.BACKGROUND, 2);
+			//changerBackgroundAleatoire();
+			return;
+		}
+
+		for (ElementChargable element : elements) {
+			System.out.println("element : " + element);
+			// Séparer le nom de l'id (l'id est un numéro à la fin)
+			String[] nomId = element.getType().split("(?<=\\D)(?=\\d)");
+			String nom = nomId[0];
+			int id = Integer.parseInt(nomId[1]);
+			System.out.println("nom : " + nom + " id : " + id);
+			Assets.ASSETS asset = Assets.ASSETS.valueOf(nom.toUpperCase());
+			if (asset != ASSETS.ANIMAL) {
+				VuePimpMyHero.getInstance().changerAsset(asset, id);
+				Hero.getInstance().setAssetActuel(asset, id);
+			} else {
+				Animal.ANIMAL animal = Animal.ANIMAL.valueOf(nom.toUpperCase() + id);
+				VuePimpMyHero.getInstance().ajouterAnimal(element.getX(), element.getY(), animal);
+
+				// Je fais avec le code que j'ai ok c'est pas ma faute
+				animalChoisi = animal;
+				notifierAjoutAnimal(element.getX(), element.getY());
+			}
+		}
     }
 
 	public void changerBackgroundAleatoire() {
@@ -75,7 +109,7 @@ public class ControleurPimpMyHero extends Controleur {
 		String identifiantBouton = VuePimpMyHero.getInstance().getBoutons().get(idBouton);
     	VuePimpMyHero.getInstance().ajouterEffetPush(identifiantBouton);
 
-		isSuppressionActive = false;
+		if (idBouton != 7) isSuppressionActive = false;
 
     	switch(idBouton) {
     	case 0:
@@ -108,7 +142,8 @@ public class ControleurPimpMyHero extends Controleur {
     		break;
     	case 7 :
     		//#bouton-supprimer
-			isSuppressionActive = true;
+			isSuppressionActive = !isSuppressionActive;
+			if (!isSuppressionActive) VuePimpMyHero.getInstance().resetEffetPush();
     		break;
     	case 8 :
     		//#bouton-annuler
@@ -150,6 +185,7 @@ public class ControleurPimpMyHero extends Controleur {
 		}
     	vue.VuePimpMyHero.getInstance().afficherListe(itemChoisi, items);
     }
+
     private void changerItemChoisi(Assets.ASSETS itemChoisi, int id) {
     	Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.changerItemChoisi()");
 
@@ -194,7 +230,6 @@ public class ControleurPimpMyHero extends Controleur {
 	    			break;
 	    		case 3:
 	    			animalChoisi = Animal.ANIMAL.ANIMAL3;
-	    			
 	    			break;
 	    		case 4:
 	    			animalChoisi = Animal.ANIMAL.ANIMAL4;

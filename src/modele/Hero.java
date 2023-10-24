@@ -7,6 +7,7 @@ import modele.Animal.ANIMAL;
 import utilitaire.Exportable;
 
 public class Hero implements Exportable{
+
 	public enum CASQUE {CASQUE1, CASQUE2, CASQUE3, CASQUE4, CASQUE5, }
 	public enum ARMURE {ARMURE1, ARMURE2, ARMURE3, ARMURE4, ARMURE5, }
 	public enum CAPE {CAPE1, CAPE2, CAPE3, CAPE4, CAPE5, }
@@ -79,14 +80,32 @@ public class Hero implements Exportable{
 	public void setAnimals(List<Animal> animals) {
 		this.animals = animals;
 	}
+
+	public void setAssetActuel(Assets.ASSETS asset, int id) {
+		switch(asset) {
+		case CASQUE:
+			setCasqueActuel(CASQUE.valueOf("CASQUE" + id));
+			break;
+		case ARMURE:
+			setArmureActuelle(ARMURE.valueOf("ARMURE" + id));
+			break;
+		case CAPE:
+			setCapeActuelle(CAPE.valueOf("CAPE" + id));
+			break;
+		case BOTTES:
+			setBottesActuelles(BOTTES.valueOf("BOTTES" + id));
+			break;
+		case BACKGROUND:
+			setBackgroundActuel(BACKGROUND.valueOf("BACKGROUND" + id));
+			break;
+		}
+	}
 	@Override
 	public String exporterJSON() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
 	public String exporterXML() {
-		// TODO Auto-generated method stub
 		String xml = "";
 		if(nom != null)xml+="<nom><titre>"+nom+"</titre>";
 		if(couleurNom != null)xml+="<couleurNom>"+couleurNom.toString()+"</couleurNom></nom>";

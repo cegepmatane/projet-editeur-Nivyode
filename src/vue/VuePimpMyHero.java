@@ -315,7 +315,6 @@ public class VuePimpMyHero extends Vue {
     }
 
 
-
     public void changerTitre(String text) {
         Label label = (Label)lookup("#label");
         label.setText(text);
