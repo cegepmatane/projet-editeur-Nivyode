@@ -71,12 +71,16 @@ public class Chargeur {
                     objets.add(elementChargable);
                 }
                 else {
-                    // <label><titre>LABEL</titre><couleurNom>0x666666ff</couleurNom></label>
                     Element titreElement = (Element) assetElement.getElementsByTagName("titre").item(0);
                     Element couleurNomElement = (Element) assetElement.getElementsByTagName("couleurNom").item(0);
-                    System.out.println("titreElement : " + titreElement.getTextContent() + " couleurNomElement : " + couleurNomElement.getTextContent());
 
-                    ElementChargable elementChargable = new ElementChargable(asset.toString().toLowerCase(), -1, -1, titreElement.getTextContent(), couleurNomElement.getTextContent());
+                    String couleur;
+                    if (couleurNomElement == null) couleur = "#333333";
+                    else couleur = couleurNomElement.getTextContent();
+
+                    System.out.println("titreElement : " + titreElement.getTextContent() + " couleurNomElement : " + couleur);
+
+                    ElementChargable elementChargable = new ElementChargable(asset.toString().toLowerCase(), -1, -1, titreElement.getTextContent(), couleur);
                     objets.add(elementChargable);
                 }
             }
