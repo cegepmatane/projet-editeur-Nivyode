@@ -2,6 +2,9 @@ package controleur;
 
 import architecture.Controleur;
 import architecture.Vue;
+import controleur.commande.Commande;
+import controleur.commande.CommandeChangerAsset;
+import controleur.commande.Historique;
 import javafx.scene.control.ColorPicker;
 
 import java.util.ArrayList;
@@ -31,7 +34,7 @@ public class ControleurPimpMyHero extends Controleur {
 	private Animal.ANIMAL animalChoisi;
 	private List<Animal> listeAnimalActuel;
 	private boolean isSuppressionActive = false;
-
+    private Historique historique;
 
     public ControleurPimpMyHero() {
         Logger.logMsg(Logger.INFO, "new ControleurPimpMyHero()");
@@ -40,16 +43,37 @@ public class ControleurPimpMyHero extends Controleur {
     public void initialiser() {
         Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.initialiser()");
         listeAnimalActuel = new ArrayList<Animal>();
+		historique = new Historique();
 
 		Chargeur chargeur = new Chargeur();
 		ArrayList<ElementChargable> elements = chargeur.chargerSauvegarde();
 
 		if (elements == null) {
+			CommandeChangerAsset commande;
+
+			commande = new CommandeChangerAsset(Assets.ASSETS.CASQUE, 1);
+			commande.executer();
+
+			commande = new CommandeChangerAsset(Assets.ASSETS.ARMURE, 1);
+			commande.executer();
+
+			commande = new CommandeChangerAsset(Assets.ASSETS.CAPE, 1);
+			commande.executer();
+
+			commande = new CommandeChangerAsset(Assets.ASSETS.BOTTES, 1);
+			commande.executer();
+
+			commande = new CommandeChangerAsset(Assets.ASSETS.BACKGROUND, 2);
+			commande.executer();
+
+			/* REMOVED
 			VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.CASQUE, 1);
 			VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.ARMURE, 1);
 			VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.CAPE, 1);
 			VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.BOTTES, 1);
 			VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.BACKGROUND, 2);
+			 */
+
 			//changerBackgroundAleatoire();
 			return;
 		}
@@ -77,7 +101,12 @@ public class ControleurPimpMyHero extends Controleur {
             }
 
             if (asset != ASSETS.ANIMAL && asset != ASSETS.LABEL) {
-                VuePimpMyHero.getInstance().changerAsset(asset, id);
+				CommandeChangerAsset commande = new CommandeChangerAsset(asset, id);
+				commande.executer();
+				historique.ajouter(commande);
+
+                //VuePimpMyHero.getInstance().changerAsset(asset, id); // REMOVED
+
                 Hero.getInstance().setAssetActuel(asset, id);
             } else if (asset == ASSETS.ANIMAL) {
                 // Je fais avec le code que j'ai ok c'est pas ma faute
@@ -100,7 +129,11 @@ public class ControleurPimpMyHero extends Controleur {
 	public void changerBackgroundAleatoire() {
 		Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.changerBackgroundAleatoire()");
 		int random = (int)(Math.random() * 5 + 1);
-		VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.BACKGROUND,random);
+
+		CommandeChangerAsset commande = new CommandeChangerAsset(Assets.ASSETS.BACKGROUND, random);
+		commande.executer();
+
+		// VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.BACKGROUND,random); REMOVED
 		// Schedule the task to run in 3 seconds
 		Timer timer = new Timer();
 		timer.schedule(new java.util.TimerTask() {
@@ -205,34 +238,40 @@ public class ControleurPimpMyHero extends Controleur {
     private void changerItemChoisi(Assets.ASSETS itemChoisi, int id) {
     	Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.changerItemChoisi()");
 
+		if (itemChoisi != Assets.ASSETS.ANIMAL) {
+			CommandeChangerAsset commande = new CommandeChangerAsset(itemChoisi, id); // TODO add ancien id
+			commande.executer();
+			historique.ajouter(commande);
+		}
+
     	switch(itemChoisi) {
     	case CASQUE:
     		Hero.getInstance().setCasqueActuel(CASQUE.valueOf("CASQUE" + id));
-    		vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
+    		//vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
     		System.out.println("Hero.getInstance().getCasqueActuel() : " + Hero.getInstance().getCasqueActuel().toString());
     		break;
     		
     	case ARMURE:
     		Hero.getInstance().setArmureActuelle(ARMURE.valueOf("ARMURE" + id));
-    		vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
+    		//vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
     		System.out.println("Hero.getInstance().getArmureActuelle() : " + Hero.getInstance().getArmureActuelle().toString());
     		break;
     		
     	case CAPE:
     		Hero.getInstance().setCapeActuelle(CAPE.valueOf("CAPE" + id));
-    		vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
+    		//vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
     		System.out.println("Hero.getInstance().getCapeActuelle() : " + Hero.getInstance().getCapeActuelle().toString());
     		break;
     		
     	case BOTTES:
     		Hero.getInstance().setBottesActuelles(BOTTES.valueOf("BOTTES" + id));
-    		vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
+    		//vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
     		System.out.println("Hero.getInstance().getBottesActuelles() : " + Hero.getInstance().getBottesActuelles().toString());
     		break;
     		
     	case BACKGROUND:
     		Hero.getInstance().setBackgroundActuel(BACKGROUND.valueOf("BACKGROUND" + id));
-    		vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
+    		//vue.VuePimpMyHero.getInstance().changerAsset(itemChoisi, id);
     		System.out.println("Hero.getInstance().getBackgroundActuel() : " + Hero.getInstance().getBackgroundActuel().toString());
     		break;
     		

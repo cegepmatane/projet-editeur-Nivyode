@@ -23,7 +23,7 @@ public class Exporteur {
 			fichier.write(texte);
 			fichier.close();
 		}
-		catch(IOException ioe)
+		catch(IOException ignored)
 		{
 		}
 	}
