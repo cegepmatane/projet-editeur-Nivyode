@@ -36,7 +36,7 @@ public class VuePimpMyHero extends Vue {
     protected ColorPicker cp;
     protected ImageView pushedBouton;
     protected int compteurAnimaux = 0;
-    protected Historique historique = new Historique();
+    protected Historique historique = Historique.getInstance();
 
     public static VuePimpMyHero getInstance() {
         if (null == instance) instance = new VuePimpMyHero();

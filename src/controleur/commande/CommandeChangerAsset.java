@@ -26,8 +26,9 @@ public class CommandeChangerAsset extends Commande {
 
         if (this.asset != Assets.ASSETS.ANIMAL) {
             Commande ancienneCommande = Historique.getInstance().getCommandePrecedenteMemeType(this.asset);
+            if (this.asset == Assets.ASSETS.BACKGROUND && ancienneCommande == null) return;
             if (ancienneCommande == null) {
-                VuePimpMyHero.getInstance().supprimerAsset(String.valueOf(this.asset));
+                VuePimpMyHero.getInstance().supprimerAsset(this.asset.toString().toLowerCase());
                 return;
             }
             int ancienElementId = ((CommandeChangerAsset) ancienneCommande).getElementId();

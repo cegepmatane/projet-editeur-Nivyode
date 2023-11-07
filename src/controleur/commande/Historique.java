@@ -1,5 +1,6 @@
 package controleur.commande;
 
+import com.sun.media.jfxmedia.logging.Logger;
 import modele.Assets;
 
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ public class Historique {
     protected ArrayList<Commande> commandes;
     public static Historique instance = null;
 
-    public Historique() {
+    private Historique() {
         commandes = new ArrayList<Commande>();
         instance = this;
     }
@@ -40,6 +41,7 @@ public class Historique {
     }
 
     public Commande getCommandePrecedenteMemeType(Assets.ASSETS type) {
+        Logger.logMsg(Logger.INFO, "Historique.getCommandePrecedenteMemeType()");
         // Parcourir la liste des commandes à l'envers
         for (int i = commandes.size() - 2; i >= 0; i--) {
             Commande commande = commandes.get(i);

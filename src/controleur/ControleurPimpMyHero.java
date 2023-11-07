@@ -3,6 +3,7 @@ package controleur;
 import architecture.Controleur;
 import controleur.commande.CommandeAjouterAnimal;
 import controleur.commande.CommandeChangerAsset;
+import controleur.commande.CommandeChangerTitre;
 import controleur.commande.Historique;
 import javafx.scene.control.ColorPicker;
 
@@ -42,7 +43,7 @@ public class ControleurPimpMyHero extends Controleur {
     public void initialiser() {
         Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.initialiser()");
         listeAnimalActuel = new ArrayList<Animal>();
-		historique = new Historique();
+		historique = Historique.getInstance();
 
 		Chargeur chargeur = new Chargeur();
 		ArrayList<ElementChargable> elements = chargeur.chargerSauvegarde();
@@ -333,7 +334,10 @@ public class ControleurPimpMyHero extends Controleur {
 
 	public void notifierChangementTitre(String text) {
 		Logger.logMsg(Logger.INFO, "notifierChangementTitre");
-		VuePimpMyHero.getInstance().changerTitre(text);
+		CommandeChangerTitre commande = new CommandeChangerTitre(text);
+		commande.executer();
+		historique.ajouter(commande);
+
 		Hero.getInstance().setLabel(text);
 	}
 	
