@@ -7,6 +7,8 @@ import java.util.List;
 
 import com.sun.media.jfxmedia.logging.Logger;
 import controleur.ControleurPimpMyHero;
+import controleur.commande.CommandeChangerAsset;
+import controleur.commande.Historique;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
@@ -34,6 +36,7 @@ public class VuePimpMyHero extends Vue {
     protected ColorPicker cp;
     protected ImageView pushedBouton;
     protected int compteurAnimaux = 0;
+    protected Historique historique = new Historique();
 
     public static VuePimpMyHero getInstance() {
         if (null == instance) instance = new VuePimpMyHero();

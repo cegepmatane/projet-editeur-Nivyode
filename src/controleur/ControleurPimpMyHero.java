@@ -3,6 +3,7 @@ package controleur;
 import architecture.Controleur;
 import architecture.Vue;
 import controleur.commande.Commande;
+import controleur.commande.CommandeAjouterAnimal;
 import controleur.commande.CommandeChangerAsset;
 import controleur.commande.Historique;
 import javafx.scene.control.ColorPicker;
@@ -26,6 +27,8 @@ import modele.Hero.CASQUE;
 import utilitaire.Chargeur;
 import utilitaire.Exporteur;
 import vue.VuePimpMyHero;
+
+import javax.management.StringValueExp;
 
 
 public class ControleurPimpMyHero extends Controleur {
@@ -53,18 +56,23 @@ public class ControleurPimpMyHero extends Controleur {
 
 			commande = new CommandeChangerAsset(Assets.ASSETS.CASQUE, 1);
 			commande.executer();
+			historique.ajouter(commande);
 
 			commande = new CommandeChangerAsset(Assets.ASSETS.ARMURE, 1);
 			commande.executer();
+			historique.ajouter(commande);
 
 			commande = new CommandeChangerAsset(Assets.ASSETS.CAPE, 1);
 			commande.executer();
+			historique.ajouter(commande);
 
 			commande = new CommandeChangerAsset(Assets.ASSETS.BOTTES, 1);
 			commande.executer();
+			historique.ajouter(commande);
 
 			commande = new CommandeChangerAsset(Assets.ASSETS.BACKGROUND, 2);
 			commande.executer();
+			historique.ajouter(commande);
 
 			/* REMOVED
 			VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.CASQUE, 1);
@@ -195,6 +203,7 @@ public class ControleurPimpMyHero extends Controleur {
 			if (!isSuppressionActive) VuePimpMyHero.getInstance().resetEffetPush();
     		break;
     	case 8 :
+			historique.undo();
     		//#bouton-annuler
     		break;
     	case 9 :
@@ -239,7 +248,7 @@ public class ControleurPimpMyHero extends Controleur {
     	Logger.logMsg(Logger.INFO, "ControleurPimpMyHero.changerItemChoisi()");
 
 		if (itemChoisi != Assets.ASSETS.ANIMAL) {
-			CommandeChangerAsset commande = new CommandeChangerAsset(itemChoisi, id); // TODO add ancien id
+			CommandeChangerAsset commande = new CommandeChangerAsset(itemChoisi, id);
 			commande.executer();
 			historique.ajouter(commande);
 		}
@@ -301,10 +310,23 @@ public class ControleurPimpMyHero extends Controleur {
 	public void notifierAjoutAnimal(double x, double y) {
 		Logger.logMsg(Logger.INFO, "notifierAjoutAnimal");
 		if (animalChoisi != null && !isSuppressionActive) {
+
+			/* DELETED CODE
 			String id = VuePimpMyHero.getInstance().ajouterAnimal(x, y, animalChoisi);
 			listeAnimalActuel.add(new Animal(animalChoisi, x, y, id));
 			Hero.getInstance().setAnimals(listeAnimalActuel);
+			*/
+
+			CommandeAjouterAnimal commande = new CommandeAjouterAnimal((int) x, (int) y, animalChoisi, this);
+			commande.executer();
+			historique.ajouter(commande);
 		}
+	}
+
+	public void ajouterAnimaltoList(Animal.ANIMAL animal, int x, int y, String id) {
+		Logger.logMsg(Logger.INFO, "ajouterAnimaltoList");
+		listeAnimalActuel.add(new Animal(animal, x, y, id));
+		Hero.getInstance().setAnimals(listeAnimalActuel);
 	}
     
 	public void notifierSelectionColorPicker(ColorPicker cp) {
