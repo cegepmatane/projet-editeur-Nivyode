@@ -70,9 +70,9 @@ public class ControleurPimpMyHero extends Controleur {
             } else {
                 // C'est un label
                 VuePimpMyHero.getInstance().changerTitre(element.getTexte());
-                VuePimpMyHero.getInstance().changerCouleurLabel(element.getCouleur());
+                VuePimpMyHero.getInstance().changerCouleurLabel(element.getCouleur().toString());
                 Hero.getInstance().setLabel(element.getTexte());
-                Hero.getInstance().setCouleurNom(element.getCouleur());
+                Hero.getInstance().setCouleurNom(element.getCouleur().toString());
 				asset = ASSETS.LABEL;
             }
 
@@ -86,13 +86,13 @@ public class ControleurPimpMyHero extends Controleur {
             } else {
                 // C'est un label
 				VuePimpMyHero.getInstance().changerTitre(element.getTexte());
-				VuePimpMyHero.getInstance().changerCouleurLabel(element.getCouleur());
+				VuePimpMyHero.getInstance().changerCouleurLabel(element.getCouleur().toString());
 
 				VuePimpMyHero.getInstance().ecrireTitre(element.getTexte());
 				VuePimpMyHero.getInstance().setCouleurSelectionnee(element.getCouleur());
 
 				Hero.getInstance().setLabel(element.getTexte());
-				Hero.getInstance().setCouleurNom(element.getCouleur());
+				Hero.getInstance().setCouleurNom(element.getCouleur().toString());
             }
         }
     }
@@ -268,10 +268,10 @@ public class ControleurPimpMyHero extends Controleur {
 		}
 	}
     
-	public void notifierSelectionColorPicker(ColorPicker cp) {
+	public void notifierSelectionColorPicker(String couleur) {
 		Logger.logMsg(Logger.INFO, "notifierSelectionColorPicker");
-		VuePimpMyHero.getInstance().changerCouleurLabel(cp.getValue());
-		Hero.getInstance().setCouleurNom(cp.getValue());
+		VuePimpMyHero.getInstance().changerCouleurLabel(couleur);
+		Hero.getInstance().setCouleurNom(couleur);
 	}
 
 	public void notifierChangementTitre(String text) {
