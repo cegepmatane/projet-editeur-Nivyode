@@ -1,8 +1,6 @@
 package controleur;
 
 import architecture.Controleur;
-import architecture.Vue;
-import controleur.commande.Commande;
 import controleur.commande.CommandeAjouterAnimal;
 import controleur.commande.CommandeChangerAsset;
 import controleur.commande.Historique;
@@ -27,8 +25,6 @@ import modele.Hero.CASQUE;
 import utilitaire.Chargeur;
 import utilitaire.Exporteur;
 import vue.VuePimpMyHero;
-
-import javax.management.StringValueExp;
 
 
 public class ControleurPimpMyHero extends Controleur {
