@@ -161,13 +161,13 @@ public class VuePimpMyHero extends Vue {
         reorganiserLayers();
     }
 
-    private Button creerBoutonSuppression(Assets.ASSETS asset, double posX, double posY) {
+    public Button creerBoutonSuppression(Assets.ASSETS asset, double posX, double posY) {
         System.out.println("creerBoutonSuppression1 : " + asset);
         String idAsset = asset.toString().toLowerCase();
         return creerBoutonSuppression(idAsset, posX, posY);
     }
 
-    private Button creerBoutonSuppression(String idAsset, double posX, double posY) {
+    public Button creerBoutonSuppression(String idAsset, double posX, double posY) {
         System.out.println("creerBoutonSuppression2 : " + idAsset);
         // On prend tout ce qui est avant le premier tiret
         String nomAsset = idAsset.split("-")[0];
