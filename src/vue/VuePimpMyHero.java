@@ -286,7 +286,7 @@ public class VuePimpMyHero extends Vue {
             @Override
             public void handle(ActionEvent e) {
                 System.out.println("Clic sur " + cp.getId());
-                controleur.notifierSelectionColorPicker(cp);
+                controleur.notifierSelectionColorPicker(cp.getValue().toString());
                 System.out.println("La couleur c'est" + cp.getValue());
             }
         });
@@ -324,9 +324,9 @@ public class VuePimpMyHero extends Vue {
         label.setText(text);
     }
 
-    public void changerCouleurLabel(Color value) {
+    public void changerCouleurLabel(String couleur) {
         Label label = (Label)lookup("#label");
-        label.setTextFill(value);
+        label.setTextFill(Color.web(couleur));
     }
 
 	public String ajouterAnimal(double x, double y, ANIMAL animalChoisi) {

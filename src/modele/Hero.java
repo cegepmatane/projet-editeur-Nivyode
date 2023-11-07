@@ -39,8 +39,8 @@ public class Hero implements Exportable{
 	public Color getCouleurNom() {
 		return couleurNom;
 	}
-	public void setCouleurNom(Color couleurNom) {
-		this.couleurNom = couleurNom;
+	public void setCouleurNom(String couleurNom) {
+		this.couleurNom = Color.valueOf(couleurNom);
 	}
 	public CASQUE getCasqueActuel() {
 		return casqueActuel;
