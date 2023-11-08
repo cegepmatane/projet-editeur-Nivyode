@@ -361,12 +361,11 @@ public class ControleurPimpMyHero extends Controleur {
 		Logger.logMsg(Logger.INFO, "notifierSuppressionAsset");
 		if (!isSuppressionActive) return;
 
-		// Enlever le "bouton-suppression" du idButton
-		String idAsset = idButton.substring(19);
-		System.out.println("idAsset : " + idAsset);
-		VuePimpMyHero.getInstance().supprimerAsset(idButton);
-		VuePimpMyHero.getInstance().supprimerAsset(idAsset);
+		Commande supprimer = new CommandeSupprimer(idButton);
+		supprimer.executer();
+		historique.ajouter(supprimer);
 
+		String idAsset = idButton.substring(19);
 		String nom = idAsset.split("-")[0];
 		if (nom.equals("animal")) {
 			listeAnimalActuel.removeIf(animal -> animal.getId().equals(idAsset));

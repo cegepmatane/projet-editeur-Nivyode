@@ -52,4 +52,17 @@ public class Historique {
         }
         return null;
     }
+
+    public Commande getCommandePrecedenteMemeTypeMemeId(Assets.ASSETS type, int id) {
+        Logger.logMsg(Logger.INFO, "Historique.getCommandePrecedenteMemeTypeMemeId()");
+        // Parcourir la liste des commandes à l'envers
+        for (int i = commandes.size() - 2; i >= 0; i--) {
+            Commande commande = commandes.get(i);
+            // Si l'asset de la commande est du même type que l'asset de la commande courante
+            if (commande.getAsset() == type && commande.getElementId() == id) {
+                return commande;
+            }
+        }
+        return null;
+    }
 }

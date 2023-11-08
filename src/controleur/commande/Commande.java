@@ -6,5 +6,8 @@ public abstract class Commande {
     public abstract void annuler();
     public abstract Object getAsset();
 
+    public int getElementId() {
+        return -1;
+    }
 }
 
