@@ -1,6 +1,6 @@
 package modele;
 
-import javafx.geometry.Point2D;
+import java.awt.geom.Point2D;
 
 public class Assets {
 
@@ -8,13 +8,13 @@ public class Assets {
 
     public static Point2D getAssetPosition(ASSETS asset) {
         return switch (asset) {
-            case CASQUE -> new Point2D(-1, 300);
-            case ARMURE -> new Point2D(-1, 350);
-            case CAPE -> new Point2D(380, 350);
-            case BOTTES -> new Point2D(-1, 500);
-            case BACKGROUND -> new Point2D(0, 0);
-            case LABEL -> new Point2D(-1, 100);
-            default -> new Point2D(0, 0);
+            case CASQUE -> new Point2D.Double(-1, 300);
+            case ARMURE -> new Point2D.Double(-1, 350);
+            case CAPE -> new Point2D.Double(380, 350);
+            case BOTTES -> new Point2D.Double(-1, 500);
+            case BACKGROUND -> new Point2D.Double(0, 0);
+            case LABEL -> new Point2D.Double(-1, 100);
+            default -> new Point2D.Double(0, 0);
         };
     }
 

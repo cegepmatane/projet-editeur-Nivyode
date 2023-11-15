@@ -2,12 +2,12 @@ package controleur;
 
 import architecture.Controleur;
 
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 
 import com.sun.media.jfxmedia.logging.Logger;
-import javafx.geometry.Point2D;
 import modele.Animal;
 import modele.Assets;
 import modele.Assets.ASSETS;
