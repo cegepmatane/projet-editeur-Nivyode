@@ -1,6 +1,5 @@
 package controleur.commande;
 
-import architecture.Vue;
 import com.sun.media.jfxmedia.logging.Logger;
 import modele.Assets;
 import vue.VuePimpMyHero;

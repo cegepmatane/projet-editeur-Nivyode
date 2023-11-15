@@ -21,14 +21,21 @@ public class CommandeSupprimer extends Commande {
         VuePimpMyHero.getInstance().supprimerAsset(idButton);
         VuePimpMyHero.getInstance().supprimerAsset(idAsset);
 
-        String assetString = idAsset.substring(0, idAsset.indexOf("-"));
+        String assetString = idAsset;
+        if (idAsset.contains("-")) assetString = idAsset.substring(0, idAsset.indexOf("-"));
         assetSupprimer = Assets.ASSETS.valueOf(assetString.toUpperCase());
+        if (!idAsset.contains("-")) {
+            idAssetSupprimer = -1;
+            return;
+        }
         idAsset = idAsset.substring(idAsset.indexOf("-") + 1);
         idAssetSupprimer = Integer.parseInt(idAsset);
     }
 
     public void annuler() {
-        Commande commande = Historique.getInstance().getCommandePrecedenteMemeTypeMemeId(this.assetSupprimer, this.idAssetSupprimer);
+        Commande commande;
+        if (this.idAssetSupprimer == -1) commande = Historique.getInstance().getCommandePrecedenteMemeType(this.assetSupprimer);
+        else commande = Historique.getInstance().getCommandePrecedenteMemeTypeMemeId(this.assetSupprimer, this.idAssetSupprimer);
         if (commande != null) {
             commande.executer();
         }

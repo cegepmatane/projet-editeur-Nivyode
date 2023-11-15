@@ -50,23 +50,23 @@ public class ControleurPimpMyHero extends Controleur {
 
 			commande = new CommandeChangerAsset(Assets.ASSETS.CASQUE, 1);
 			commande.executer();
-			historique.ajouter(commande);
+			//historique.ajouter(commande);
 
 			commande = new CommandeChangerAsset(Assets.ASSETS.ARMURE, 1);
 			commande.executer();
-			historique.ajouter(commande);
+			//historique.ajouter(commande);
 
 			commande = new CommandeChangerAsset(Assets.ASSETS.CAPE, 1);
 			commande.executer();
-			historique.ajouter(commande);
+			//historique.ajouter(commande);
 
 			commande = new CommandeChangerAsset(Assets.ASSETS.BOTTES, 1);
 			commande.executer();
-			historique.ajouter(commande);
+			//historique.ajouter(commande);
 
 			commande = new CommandeChangerAsset(Assets.ASSETS.BACKGROUND, 2);
 			commande.executer();
-			historique.ajouter(commande);
+			//historique.ajouter(commande);
 
 			/* REMOVED
 			VuePimpMyHero.getInstance().changerAsset(Assets.ASSETS.CASQUE, 1);
@@ -95,8 +95,15 @@ public class ControleurPimpMyHero extends Controleur {
                 asset = ASSETS.valueOf(nom.toUpperCase());
             } else {
                 // C'est un label
+				/* REMOVED
                 VuePimpMyHero.getInstance().changerTitre(element.getTexte());
                 VuePimpMyHero.getInstance().changerCouleurLabel(element.getCouleur().toString());
+				 */
+				CommandeChangerTitre commande = new CommandeChangerTitre(element.getTexte());
+				commande.executer();
+				CommandeChangerCouleur commandeC = new CommandeChangerCouleur(element.getCouleur().toString());
+				commandeC.executer();
+
                 Hero.getInstance().setLabel(element.getTexte());
                 Hero.getInstance().setCouleurNom(element.getCouleur().toString());
 				asset = ASSETS.LABEL;
@@ -105,7 +112,7 @@ public class ControleurPimpMyHero extends Controleur {
             if (asset != ASSETS.ANIMAL && asset != ASSETS.LABEL) {
 				CommandeChangerAsset commande = new CommandeChangerAsset(asset, id);
 				commande.executer();
-				historique.ajouter(commande);
+				//historique.ajouter(commande);
 
                 //VuePimpMyHero.getInstance().changerAsset(asset, id); // REMOVED
 
@@ -116,8 +123,14 @@ public class ControleurPimpMyHero extends Controleur {
                 notifierAjoutAnimal(element.getX(), element.getY());
             } else {
                 // C'est un label
+				/* REMOVED
 				VuePimpMyHero.getInstance().changerTitre(element.getTexte());
 				VuePimpMyHero.getInstance().changerCouleurLabel(element.getCouleur().toString());
+				*/
+				CommandeChangerTitre commande = new CommandeChangerTitre(element.getTexte());
+				commande.executer();
+				CommandeChangerCouleur commandeC = new CommandeChangerCouleur(element.getCouleur().toString());
+				commandeC.executer();
 
 				VuePimpMyHero.getInstance().ecrireTitre(element.getTexte());
 				VuePimpMyHero.getInstance().setCouleurSelectionnee(element.getCouleur());
