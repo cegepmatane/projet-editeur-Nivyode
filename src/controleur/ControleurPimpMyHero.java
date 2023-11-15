@@ -1,8 +1,6 @@
 package controleur;
 
 import architecture.Controleur;
-import architecture.Vue;
-import javafx.scene.control.ColorPicker;
 
 import java.util.ArrayList;
 import java.util.List;
